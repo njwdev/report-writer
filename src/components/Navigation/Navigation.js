@@ -42,19 +42,19 @@ const LandingTest = props => {
             noWrap
             className={classes.toolbarTitle}
           >
-            <a href="/">Reports Writer</a>
+            <a href="/">Reports Writer </a>
           </Typography>
-          <Button color="primary" variant="contained">
-            <a href="/home">Home</a>
+          <Button color="primary" variant="contained" href="/home">
+            Home
           </Button>
-          <Button color="primary" variant="contained">
-            <a href="/about">About</a>
+          <Button color="primary" variant="contained" href="/about">
+            About
           </Button>
-          <Button color="primary" variant="contained">
-            <a href="/">Support</a>
+          <Button color="primary" variant="contained" href="/signin">
+            Sign In
           </Button>
-          <Button color="secondary" variant="contained">
-            <a href="/signin">Admin</a>
+          <Button color="secondary" variant="contained" href="/signin">
+            Admin
           </Button>
         </Toolbar>
       </AppBar>
