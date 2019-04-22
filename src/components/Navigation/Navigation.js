@@ -1,39 +1,19 @@
-import React from 'react';
-import './Navigation.css';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
 import SignOut from '../auth/SignOut/SignOut';
-
-const styles = theme => ({
-  '@global': {
-    body: {
-      backgroundColor: theme.palette.common.white,
-    },
-  },
-  appBar: {
-    position: 'relative',
-    backgroundColor: theme.palette.background.default,
-    color: theme.palette.background.contrastText,
-  },
-  toolbarTitle: {
-    flex: 1,
-  },
-  button: {
-    color: theme.palette.background.contrastText,
-  },
-});
+import { withStyles } from '@material-ui/core/styles';
+import NavigationStyles from './NavigationStyles';
 
 const LandingTest = props => {
   const { classes } = props;
 
   return (
-    <React.Fragment>
+    <Fragment>
       <CssBaseline />
       <AppBar position="static" color="default" className={classes.appBar}>
         <Toolbar>
@@ -43,7 +23,9 @@ const LandingTest = props => {
             noWrap
             className={classes.toolbarTitle}
           >
-            <a href="/">Reports Writer </a>
+            <a className={classes.siteTitle} href="/">
+              Reports Writer
+            </a>
           </Typography>
           <Button color="primary" variant="contained" href="/home">
             Home
@@ -60,7 +42,7 @@ const LandingTest = props => {
           <SignOut />
         </Toolbar>
       </AppBar>
-    </React.Fragment>
+    </Fragment>
   );
 };
 
@@ -68,4 +50,4 @@ LandingTest.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(LandingTest);
+export default withStyles(NavigationStyles)(LandingTest);
