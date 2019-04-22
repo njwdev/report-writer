@@ -8,6 +8,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import SignOut from '../auth/SignOut/SignOut';
 
 const styles = theme => ({
   '@global': {
@@ -56,6 +57,7 @@ const LandingTest = props => {
           <Button color="secondary" variant="contained" href="/signin">
             Admin
           </Button>
+          <SignOut />
         </Toolbar>
       </AppBar>
     </React.Fragment>
