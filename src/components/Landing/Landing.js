@@ -124,6 +124,7 @@ const Landing = props => {
                     fullWidth
                     variant={tier.buttonVariant}
                     color="secondary"
+                    href="/signup"
                   >
                     {tier.buttonText}
                   </Button>
