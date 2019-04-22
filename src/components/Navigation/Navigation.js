@@ -17,9 +17,14 @@ const styles = theme => ({
   },
   appBar: {
     position: 'relative',
+    backgroundColor: theme.palette.background.default,
+    color: theme.palette.background.contrastText,
   },
   toolbarTitle: {
     flex: 1,
+  },
+  button: {
+    color: theme.palette.background.contrastText,
   },
 });
 
@@ -39,17 +44,17 @@ const LandingTest = props => {
           >
             <a href="/">Reports Writer</a>
           </Typography>
-          <Button>
+          <Button color="primary" variant="contained">
             <a href="/home">Home</a>
           </Button>
-          <Button>
+          <Button color="primary" variant="contained">
             <a href="/about">About</a>
           </Button>
-          <Button>
+          <Button color="primary" variant="contained">
             <a href="/">Support</a>
           </Button>
-          <Button color="primary" variant="outlined">
-            <a href="/signin">Admin Login</a>
+          <Button color="secondary" variant="contained">
+            <a href="/signin">Admin</a>
           </Button>
         </Toolbar>
       </AppBar>

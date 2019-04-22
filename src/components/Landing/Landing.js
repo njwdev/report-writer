@@ -24,13 +24,7 @@ const styles = theme => ({
   },
   layout: {
     width: 'auto',
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(900 + theme.spacing.unit * 3 * 2)]: {
-      width: 900,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
+    margin: '0 10%',
   },
   heroContent: {
     maxWidth: 600,
@@ -103,14 +97,7 @@ const Landing = props => {
         {/* End hero unit */}
         <Grid container spacing={40} alignItems="flex-end">
           {tiers.map(tier => (
-            // Enterprise card is full width at sm breakpoint
-            <Grid
-              item
-              key={tier.title}
-              xs={12}
-              sm={tier.title === 'Enterprise' ? 12 : 6}
-              md={12}
-            >
+            <Grid item key={tier.title} xs={12} sm={12} md={12} lg={6}>
               <Card>
                 <CardHeader
                   title={tier.title}
@@ -136,7 +123,7 @@ const Landing = props => {
                   <Button
                     fullWidth
                     variant={tier.buttonVariant}
-                    color="primary"
+                    color="secondary"
                   >
                     {tier.buttonText}
                   </Button>
@@ -146,7 +133,6 @@ const Landing = props => {
           ))}
         </Grid>
       </main>
-      {/* Footer */}
     </React.Fragment>
   );
 };
