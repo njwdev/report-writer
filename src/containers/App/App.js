@@ -1,14 +1,14 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Home from '../Home/Home';
-import About from '../About/About';
-import NotFound from '../NotFound';
+import Home from '../../components/Home/Home';
+import About from '../../components/About/About';
+import NotFound from '../../components/NotFound';
 import * as ROUTES from '../../constants/routes';
-import Landing from '../Landing/Landing';
-import SignIn from '../auth/SignIn/index';
-import SignUp from '../auth/SignUp/index';
-import Admin from '../Admin/Admin';
-import Navigation from '../Navigation/Navigation';
+import Landing from '../../components/Landing/Landing';
+import SignIn from '../../components/auth/SignIn/index';
+import SignUp from '../../components/auth/SignUp/index';
+import Admin from '../../components/Admin/Admin';
+import Navigation from '../../components/Navigation/Navigation';
 
 const App = () => {
   return (
