@@ -44,14 +44,14 @@ const LandingTest = props => {
           >
             <a href="/">Reports Writer</a>
           </Typography>
-          <Button color="primary" variant="contained">
-            <a href="/home">Home</a>
+          <Button color="primary" variant="contained" href="/home">
+            Home
+          </Button>
+          <Button color="primary" variant="contained" href="/about">
+            About
           </Button>
           <Button color="primary" variant="contained">
-            <a href="/about">About</a>
-          </Button>
-          <Button color="primary" variant="contained">
-            <a href="/">Support</a>
+            <a href="/">Sign In</a>
           </Button>
           <Button color="secondary" variant="contained">
             <a href="/signin">Admin</a>
