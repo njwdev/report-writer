@@ -21,6 +21,9 @@ const theme = createMuiTheme({
       contrastText: '#fff',
     },
   },
+  typography: {
+    fontFamily: 'PT Mono',
+  },
 });
 
 ReactDOM.render(

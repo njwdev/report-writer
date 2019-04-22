@@ -9,6 +9,8 @@ import SignIn from '../../components/auth/SignIn/index';
 import SignUp from '../../components/auth/SignUp/index';
 import Admin from '../../components/Admin/Admin';
 import Navigation from '../../components/Navigation/Navigation';
+import { withStyles } from '@material-ui/core/styles';
+import appStyles from './appStyles';
 
 const App = () => {
   return (
@@ -29,4 +31,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withStyles(appStyles)(App);
