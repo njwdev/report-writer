@@ -5,8 +5,8 @@ import About from '../About/About';
 import NotFound from '../NotFound';
 import * as ROUTES from '../../constants/routes';
 import Landing from '../Landing/Landing';
-import SignIn from '../SignIn/SignIn';
-import SignUp from '../SignUp/SignUp';
+import SignIn from '../auth/SignIn/index';
+import SignUp from '../auth/SignUp/index';
 import Admin from '../Admin/Admin';
 import Navigation from '../Navigation/Navigation';
 

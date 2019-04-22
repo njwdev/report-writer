@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { withFirebase } from '../../firebase';
-import * as ROUTES from '../../constants/routes';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
+import { withFirebase } from '../../../firebase';
+import * as ROUTES from '../../../constants/routes';
 
 const INITIAL_STATE = {
   username: '',
@@ -83,5 +84,9 @@ class SignUpNewUser extends Component {
     );
   }
 }
+const SignUpForm = compose(
+  withRouter,
+  withFirebase,
+)(SignUpNewUser);
 
-export default withRouter(withFirebase(SignUpNewUser));
+export default SignUpForm;

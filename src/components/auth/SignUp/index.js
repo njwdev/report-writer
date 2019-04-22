@@ -1,11 +1,10 @@
 import React from 'react';
-import SignUpNewUser from '.';
+import SignUpForm from './SignUpForm';
 const SignUp = () => {
   return (
     <div>
       <h1>Sign Up</h1>
-
-      <SignUpNewUser />
+      <SignUpForm />
     </div>
   );
 };
