@@ -7,7 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SignOut from '../auth/SignOut/SignOut';
 import { withStyles } from '@material-ui/core/styles';
-import NavigationStyles from './NavigationStyles';
+import navigationStyles from './NavigationStyles';
 
 const LandingTest = props => {
   const { classes } = props;
@@ -50,4 +50,4 @@ LandingTest.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(NavigationStyles)(LandingTest);
+export default withStyles(navigationStyles)(LandingTest);

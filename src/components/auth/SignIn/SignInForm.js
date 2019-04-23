@@ -3,6 +3,15 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { withFirebase } from '../../../firebase';
 import * as ROUTES from '../../../constants/routes';
+import signInStyles from './SignInStyles';
+import { withStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import Button from '@material-ui/core/Button';
 
 const INITIAL_STATE = {
   email: '',
@@ -33,32 +42,60 @@ class SignInUser extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     const { email, password, error } = this.state;
 
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
+      <main className={classes.main}>
+        <Paper className={classes.paper}>
+          {/* 3D background box behing signin*/}
+          <Avatar className={classes.avatar}>
+            <i class="material-icons">lock_open</i>
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <form onSubmit={this.onSubmit} className={classes.form}>
+            <FormControl margin="normal" fullWidth>
+              <InputLabel htmlFor="email">Email Address</InputLabel>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                autoFocus
+                value={email}
+                onChange={this.onChange}
+              />
+            </FormControl>
+            <FormControl margin="normal" fullWidth>
+              <InputLabel htmlFor="password">Password</InputLabel>
+              <Input
+                name="password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={this.onChange}
+              />
+            </FormControl>
 
-        {error && <p>{error.message}</p>}
-      </form>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign in
+            </Button>
+
+            {error && <p>{error.message}</p>}
+          </form>
+        </Paper>
+      </main>
     );
   }
 }
@@ -68,4 +105,4 @@ const SignInForm = compose(
   withFirebase,
 )(SignInUser);
 
-export default SignInForm;
+export default withStyles(signInStyles)(SignInForm);

@@ -1,4 +1,4 @@
-const NavigationStyles = theme => ({
+const navigationStyles = theme => ({
   appBar: {
     position: 'relative',
     backgroundColor: theme.palette.background.default,
@@ -16,4 +16,4 @@ const NavigationStyles = theme => ({
   },
 });
 
-export default NavigationStyles;
+export default navigationStyles;
