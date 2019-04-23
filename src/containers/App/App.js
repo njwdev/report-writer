@@ -11,8 +11,9 @@ import Admin from '../../components/Admin/Admin';
 import Navigation from '../../components/Navigation/Navigation';
 import { withStyles } from '@material-ui/core/styles';
 import appStyles from './appStyles';
+import { withAuthentication } from '../../components/Session';
 
-const App = () => {
+const Application = () => {
   return (
     <div>
       <Navigation />
@@ -30,5 +31,7 @@ const App = () => {
     </div>
   );
 };
+
+const App = withAuthentication(Application);
 
 export default withStyles(appStyles)(App);
