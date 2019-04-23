@@ -4,8 +4,10 @@ import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+
 import NavigationStyles from './NavigationStyles';
 import NavButtons from './NavButtons';
+
 
 const Navigation = props => {
   const { classes } = props;
@@ -32,4 +34,6 @@ const Navigation = props => {
   );
 };
 
+
 export default withStyles(NavigationStyles)(Navigation);
+

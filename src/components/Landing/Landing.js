@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -30,7 +30,7 @@ const Landing = props => {
   ];
 
   return (
-    <React.Fragment>
+    <Fragment>
       <CssBaseline />
       <main className={classes.layout}>
         {/* Hero unit */}
@@ -93,7 +93,7 @@ const Landing = props => {
           ))}
         </Grid>
       </main>
-    </React.Fragment>
+    </Fragment>
   );
 };
 
