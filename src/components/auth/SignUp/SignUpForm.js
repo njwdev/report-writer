@@ -3,6 +3,15 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { withFirebase } from '../../../firebase';
 import * as ROUTES from '../../../constants/routes';
+import signUpStyles from './SignUpStyles';
+import { withStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import Button from '@material-ui/core/Button';
 
 const INITIAL_STATE = {
   username: '',
@@ -34,6 +43,7 @@ class SignUpNewUser extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     const { username, email, passwordOne, passwordTwo, error } = this.state;
     console.log(this.state);
 
@@ -44,43 +54,77 @@ class SignUpNewUser extends Component {
       username === '';
 
     return (
-      <div>
-        <form onSubmit={this.onSubmit}>
-          <input
-            name="username"
-            value={username}
-            onChange={this.onChange}
-            type="text"
-            placeholder="Full Name"
-          />
-          <input
-            name="email"
-            value={email}
-            onChange={this.onChange}
-            type="text"
-            placeholder="Email Address"
-          />
-          <input
-            name="passwordOne"
-            value={passwordOne}
-            onChange={this.onChange}
-            type="password"
-            placeholder="Password"
-          />
-          <input
-            name="passwordTwo"
-            value={passwordTwo}
-            onChange={this.onChange}
-            type="password"
-            placeholder="Confirm Password"
-          />
-          <button disabled={isInvalid} type="submit">
-            Sign Up
-          </button>
+      <main className={classes.main}>
+        <Paper className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <i class="material-icons">person_add</i>
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
+          <form onSubmit={this.onSubmit}>
+            <FormControl margin="normal" fullWidth>
+              <InputLabel htmlFor="username">Name</InputLabel>
+              <Input
+                id="username"
+                name="username"
+                type="text"
+                autoComplete="username"
+                autoFocus
+                value={username}
+                onChange={this.onChange}
+              />
+            </FormControl>
+            <FormControl margin="normal" fullWidth>
+              <InputLabel htmlFor="email">Email Address</InputLabel>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                autoFocus
+                value={email}
+                onChange={this.onChange}
+              />
+            </FormControl>
+            <FormControl margin="normal" fullWidth>
+              <InputLabel htmlFor="password">Password</InputLabel>
+              <Input
+                name="passwordOne"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={passwordOne}
+                onChange={this.onChange}
+              />
+            </FormControl>
+            <FormControl margin="normal" fullWidth>
+              <InputLabel htmlFor="password">Confirm Password</InputLabel>
+              <Input
+                name="passwordTwo"
+                type="password"
+                id="confirm-password"
+                autoComplete="current-password"
+                value={passwordTwo}
+                onChange={this.onChange}
+              />
+            </FormControl>
 
-          {error && <p>{error.message}</p>}
-        </form>
-      </div>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              disabled={isInvalid}
+            >
+              Sign up
+            </Button>
+
+            {error && <p>{error.message}</p>}
+          </form>
+        </Paper>
+      </main>
     );
   }
 }
@@ -89,4 +133,4 @@ const SignUpForm = compose(
   withFirebase,
 )(SignUpNewUser);
 
-export default SignUpForm;
+export default withStyles(signUpStyles)(SignUpForm);
