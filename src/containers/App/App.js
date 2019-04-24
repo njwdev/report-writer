@@ -12,6 +12,7 @@ import Navigation from '../../components/Navigation/Navigation';
 import { withStyles } from '@material-ui/core/styles';
 import appStyles from './appStyles';
 import { withAuthentication } from '../../components/Session';
+import PasswordForget from '../../components/auth/Passwords/PasswordForget/index';
 
 const Application = () => {
   return (
@@ -25,6 +26,11 @@ const Application = () => {
           <Route exact path={ROUTES.ADMIN} component={Admin} />
           <Route exact path={ROUTES.SIGN_IN} component={SignIn} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUp} />
+          <Route
+            exact
+            path={ROUTES.PASSWORD_FORGET}
+            component={PasswordForget}
+          />
           <Route exact path="*" component={NotFound} />
         </Switch>
       </div>

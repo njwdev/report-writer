@@ -8,7 +8,6 @@ import { withStyles } from '@material-ui/core/styles';
 import NavigationStyles from './NavigationStyles';
 import NavButtons from './NavButtons';
 
-
 const Navigation = props => {
   const { classes } = props;
   return (
@@ -21,19 +20,17 @@ const Navigation = props => {
           className={classes.toolbarTitle}
         >
           <a className={classes.siteTitle} href="/">
-            Reports Writer
+            Report Writer
           </a>
         </Typography>
         <NavButtons />
 
-        <Button color="secondary" variant="contained" href="/signin">
-          Admin
+        <Button color="secondary" variant="contained" href="/about">
+          About
         </Button>
       </Toolbar>
     </AppBar>
   );
 };
 
-
 export default withStyles(NavigationStyles)(Navigation);
-

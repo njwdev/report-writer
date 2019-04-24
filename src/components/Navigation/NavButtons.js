@@ -3,35 +3,46 @@ import { AuthUserContext } from '../../components/Session/index';
 import Button from '@material-ui/core/Button';
 import SignOut from '../auth/SignOut/SignOut';
 
+const data = (link, text) => {
+  return { link, text };
+};
+
+const authButtons = [data('home', 'Home'), data('account', 'Account')];
+
+const nonAuthButtons = [data('signin', 'Sign In')];
+
 const NavButtons = () => {
   return (
-    <Fragment>
-      <AuthUserContext.Consumer>
-        {authUser =>
-          authUser ? (
-            <Fragment>
-              {/* Buttons go here as children */}
-              <Button color="primary" variant="contained" href="/home">
-                Home
+    <AuthUserContext.Consumer>
+      {authUser =>
+        authUser ? (
+          <Fragment>
+            {authButtons.map(item => (
+              <Button
+                color="primary"
+                variant="contained"
+                href={`/${item.link}`}
+              >
+                {item.text}
               </Button>
-              <Button color="primary" variant="contained" href="/about">
-                About
+            ))}
+            <SignOut />
+          </Fragment>
+        ) : (
+          <Fragment>
+            {nonAuthButtons.map(item => (
+              <Button
+                color="primary"
+                variant="contained"
+                href={`/${item.link}`}
+              >
+                {item.text}
               </Button>
-              <SignOut />
-            </Fragment>
-          ) : (
-            <Fragment>
-              <Button color="primary" variant="contained" href="/signin">
-                Sign In
-              </Button>
-              <Button color="primary" variant="contained" href="/about">
-                About
-              </Button>
-            </Fragment>
-          )
-        }
-      </AuthUserContext.Consumer>
-    </Fragment>
+            ))}
+          </Fragment>
+        )
+      }
+    </AuthUserContext.Consumer>
   );
 };
 
