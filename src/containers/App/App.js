@@ -13,6 +13,7 @@ import { withStyles } from '@material-ui/core/styles';
 import appStyles from './appStyles';
 import { withAuthentication } from '../../components/Session';
 import PasswordForget from '../../components/auth/Passwords/PasswordForget/index';
+import Account from '../../components/Account';
 
 const Application = () => {
   return (
@@ -24,6 +25,7 @@ const Application = () => {
           <Route exact path={ROUTES.HOME} component={Home} />
           <Route exact path={ROUTES.ABOUT} component={About} />
           <Route exact path={ROUTES.ADMIN} component={Admin} />
+          <Route exact path={ROUTES.ACCOUNT} component={Account} />
           <Route exact path={ROUTES.SIGN_IN} component={SignIn} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUp} />
           <Route
