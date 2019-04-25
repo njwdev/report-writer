@@ -19,6 +19,7 @@ const NavButtons = () => {
           <Fragment>
             {authButtons.map(item => (
               <Button
+                key={item.link}
                 color="primary"
                 variant="contained"
                 href={`/${item.link}`}
@@ -26,12 +27,12 @@ const NavButtons = () => {
                 {item.text}
               </Button>
             ))}
-            <SignOut />
           </Fragment>
         ) : (
           <Fragment>
             {nonAuthButtons.map(item => (
               <Button
+                key={item.link}
                 color="primary"
                 variant="contained"
                 href={`/${item.link}`}
