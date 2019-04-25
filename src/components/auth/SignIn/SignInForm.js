@@ -53,7 +53,7 @@ class SignInUser extends Component {
         <Paper className={classes.paper}>
           {/* 3D background box behing signin*/}
           <Avatar className={classes.avatar}>
-            <i class="material-icons">lock_open</i>
+            <i className="material-icons">lock_open</i>
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
