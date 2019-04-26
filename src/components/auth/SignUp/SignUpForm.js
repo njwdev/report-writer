@@ -58,7 +58,6 @@ class SignUpNewUser extends Component {
   render() {
     const { classes } = this.props;
     const { username, email, passwordOne, passwordTwo, error } = this.state;
-    console.log(this.state);
 
     const isInvalid =
       passwordOne !== passwordTwo ||
