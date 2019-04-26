@@ -7,7 +7,11 @@ const data = (link, text) => {
   return { link, text };
 };
 
-const authButtons = [data('home', 'Home'), data('account', 'Account')];
+const authButtons = [
+  data('home', 'Home'),
+  data('account', 'Account'),
+  data('admin', 'Admin'),
+];
 
 const nonAuthButtons = [data('signin', 'Sign In')];
 
