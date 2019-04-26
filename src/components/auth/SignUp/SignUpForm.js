@@ -25,13 +25,26 @@ class SignUpNewUser extends Component {
   state = { ...INITIAL_STATE };
   onSubmit = e => {
     const { username, email, passwordOne } = this.state;
-    const { firebase } = this.props;
+    const { firebase, history } = this.props;
     e.preventDefault();
     firebase
       .createUserWithEmailAndPasswordHandler(email, passwordOne)
       .then(authUser => {
+        // Create a user in your Firebase realtime database
+        return firebase.user(authUser.user.uid).set(
+          {
+            username,
+            email,
+          },
+          {
+            merge: true,
+          },
+        );
+      })
+
+      .then(authUser => {
         this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.HOME);
+        history.push(ROUTES.HOME);
       })
       .catch(error => {
         this.setState({ error });
