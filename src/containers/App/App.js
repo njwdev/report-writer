@@ -7,7 +7,7 @@ import * as ROUTES from '../../constants/routes';
 import Landing from '../../components/Landing/Landing';
 import SignIn from '../../components/auth/SignIn/index';
 import SignUp from '../../components/auth/SignUp/index';
-import Admin from '../../components/Admin/Admin';
+import Admin from '../../components/Admin';
 import Navigation from '../../components/Navigation/Navigation';
 import { withStyles } from '@material-ui/core/styles';
 import appStyles from './appStyles';
