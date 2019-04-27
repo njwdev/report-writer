@@ -14,7 +14,7 @@ const CommentsList = props => {
               <strong>Type:</strong> {comment.type}
             </span>
             <span>
-              <strong>Comment:</strong> {comment.text}
+              <strong>Comment:</strong> {comment.comment}
             </span>
           </li>
         ))}
