@@ -69,7 +69,7 @@ class SignUpNewUser extends Component {
       <main className={classes.main}>
         <Paper className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <i class="material-icons">person_add</i>
+            <i className="material-icons">person_add</i>
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up

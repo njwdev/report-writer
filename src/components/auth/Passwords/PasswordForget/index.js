@@ -1,12 +1,20 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+import { AuthUserContext, withAuthentication } from '../../../Session';
 import ForgetForm from './ForgetForm';
 
-const PasswordForget = () => {
-  return (
-    <div>
-      <ForgetForm />
-    </div>
-  );
-};
+const PasswordForget = () => (
+  <AuthUserContext.Consumer>
+    {authUser =>
+      authUser ? (
+        <Redirect to="/home" />
+      ) : (
+        <div>
+          <ForgetForm />
+        </div>
+      )
+    }
+  </AuthUserContext.Consumer>
+);
 
-export default PasswordForget;
+export default withAuthentication(PasswordForget);

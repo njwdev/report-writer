@@ -1,8 +1,6 @@
 import React from 'react';
 import { AuthUserContext, withAuthorization } from '../Session';
-
-import Users from './Users';
-import Comments from './Comments';
+import LinkButton from '../ui/Buttons/LinkButton';
 
 const condition = authUser => !!authUser;
 
@@ -12,8 +10,8 @@ const Admin = () => {
       {authUser => (
         <div>
           <h1>Admin</h1>
-          <Users />
-          <Comments />
+          <LinkButton text="Users" link="admin/users" />
+          <LinkButton text="Comments" link="admin/comments" />
         </div>
       )}
     </AuthUserContext.Consumer>
