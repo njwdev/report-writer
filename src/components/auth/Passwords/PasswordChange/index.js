@@ -2,11 +2,7 @@ import React from 'react';
 import ChangeForm from './ChangeForm';
 
 const PasswordChange = () => {
-  return (
-    <div>
-      <ChangeForm />
-    </div>
-  );
+  return <ChangeForm />;
 };
 
 export default PasswordChange;

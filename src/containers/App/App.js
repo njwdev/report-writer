@@ -14,6 +14,7 @@ import appStyles from './appStyles';
 import { withAuthentication } from '../../components/Session';
 import PasswordForget from '../../components/auth/Passwords/PasswordForget/index';
 import Account from '../../components/Account';
+import PasswordChange from '../../components/auth/Passwords/PasswordChange/index';
 
 const Application = () => {
   return (
@@ -32,6 +33,11 @@ const Application = () => {
             exact
             path={ROUTES.PASSWORD_FORGET}
             component={PasswordForget}
+          />
+          <Route
+            exact
+            path={ROUTES.PASSWORD_CHANGE}
+            component={PasswordChange}
           />
           <Route exact path="*" component={NotFound} />
         </Switch>
