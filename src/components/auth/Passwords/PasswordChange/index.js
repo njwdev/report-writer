@@ -1,8 +1,13 @@
 import React from 'react';
+import { withAuthorization } from '../../../Session';
 import ChangeForm from './ChangeForm';
 
-const PasswordChange = () => {
-  return <ChangeForm />;
-};
+const condition = authUser => !!authUser;
 
-export default PasswordChange;
+const PasswordChange = () => (
+  <div>
+    <ChangeForm />
+  </div>
+);
+
+export default withAuthorization(condition)(PasswordChange);

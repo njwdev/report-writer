@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../../firebase';
+import * as ROUTES from '../../../constants/routes';
 
 const INITIAL_STATE = {
   type: '',
@@ -23,7 +24,7 @@ class AddNewComment extends Component {
         comment,
       })
 
-      .then(() => history.push('/admin'))
+      .then(() => history.push(ROUTES.COMMENTS_LIST))
       .catch(() => this.setState({ error: true }));
   };
 
@@ -32,7 +33,7 @@ class AddNewComment extends Component {
   };
 
   render() {
-    const { type, comment, error } = this.state;
+    const { comment, error } = this.state;
 
     const isInvalid = comment === '';
 

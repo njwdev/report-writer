@@ -12,9 +12,11 @@ import Navigation from '../../components/Navigation/Navigation';
 import { withStyles } from '@material-ui/core/styles';
 import appStyles from './appStyles';
 import { withAuthentication } from '../../components/Session';
-import PasswordForget from '../../components/auth/Passwords/PasswordForget/index';
+import PasswordForget from '../../components/auth/Passwords/PasswordForget';
 import Account from '../../components/Account';
-import PasswordChange from '../../components/auth/Passwords/PasswordChange/index';
+import PasswordChange from '../../components/auth/Passwords/PasswordChange';
+import Comments from '../../components/Admin/Comments';
+import Users from '../../components/Admin/Users';
 
 const Application = () => {
   return (
@@ -26,6 +28,8 @@ const Application = () => {
           <Route exact path={ROUTES.HOME} component={Home} />
           <Route exact path={ROUTES.ABOUT} component={About} />
           <Route exact path={ROUTES.ADMIN} component={Admin} />
+          <Route exact path={ROUTES.USERS_LIST} component={Users} />
+          <Route exact path={ROUTES.COMMENTS_LIST} component={Comments} />
           <Route exact path={ROUTES.ACCOUNT} component={Account} />
           <Route exact path={ROUTES.SIGN_IN} component={SignIn} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUp} />

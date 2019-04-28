@@ -14,6 +14,7 @@ const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
   error: null,
+  success: false,
 };
 
 class PasswordChangeForm extends Component {
@@ -28,7 +29,7 @@ class PasswordChangeForm extends Component {
     firebase
       .passwordUpdateHandler(passwordOne)
       .then(() => {
-        this.setState({ ...INITIAL_STATE });
+        this.setState({ ...INITIAL_STATE, success: true });
       })
       .catch(error => {
         this.setState({ error });
@@ -41,14 +42,14 @@ class PasswordChangeForm extends Component {
 
   render() {
     const { classes } = this.props;
-    const { passwordOne, passwordTwo, error } = this.state;
+    const { passwordOne, passwordTwo, success, error } = this.state;
 
     const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
     return (
       <main className={classes.main}>
         <Paper className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <i class="material-icons">lock</i>
+            <i className="material-icons">lock</i>
           </Avatar>
           <Typography component="h1" variant="h5">
             Change Password
@@ -88,7 +89,11 @@ class PasswordChangeForm extends Component {
             </FormControl>
 
             {/* Needs to have a confirmation message / redirect after submit */}
-
+            {success && (
+              <p>
+                Password successfully changed <a href="/account">Back</a>
+              </p>
+            )}
             {error && <p>{error.message}</p>}
           </form>
         </Paper>
