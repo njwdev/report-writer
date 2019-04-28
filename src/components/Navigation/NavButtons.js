@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { AuthUserContext } from '../../components/Session/index';
 import Button from '@material-ui/core/Button';
-import SignOut from '../auth/SignOut/SignOut';
+import SignOutButton from '../auth/SignOut/SignOut';
 
 const data = (link, text) => {
   return { link, text };
@@ -31,6 +31,7 @@ const NavButtons = () => {
                 {item.text}
               </Button>
             ))}
+            <SignOutButton />
           </Fragment>
         ) : (
           <Fragment>

@@ -6,3 +6,4 @@ export const ABOUT = '/about';
 export const ADMIN = '/admin';
 export const ACCOUNT = '/account';
 export const PASSWORD_FORGET = '/password_forget';
+export const PASSWORD_CHANGE = '/changepassword';

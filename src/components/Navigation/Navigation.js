@@ -25,7 +25,7 @@ const Navigation = props => {
         </Typography>
         <NavButtons />
 
-        <Button color="secondary" variant="contained" href="/about">
+        <Button color="primary" variant="contained" href="/about">
           About
         </Button>
       </Toolbar>
