@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { withFirebase } from '../../../firebase';
-import * as ROUTES from '../../../constants/routes';
+import { withFirebase } from '../../../../firebase';
+import BackButton from '../../../ui/Buttons/BackButton';
 
 const INITIAL_STATE = {
   type: '',
   comment: '',
+  success: false,
   error: null,
 };
 
@@ -17,14 +18,13 @@ class AddNewComment extends Component {
     const { type, comment } = this.state;
     const { firebase, history } = this.props;
     e.preventDefault();
-    return firebase
+    firebase
       .comments()
       .add({
         type,
         comment,
       })
-
-      .then(() => history.push(ROUTES.COMMENTS_LIST))
+      .then(() => this.setState({ ...INITIAL_STATE, success: true }))
       .catch(() => this.setState({ error: true }));
   };
 
@@ -33,7 +33,7 @@ class AddNewComment extends Component {
   };
 
   render() {
-    const { comment, error } = this.state;
+    const { comment, error, success } = this.state;
 
     const isInvalid = comment === '';
 
@@ -51,6 +51,7 @@ class AddNewComment extends Component {
             Submit
           </button>
         </form>
+        {success ? <p>Comment added successfully</p> : null}
         {error ? error : null}
       </div>
     );
