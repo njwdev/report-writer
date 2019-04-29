@@ -17,6 +17,7 @@ import Account from '../../components/Account';
 import PasswordChange from '../../components/auth/Passwords/PasswordChange';
 import Comments from '../../components/Admin/Comments';
 import Users from '../../components/Admin/Users';
+import AddComment from '../../components/Admin/Comments/AddComment';
 
 const Application = () => {
   return (
@@ -30,6 +31,7 @@ const Application = () => {
           <Route exact path={ROUTES.ADMIN} component={Admin} />
           <Route exact path={ROUTES.USERS_LIST} component={Users} />
           <Route exact path={ROUTES.COMMENTS_LIST} component={Comments} />
+          <Route exact path={ROUTES.ADD_NEW_COMMENT} component={AddComment} />
           <Route exact path={ROUTES.ACCOUNT} component={Account} />
           <Route exact path={ROUTES.SIGN_IN} component={SignIn} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUp} />

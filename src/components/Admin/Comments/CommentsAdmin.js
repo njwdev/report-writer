@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../../firebase';
 import CommentsList from './CommentsList';
-import AddNewComment from './AddCommentForm';
 
 const INITIAL_STATE = {
   loading: false,
@@ -33,7 +32,6 @@ class CommentsAdmin extends Component {
       <div>
         <h3>Comments</h3>
         {loading && <div>Loading ...</div>}
-        <AddNewComment />
         <CommentsList comments={comments} />
       </div>
     );
