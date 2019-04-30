@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../../firebase';
 import CommentsList from './CommentsList';
+import BackButton from '../../ui/Buttons/BackButton';
 
 const INITIAL_STATE = {
   loading: false,
@@ -22,7 +23,7 @@ class CommentsAdmin extends Component {
   }
 
   componentWillUnmount() {
-    this.commentsList();
+    this.commentList();
   }
 
   render() {
@@ -31,6 +32,7 @@ class CommentsAdmin extends Component {
     return (
       <div>
         <h3>Comments</h3>
+        <BackButton link="/admin" />
         {loading && <div>Loading ...</div>}
         <CommentsList comments={comments} />
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../../../firebase';
-import BackButton from '../../../ui/Buttons/BackButton';
-
+import NewCommentForm from './NewCommentForm';
+import Button from '@material-ui/core/Button';
 const INITIAL_STATE = {
   type: '',
   comment: '',
@@ -32,27 +32,36 @@ class AddNewComment extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  render() {
-    const { comment, error, success } = this.state;
+  onReset = () => this.setState({ ...INITIAL_STATE });
 
-    const isInvalid = comment === '';
+  render() {
+    const { comment, type, error, success } = this.state;
+
+    const isInvalid = comment === '' || type === '';
 
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
-          <input type="text" name="comment" onChange={this.onChange} />
-          <select onChange={this.onChange} name="type">
-            <option value="intro"> Intro </option>
-            <option value="positive"> Positive </option>
-            <option value="negative"> Negative </option>
-            <option value="closing"> Closing </option>
-          </select>
-          <button type="submit" disabled={isInvalid}>
-            Submit
-          </button>
-        </form>
-        {success ? <p>Comment added successfully</p> : null}
-        {error ? error : null}
+        {success ? (
+          <div>
+            <p>Comment added successfully</p>
+            <Button
+              text="Add another comment"
+              link="/admin/comments/add_comment"
+              onClick={this.onReset}
+            >
+              Add a new Comment
+            </Button>
+          </div>
+        ) : (
+          <div>
+            <NewCommentForm
+              onSubmit={this.onSubmit}
+              onChange={this.onChange}
+              isInvalid={isInvalid}
+            />
+            {error ? error : null}
+          </div>
+        )}
       </div>
     );
   }

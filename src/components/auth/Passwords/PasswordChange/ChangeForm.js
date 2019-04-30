@@ -9,6 +9,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
+import BackButton from '../../../ui/Buttons/BackButton';
 
 const INITIAL_STATE = {
   passwordOne: '',
@@ -91,7 +92,7 @@ class PasswordChangeForm extends Component {
             {/* Needs to have a confirmation message / redirect after submit */}
             {success && (
               <p>
-                Password successfully changed <a href="/account">Back</a>
+                Password successfully changed <BackButton link="/account" />
               </p>
             )}
             {error && <p>{error.message}</p>}

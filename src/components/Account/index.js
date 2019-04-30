@@ -10,6 +10,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import LinkButton from '../ui/Buttons/LinkButton';
+import BackButton from '../ui/Buttons/BackButton';
 
 const condition = authUser => !!authUser;
 const Account = props => {
@@ -25,6 +26,7 @@ const Account = props => {
             <Typography component="h1" variant="h5">
               Account Settings
             </Typography>
+            <BackButton link="/home" />
             <List>
               <ListItem>
                 <ListItemText>
