@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import Form from '../../../../utility/Form/Form';
+import SubmitButton from '../../../../utility/SubmitButton/SubmitButton';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
 import { withFirebase } from '../../../../firebase';
 
 const INITIAL_STATE = {
@@ -33,20 +38,25 @@ class ForgetForm extends Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
+      <Form onSubmit={this.onSubmit}>
+        <FormControl>
+          <InputLabel htmlFor="email">Email Address</InputLabel>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            value={email}
+            autoFocus
+            autoComplete="email"
+            onChange={this.onChange}
+          />
+        </FormControl>
+        <FormControl>
+          <SubmitButton disabled={isInvalid}>Reset My Password</SubmitButton>
+        </FormControl>
 
         {error && <p>{error.message}</p>}
-      </form>
+      </Form>
     );
   }
 }

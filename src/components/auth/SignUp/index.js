@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
+import AuthPage from '../../../utility/AuthPage/AuthPage';
 
 import { AuthUserContext, withAuthentication } from '../../Session';
 
@@ -10,9 +11,9 @@ const SignUp = () => (
       authUser ? (
         <Redirect to="/home" />
       ) : (
-        <div>
+        <AuthPage title="Sign Up" icon="person_add">
           <SignUpForm />
-        </div>
+        </AuthPage>
       )
     }
   </AuthUserContext.Consumer>
