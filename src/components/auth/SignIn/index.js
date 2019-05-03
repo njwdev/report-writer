@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import SignInForm from './SignInForm';
 import { AuthUserContext, withAuthentication } from '../../Session';
+import AuthPage from '../../../utility/AuthPage/AuthPage';
 
 const SignIn = () => (
   <AuthUserContext.Consumer>
@@ -9,9 +10,9 @@ const SignIn = () => (
       authUser ? (
         <Redirect to="/home" />
       ) : (
-        <div>
+        <AuthPage title="Sign in" icon="lock_open">
           <SignInForm />
-        </div>
+        </AuthPage>
       )
     }
   </AuthUserContext.Consumer>
