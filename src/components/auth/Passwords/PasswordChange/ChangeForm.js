@@ -7,7 +7,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import SubmitButton from '../../../../utility/SubmitButton/SubmitButton';
 import BackButton from '../../../ui/Buttons/BackButton';
 
-
 const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
@@ -39,7 +38,6 @@ class PasswordChangeForm extends Component {
   };
 
   render() {
-    
     const { passwordOne, passwordTwo, error } = this.state;
 
     const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
@@ -52,7 +50,6 @@ class PasswordChangeForm extends Component {
             value={passwordOne}
             onChange={this.onChange}
             type="password"
-            placeholder="New Password"
           />
         </FormControl>
         <FormControl margin="normal" fullWidth>
@@ -62,23 +59,19 @@ class PasswordChangeForm extends Component {
             value={passwordTwo}
             onChange={this.onChange}
             type="password"
-            placeholder="Confirm New Password"
           />
         </FormControl>
         <FormControl>
           <SubmitButton disabled={isInvalid}>Reset Password</SubmitButton>
         </FormControl>
 
-        {/* Needs to have a confirmation message / redirect after submit */}
- {success && (
-              <p>
-                Password successfully changed <BackButton link="/account" />
-              </p>
-            )}
-            {error && <p>{error.message}</p>}
+        {this.success && (
+          <p>
+            Password successfully changed <BackButton link="/account" />
+          </p>
+        )}
+        {error && <p>{error.message}</p>}
       </Form>
-
-           
     );
   }
 }
