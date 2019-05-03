@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from '../../components/Home/Home';
 import About from '../../components/About/About';
-import NotFound from '../../components/NotFound';
+import NotFound from '../../components/ui/NotFound';
 import * as ROUTES from '../../constants/routes';
 import Landing from '../../components/Landing/Landing';
 import SignIn from '../../components/auth/SignIn/index';
@@ -12,9 +12,12 @@ import Navigation from '../../components/Navigation/Navigation';
 import { withStyles } from '@material-ui/core/styles';
 import appStyles from './appStyles';
 import { withAuthentication } from '../../components/Session';
-import PasswordForget from '../../components/auth/Passwords/PasswordForget/index';
+import PasswordForget from '../../components/auth/Passwords/PasswordForget';
 import Account from '../../components/Account';
-import PasswordChange from '../../components/auth/Passwords/PasswordChange/index';
+import PasswordChange from '../../components/auth/Passwords/PasswordChange';
+import Comments from '../../components/Admin/Comments';
+import Users from '../../components/Admin/Users';
+import AddComment from '../../components/Admin/Comments/AddComment';
 
 const Application = () => {
   return (
@@ -26,6 +29,9 @@ const Application = () => {
           <Route exact path={ROUTES.HOME} component={Home} />
           <Route exact path={ROUTES.ABOUT} component={About} />
           <Route exact path={ROUTES.ADMIN} component={Admin} />
+          <Route exact path={ROUTES.USERS_LIST} component={Users} />
+          <Route exact path={ROUTES.COMMENTS_LIST} component={Comments} />
+          <Route exact path={ROUTES.ADD_NEW_COMMENT} component={AddComment} />
           <Route exact path={ROUTES.ACCOUNT} component={Account} />
           <Route exact path={ROUTES.SIGN_IN} component={SignIn} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUp} />

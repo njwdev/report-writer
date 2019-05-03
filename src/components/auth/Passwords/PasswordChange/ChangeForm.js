@@ -5,11 +5,14 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import SubmitButton from '../../../../utility/SubmitButton/SubmitButton';
+import BackButton from '../../../ui/Buttons/BackButton';
+
 
 const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
   error: null,
+  success: false,
 };
 
 class PasswordChangeForm extends Component {
@@ -24,7 +27,7 @@ class PasswordChangeForm extends Component {
     firebase
       .passwordUpdateHandler(passwordOne)
       .then(() => {
-        this.setState({ ...INITIAL_STATE });
+        this.setState({ ...INITIAL_STATE, success: true });
       })
       .catch(error => {
         this.setState({ error });
@@ -36,6 +39,7 @@ class PasswordChangeForm extends Component {
   };
 
   render() {
+    
     const { passwordOne, passwordTwo, error } = this.state;
 
     const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
@@ -66,9 +70,15 @@ class PasswordChangeForm extends Component {
         </FormControl>
 
         {/* Needs to have a confirmation message / redirect after submit */}
-
-        {error && <p>{error.message}</p>}
+ {success && (
+              <p>
+                Password successfully changed <BackButton link="/account" />
+              </p>
+            )}
+            {error && <p>{error.message}</p>}
       </Form>
+
+           
     );
   }
 }

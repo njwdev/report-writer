@@ -108,6 +108,10 @@ class SignUpNewUser extends Component {
             onChange={this.onChange}
           />
         </FormControl>
+     
+       
+           
+          
 
         <SubmitButton disabled={isInvalid}>Sign up</SubmitButton>
 

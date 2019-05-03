@@ -6,6 +6,8 @@ import SignOut from '../auth/SignOut/SignOut';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import LinkButton from '../ui/Buttons/LinkButton';
+import BackButton from '../ui/Buttons/BackButton';
 
 const data = listItem => {
   return { listItem };
@@ -24,12 +26,14 @@ const Account = props => {
         ];
         return (
           <AuthPage title="Account Settings" icon="settings">
+  <BackButton link="/home" />
             <List>
               {accountSettings.map(item => (
                 <ListItem>
                   <ListItemText>{item.listItem}</ListItemText>
                 </ListItem>
               ))}
+
             </List>
           </AuthPage>
         );
