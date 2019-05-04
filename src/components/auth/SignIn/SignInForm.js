@@ -9,6 +9,7 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
 import PasswordForgetButton from './PasswordForgetButton';
+import SignUpLinkButton from './SignUpLinkButton';
 
 const INITIAL_STATE = {
   email: '',
@@ -80,6 +81,7 @@ class SignInUser extends Component {
           Sign in
         </Button>
         <PasswordForgetButton />
+        <SignUpLinkButton />
         {error && <p>{error.message}</p>}
       </Form>
     );
