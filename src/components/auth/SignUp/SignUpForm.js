@@ -8,6 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import SubmitButton from '../../../utility/SubmitButton/SubmitButton';
+import SignInLinkButton from './SignInLinkButton';
 
 const INITIAL_STATE = {
   username: '',
@@ -108,14 +109,11 @@ class SignUpNewUser extends Component {
             onChange={this.onChange}
           />
         </FormControl>
-     
-       
-           
-          
 
         <SubmitButton disabled={isInvalid}>Sign up</SubmitButton>
 
         {error && <p>{error.message}</p>}
+        <SignInLinkButton />
       </Form>
     );
   }
