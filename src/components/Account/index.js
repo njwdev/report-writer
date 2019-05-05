@@ -30,7 +30,7 @@ const Account = props => {
             <BackButton link="/home" />
             <List>
               {accountSettings.map(item => (
-                <ListItem>
+                <ListItem key={Math.random()}>
                   <ListItemText>{item.listItem}</ListItemText>
                 </ListItem>
               ))}

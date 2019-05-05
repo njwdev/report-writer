@@ -10,6 +10,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
 import PasswordForgetButton from './PasswordForgetButton';
 import SignUpLinkButton from './SignUpLinkButton';
+import Message from '../../ui/Message';
 
 const INITIAL_STATE = {
   email: '',
@@ -80,9 +81,14 @@ class SignInUser extends Component {
         >
           Sign in
         </Button>
+        {error && (
+          <Message type="warning">
+            There was a problem with your sign in. Check your email and/or
+            password
+          </Message>
+        )}
         <PasswordForgetButton />
         <SignUpLinkButton />
-        {error && <p>{error.message}</p>}
       </Form>
     );
   }
