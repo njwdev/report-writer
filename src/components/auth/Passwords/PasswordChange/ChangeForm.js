@@ -6,6 +6,7 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import SubmitButton from '../../../../utility/SubmitButton/SubmitButton';
 import BackButton from '../../../ui/Buttons/BackButton';
+import Message from '../../../ui/Message';
 
 const INITIAL_STATE = {
   passwordOne: '',
@@ -38,7 +39,7 @@ class PasswordChangeForm extends Component {
   };
 
   render() {
-    const { passwordOne, passwordTwo, error } = this.state;
+    const { passwordOne, passwordTwo, error, success } = this.state;
 
     const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
     return (
@@ -65,12 +66,13 @@ class PasswordChangeForm extends Component {
           <SubmitButton disabled={isInvalid}>Reset Password</SubmitButton>
         </FormControl>
 
-        {this.success && (
-          <p>
-            Password successfully changed <BackButton link="/account" />
-          </p>
+        {success && (
+          <div>
+            <Message type="success">Password successfully changed</Message>
+            <BackButton link="/account" />
+          </div>
         )}
-        {error && <p>{error.message}</p>}
+        {error && <Message type="warning">{error.message}</Message>}
       </Form>
     );
   }

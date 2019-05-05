@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withFirebase } from '../../../../firebase';
 import NewCommentForm from './NewCommentForm';
 import Button from '@material-ui/core/Button';
+import Message from '../../../ui/Message';
 const INITIAL_STATE = {
   type: '',
   comment: '',
@@ -16,7 +17,7 @@ class AddNewComment extends Component {
 
   onSubmit = e => {
     const { type, comment } = this.state;
-    const { firebase, history } = this.props;
+    const { firebase } = this.props;
     e.preventDefault();
     firebase
       .comments()
@@ -43,7 +44,7 @@ class AddNewComment extends Component {
       <div>
         {success ? (
           <div>
-            <p>Comment added successfully</p>
+            <Message type="success">Comment added successfully</Message>
             <Button
               text="Add another comment"
               link="/admin/comments/add_comment"
