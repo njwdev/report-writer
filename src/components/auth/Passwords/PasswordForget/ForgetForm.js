@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Form from '../../../../utility/Form/Form';
-import SubmitButton from '../../../../utility/SubmitButton/SubmitButton';
+import SubmitButton from '../../../ui/Buttons/SubmitButton';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -54,16 +54,15 @@ class ForgetForm extends Component {
             onChange={this.onChange}
           />
         </FormControl>
-        <FormControl>
-          <SubmitButton disabled={isInvalid}>Reset My Password</SubmitButton>
-        </FormControl>
+
+        <SubmitButton disabled={isInvalid}>Reset My Password</SubmitButton>
+        <BackButton link="/signin" />
         {success && (
           <div>
             <Message type="success">
               An email has been sent with instructions on how to reset your
               password
             </Message>
-            <BackButton link="/signin" />
           </div>
         )}
         {error && <Message>There was a problem with your request</Message>}

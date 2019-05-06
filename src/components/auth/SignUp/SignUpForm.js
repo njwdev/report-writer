@@ -7,7 +7,7 @@ import Form from '../../../utility/Form/Form';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import SubmitButton from '../../../utility/SubmitButton/SubmitButton';
+import SubmitButton from '../../ui/Buttons/SubmitButton';
 import Message from '../../ui/Message';
 import LinkButton from '../../ui/Buttons/LinkButton';
 

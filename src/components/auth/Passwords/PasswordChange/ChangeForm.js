@@ -4,7 +4,7 @@ import Form from '../../../../utility/Form/Form';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import SubmitButton from '../../../../utility/SubmitButton/SubmitButton';
+import SubmitButton from '../../../ui/Buttons/SubmitButton';
 import BackButton from '../../../ui/Buttons/BackButton';
 import Message from '../../../ui/Message';
 
@@ -62,9 +62,8 @@ class PasswordChangeForm extends Component {
             type="password"
           />
         </FormControl>
-        <FormControl>
-          <SubmitButton disabled={isInvalid}>Reset Password</SubmitButton>
-        </FormControl>
+
+        <SubmitButton disabled={isInvalid}>Reset Password</SubmitButton>
 
         {success && (
           <div>

@@ -22,6 +22,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
+    useNextVariants: true,
     fontFamily: 'PT Mono',
   },
 });
