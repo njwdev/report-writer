@@ -8,8 +8,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import SubmitButton from '../../../utility/SubmitButton/SubmitButton';
-import SignInLinkButton from './SignInLinkButton';
 import Message from '../../ui/Message';
+import LinkButton from '../../ui/Buttons/LinkButton';
 
 const INITIAL_STATE = {
   username: '',
@@ -114,7 +114,15 @@ class SignUpNewUser extends Component {
         <SubmitButton disabled={isInvalid}>Sign up</SubmitButton>
 
         {error && <Message type="warning">{error.message}</Message>}
-        <SignInLinkButton />
+        <LinkButton
+          link="signin"
+          color="secondary"
+          variant="outlined"
+          size="small"
+          fullWidth
+        >
+          Already have an account? Sign in here
+        </LinkButton>
       </Form>
     );
   }

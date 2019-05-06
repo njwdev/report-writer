@@ -12,8 +12,8 @@ const Admin = () => {
         <div>
           <h1>Admin</h1>
           <BackButton link="/home" />
-          <LinkButton text="Users" link="admin/users" />
-          <LinkButton text="Comments" link="admin/comments" />
+          <LinkButton link="admin/users">Users</LinkButton>
+          <LinkButton link="admin/comments">Comments</LinkButton>
         </div>
       )}
     </AuthUserContext.Consumer>

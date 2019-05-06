@@ -21,7 +21,9 @@ const Account = props => {
         const accountSettings = [
           data(`Email: ${authUser.email}`),
           data(
-            <LinkButton text="Change Password" link="account/changepassword" />,
+            <LinkButton link="account/changepassword">
+              Change Password
+            </LinkButton>,
           ),
           data(<SignOut />),
         ];
