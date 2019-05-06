@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import AuthPageStyles from './AuthPageStyles';
 
-const authPage = props => {
+const AuthPage = props => {
   const { classes } = props;
   return (
     <main className={classes.main}>
@@ -22,4 +22,4 @@ const authPage = props => {
   );
 };
 
-export default withStyles(AuthPageStyles)(authPage);
+export default withStyles(AuthPageStyles)(AuthPage);

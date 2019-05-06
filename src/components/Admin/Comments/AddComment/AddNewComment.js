@@ -46,11 +46,12 @@ class AddNewComment extends Component {
           <div>
             <Message type="success">Comment added successfully</Message>
             <Button
-              text="Add another comment"
-              link="/admin/comments/add_comment"
               onClick={this.onReset}
+              variant="contained"
+              color="primary"
+              fullWidth
             >
-              Add a new Comment
+              Add a new comment
             </Button>
           </div>
         ) : (
@@ -60,7 +61,7 @@ class AddNewComment extends Component {
               onChange={this.onChange}
               isInvalid={isInvalid}
             />
-            {error ? error : null}
+            {error ? <Message type="warning">{error}</Message> : null}
           </div>
         )}
       </div>

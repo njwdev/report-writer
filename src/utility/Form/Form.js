@@ -2,14 +2,14 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import FormStyles from './FormStyles';
 
-const form = props => {
-  const { classes } = props;
+const Form = props => {
+  const { classes, children, onSubmit } = props;
 
   return (
-    <form onSubmit={props.onSubmit} className={classes.form}>
-      {props.children}
+    <form onSubmit={onSubmit} className={classes.form}>
+      {children}
     </form>
   );
 };
 
-export default withStyles(FormStyles)(form);
+export default withStyles(FormStyles)(Form);

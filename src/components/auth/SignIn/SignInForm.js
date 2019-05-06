@@ -7,9 +7,9 @@ import Form from '../../../utility/Form/Form';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import Button from '@material-ui/core/Button';
 import Message from '../../ui/Message';
 import LinkButton from '../../ui/Buttons/LinkButton';
+import SubmitButton from '../../ui/Buttons/SubmitButton';
 
 const INITIAL_STATE = {
   email: '',
@@ -70,16 +70,8 @@ class SignInUser extends Component {
           />
         </FormControl>
 
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          className={this.submit}
-          disabled={isInvalid}
-        >
-          Sign in
-        </Button>
+        <SubmitButton disabled={isInvalid}>Sign in</SubmitButton>
+
         {error && (
           <Message type="warning">
             There was a problem with your sign in. Check your email and/or
