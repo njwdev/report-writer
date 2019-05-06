@@ -8,7 +8,7 @@ const condition = authUser => !!authUser;
 const Comments = () => {
   return (
     <div>
-      <LinkButton text="Add Comment" link="admin/comments/add_comment" />
+      <LinkButton link="admin/comments/add_comment">Add Comment</LinkButton>
       <CommentsAdmin />
     </div>
   );

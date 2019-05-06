@@ -8,9 +8,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
-import PasswordForgetButton from './PasswordForgetButton';
-import SignUpLinkButton from './SignUpLinkButton';
 import Message from '../../ui/Message';
+import LinkButton from '../../ui/Buttons/LinkButton';
 
 const INITIAL_STATE = {
   email: '',
@@ -87,8 +86,24 @@ class SignInUser extends Component {
             password
           </Message>
         )}
-        <PasswordForgetButton />
-        <SignUpLinkButton />
+        <LinkButton
+          link="password_forget"
+          color="secondary"
+          variant="text"
+          size="small"
+          fullWidth
+        >
+          Forgotten your password?
+        </LinkButton>
+        <LinkButton
+          link="signup"
+          color="secondary"
+          variant="outlined"
+          size="small"
+          fullWidth
+        >
+          Don't have an account? Sign up here
+        </LinkButton>
       </Form>
     );
   }

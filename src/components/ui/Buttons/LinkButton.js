@@ -3,15 +3,18 @@ import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
 const LinkButton = props => {
-  const { text, link } = props;
+  const { children, link, color, variant, size, fullWidth } = props;
   return (
     <Button
       component={Link}
       to={`/${link}`}
-      color="primary"
-      variant="contained"
+      style={{ margin: '5px auto' }}
+      color={color || 'primary'}
+      variant={variant || 'contained'}
+      size={size || 'medium'}
+      fullWidth={fullWidth || true}
     >
-      {text}
+      {children}
     </Button>
   );
 };
