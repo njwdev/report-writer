@@ -2,15 +2,16 @@ import React from 'react';
 import { withAuthorization } from '../../../Session';
 import AddNewComment from './AddNewComment';
 import BackButton from '../../../ui/Buttons/BackButton';
+import AuthPage from '../../../../utility/AuthPage/AuthPage';
 
 const condition = authUser => !!authUser;
 
 const AddComment = () => {
   return (
-    <div>
+    <AuthPage title="Add comment" icon="comment">
       <BackButton link="/admin/comments" />
       <AddNewComment />
-    </div>
+    </AuthPage>
   );
 };
 
