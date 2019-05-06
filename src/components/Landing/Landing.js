@@ -56,7 +56,7 @@ const Landing = props => {
         {/* End hero unit */}
         <Grid container spacing={40} alignItems="flex-end">
           {tiers.map(tier => (
-            <Grid item key={tier.title} xs={12} sm={12} md={12} lg={6}>
+            <Grid item key={tier.title} xs={12} sm={12} md={12} lg={12}>
               <Card>
                 <CardHeader
                   title={tier.title}
