@@ -3,7 +3,7 @@ import List from '@material-ui/core/List';
 import AdminList from '../../layout/Lists/AdminList';
 
 const CommentsList = props => {
-  const { comments } = props;
+  const { comments, onDelete } = props;
   return (
     <List dense>
       {comments.map(comment => (
@@ -12,6 +12,9 @@ const CommentsList = props => {
           icon="label_important"
           primary={comment.type}
           secondary={comment.comment}
+          id={comment.uid}
+          type="Comment"
+          onDelete={onDelete}
         />
       ))}
     </List>

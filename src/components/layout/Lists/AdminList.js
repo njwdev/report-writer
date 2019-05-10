@@ -10,7 +10,8 @@ import Divider from '@material-ui/core/Divider';
 import AdminModal from '../../ui/Modal/AdminModal';
 
 const AdminList = props => {
-  const { icon, primary, secondary, onClick } = props;
+  const { icon, primary, secondary } = props;
+
   return (
     <div>
       <Paper>
@@ -24,7 +25,7 @@ const AdminList = props => {
           <ListItemText primary={primary} secondary={secondary} />
 
           <ListItemSecondaryAction>
-            <AdminModal />
+            <AdminModal {...props} />
           </ListItemSecondaryAction>
         </ListItem>
       </Paper>

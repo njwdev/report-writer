@@ -26,6 +26,11 @@ class CommentsAdmin extends Component {
     this.commentList();
   }
 
+  onDeleteHandler = id => {
+    const { firebase } = this.props;
+    firebase.comment(id).delete();
+  };
+
   render() {
     const { comments, loading } = this.state;
 
@@ -34,7 +39,7 @@ class CommentsAdmin extends Component {
         <h3>Comments</h3>
         <BackButton link="/admin" />
         {loading && <div>Loading ...</div>}
-        <CommentsList comments={comments} />
+        <CommentsList comments={comments} onDelete={this.onDeleteHandler} />
       </div>
     );
   }
