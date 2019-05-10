@@ -1,16 +1,18 @@
 import React from 'react';
 import { withAuthorization } from '../../Session';
 import CommentsAdmin from './CommentsAdmin';
-import LinkButton from '../../ui/Buttons/LinkButton';
+
+import PageContainer from '../../layout/Container/PageContainer';
+import PageHeader from '../../layout/Container/PageHeader';
 
 const condition = authUser => !!authUser;
 
 const Comments = () => {
   return (
-    <div>
-      <LinkButton link="admin/comments/add_comment">Add Comment</LinkButton>
+    <PageContainer>
+      <PageHeader title="Comments" link="/admin" />
       <CommentsAdmin />
-    </div>
+    </PageContainer>
   );
 };
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import { AuthUserContext, withAuthorization } from '../Session';
+import PageContainer from '../layout/Container/PageContainer';
 import LinkButton from '../ui/Buttons/LinkButton';
-import BackButton from '../ui/Buttons/BackButton';
+import PageHeader from '../layout/Container/PageHeader';
 
 const condition = authUser => !!authUser;
 
@@ -9,12 +10,11 @@ const Admin = () => {
   return (
     <AuthUserContext.Consumer>
       {authUser => (
-        <div>
-          <h1>Admin</h1>
-          <BackButton link="/home" />
+        <PageContainer>
+          <PageHeader title="Admin" link="/home" />
           <LinkButton link="admin/users">Users</LinkButton>
           <LinkButton link="admin/comments">Comments</LinkButton>
-        </div>
+        </PageContainer>
       )}
     </AuthUserContext.Consumer>
   );

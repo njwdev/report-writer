@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import SignInForm from './SignInForm';
 import { AuthUserContext, withAuthentication } from '../../Session';
-import AuthPage from '../../../utility/AuthPage/AuthPage';
+import AuthPage from '../../layout/Auth/AuthPage';
 
 const SignIn = () => (
   <AuthUserContext.Consumer>

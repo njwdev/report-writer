@@ -1,12 +1,12 @@
 import React from 'react';
-import BackButton from '../ui/Buttons/BackButton';
+import PageContainer from '../layout/Container/PageContainer';
+import PageHeader from '../layout/Container/PageHeader';
 
 const About = () => {
   return (
-    <div>
-      <BackButton link="/" />
-      About
-    </div>
+    <PageContainer>
+      <PageHeader title="About" link="/" />
+    </PageContainer>
   );
 };
 

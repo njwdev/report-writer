@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { AuthUserContext, withAuthentication } from '../../../Session';
 import ForgetForm from './ForgetForm';
-import AuthPage from '../../../../utility/AuthPage/AuthPage';
+import AuthPage from '../../../layout/Auth/AuthPage';
 
 const PasswordForget = () => (
   <AuthUserContext.Consumer>
@@ -11,8 +11,8 @@ const PasswordForget = () => (
         <Redirect to="/home" />
       ) : (
         <AuthPage title="Forgotten your Password?" icon="help">
-      <ForgetForm />
-    </AuthPage>
+          <ForgetForm />
+        </AuthPage>
       )
     }
   </AuthUserContext.Consumer>

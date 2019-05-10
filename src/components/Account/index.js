@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthPage from '../../utility/AuthPage/AuthPage';
+import AuthPage from '../layout/Auth/AuthPage';
 import { AuthUserContext, withAuthorization } from '../Session';
 import SignOut from '../auth/SignOut/SignOut';
 import List from '@material-ui/core/List';

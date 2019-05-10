@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Form from '../../../../utility/Form/Form';
+import Form from '../../../layout/Forms/Form';
 import SubmitButton from '../../../ui/Buttons/SubmitButton';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';

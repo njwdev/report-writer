@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
-import AuthPage from '../../../utility/AuthPage/AuthPage';
+import AuthPage from '../../layout/Auth/AuthPage';
 
 import { AuthUserContext, withAuthentication } from '../../Session';
 

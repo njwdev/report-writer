@@ -1,7 +1,7 @@
 import React from 'react';
 import { withAuthorization } from '../../../Session';
 import ChangeForm from './ChangeForm';
-import AuthPage from '../../../../utility/AuthPage/AuthPage';
+import AuthPage from '../../../layout/Auth/AuthPage';
 import BackButton from '../../../ui/Buttons/BackButton';
 
 const condition = authUser => !!authUser;
