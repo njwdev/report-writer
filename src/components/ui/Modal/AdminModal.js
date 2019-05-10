@@ -59,10 +59,10 @@ class AdminModal extends Component {
             ))}
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Edit
-            </Button>
             {onDelete ? <DeleteButton onDelete={onDelete} id={id} /> : null}
+            <Button onClick={this.handleClose} color="primary">
+              Back
+            </Button>
           </DialogActions>
         </Dialog>
       </div>

@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import NavigationStyles from './styles/NavigationStyles';
 import NavButtons from './NavButtons';
+import NavDrawer from './NavDrawer';
 
 const Navigation = props => {
   const { classes } = props;
@@ -25,9 +26,10 @@ const Navigation = props => {
         </Typography>
         <NavButtons />
 
-        <Button color="primary" variant="contained" href="/about">
+        {/* <Button color="primary" variant="contained" href="/about">
           About
-        </Button>
+        </Button> */}
+        <NavDrawer />
       </Toolbar>
     </AppBar>
   );

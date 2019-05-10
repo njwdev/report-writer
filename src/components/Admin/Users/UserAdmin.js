@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../../firebase';
 import UserList from './UserList';
+import Loader from '../../ui/Loader';
 
 const INITIAL_STATE = {
   loading: false,
@@ -31,7 +32,7 @@ class UserAdmin extends Component {
 
     return (
       <div>
-        {loading && <div>Loading ...</div>}
+        {loading && <Loader />}
         <UserList users={users} />
       </div>
     );

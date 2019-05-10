@@ -89,7 +89,7 @@ class SignInUser extends Component {
         </LinkButton>
         <LinkButton
           link="signup"
-          color="secondary"
+          color="primary"
           variant="outlined"
           size="small"
           fullWidth

@@ -15,13 +15,6 @@ const UserList = props => {
           secondary={user.email}
           id={user.uid}
           type="User"
-
-          // onDelete={() =>
-          //   firebase
-          //     .user(user.uid)
-          //     .delete()
-          //     .then(() => history.push(ROUTES.USERS_LIST))
-          // }
         />
       ))}
     </List>
