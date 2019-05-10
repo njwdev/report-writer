@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
-import AuthPageStyles from './AuthPageStyles';
+import AuthPageStyles from './styles/AuthPageStyles';
 
 const AuthPage = props => {
   const { classes } = props;

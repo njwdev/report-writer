@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../../../firebase';
-import Form from '../../../../utility/Form/Form';
+import Form from '../../../layout/Forms/Form';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';

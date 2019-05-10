@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { withFirebase } from '../../../firebase';
 import * as ROUTES from '../../../constants/routes';
-import Form from '../../../utility/Form/Form';
+import Form from '../../layout/Forms/Form';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';

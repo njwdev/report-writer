@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import FormStyles from './FormStyles';
+import FormStyles from './styles/FormStyles';
 
 const Form = props => {
   const { classes, children, onSubmit } = props;

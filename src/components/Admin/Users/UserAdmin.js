@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../../firebase';
 import UserList from './UserList';
-import BackButton from '../../ui/Buttons/BackButton';
 
 const INITIAL_STATE = {
   loading: false,
@@ -32,8 +31,6 @@ class UserAdmin extends Component {
 
     return (
       <div>
-        <h3>Users</h3>
-        <BackButton link="/admin" />
         {loading && <div>Loading ...</div>}
         <UserList users={users} />
       </div>

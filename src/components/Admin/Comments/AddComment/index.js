@@ -2,7 +2,7 @@ import React from 'react';
 import { withAuthorization } from '../../../Session';
 import AddNewComment from './AddNewComment';
 import BackButton from '../../../ui/Buttons/BackButton';
-import AuthPage from '../../../../utility/AuthPage/AuthPage';
+import AuthPage from '../../../layout/Auth/AuthPage';
 
 const condition = authUser => !!authUser;
 
