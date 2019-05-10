@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-class CommentModal extends Component {
+class DeleteButton extends Component {
   state = {
     open: false,
   };
@@ -21,41 +20,44 @@ class CommentModal extends Component {
   };
 
   render() {
+    const { open } = this.state;
+    const { onDelete, id } = this.props;
     return (
       <div>
         <Button
           variant="outlined"
-          color="primary"
+          color="secondary"
           onClick={this.handleClickOpen}
         >
-          Open form dialog
+          Delete
         </Button>
         <Dialog
-          open={this.state.open}
+          open={open}
           onClose={this.handleClose}
-          aria-labelledby="form-dialog-title"
+          maxWidth="xs"
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{'Delete?'}</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              To subscribe to this website, please enter your email address
-              here. We will send updates occasionally.
+            <DialogContentText id="alert-dialog-description">
+              Are you sure you want to delete? This is action cannot be undone.
             </DialogContentText>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Email Address"
-              type="email"
-              fullWidth
-            />
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Cancel
+            <Button
+              onClick={() => onDelete(id)}
+              color="secondary"
+              variant="text"
+            >
+              Delete
             </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Subscribe
+            <Button
+              onClick={this.handleClose}
+              color="primary"
+              variant="contained"
+            >
+              No, go back
             </Button>
           </DialogActions>
         </Dialog>
@@ -64,4 +66,4 @@ class CommentModal extends Component {
   }
 }
 
-export default CommentModal;
+export default DeleteButton;

@@ -25,6 +25,7 @@ class AddNewComment extends Component {
         type,
         comment,
       })
+
       .then(() => this.setState({ ...INITIAL_STATE, success: true }))
       .catch(() => this.setState({ error: true }));
   };
@@ -34,6 +35,10 @@ class AddNewComment extends Component {
   };
 
   onReset = () => this.setState({ ...INITIAL_STATE });
+
+  componentWillUnmount() {
+    this.setState({ ...INITIAL_STATE });
+  }
 
   render() {
     const { comment, type, error, success } = this.state;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -8,6 +7,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
+import DeleteButton from '../Buttons/DeleteButton';
 
 class AdminModal extends Component {
   state = {
@@ -23,6 +23,20 @@ class AdminModal extends Component {
   };
 
   render() {
+    const { open } = this.state;
+    const { primary, secondary, id, type, onDelete } = this.props;
+
+    const data = (title, text) => {
+      return { title, text };
+    };
+
+    const listItems = [
+      data(type === 'User' ? 'Email: ' : null, secondary),
+      data('Data type:', type),
+      data('ID:', id),
+      // data('Created:', timeStamp),
+    ];
+
     return (
       <div>
         <IconButton aria-label="Delete" onClick={this.handleClickOpen}>
@@ -30,32 +44,25 @@ class AdminModal extends Component {
         </IconButton>
 
         <Dialog
-          open={this.state.open}
+          open={open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
+          fullWidth
         >
-          <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+          <DialogTitle id="form-dialog-title">{primary}</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              To subscribe to this website, please enter your email address
-              here. We will send updates occasionally.
-            </DialogContentText>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Email Address"
-              type="email"
-              fullWidth
-            />
+            {listItems.map(item => (
+              <DialogContentText key={item.title}>
+                <strong>{item.title} </strong>
+                {item.text}
+              </DialogContentText>
+            ))}
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
-              Cancel
+              Edit
             </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Subscribe
-            </Button>
+            {onDelete ? <DeleteButton onDelete={onDelete} id={id} /> : null}
           </DialogActions>
         </Dialog>
       </div>

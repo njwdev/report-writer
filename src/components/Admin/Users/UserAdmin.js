@@ -11,8 +11,9 @@ const INITIAL_STATE = {
 class UserAdmin extends Component {
   state = { ...INITIAL_STATE };
   componentDidMount() {
+    const { firebase } = this.props;
     this.setState({ loading: true });
-    this.userList = this.props.firebase.users().onSnapshot(snapshot => {
+    this.userList = firebase.users().onSnapshot(snapshot => {
       let users = [];
       snapshot.forEach(doc => users.push({ ...doc.data(), uid: doc.id }));
       this.setState({
