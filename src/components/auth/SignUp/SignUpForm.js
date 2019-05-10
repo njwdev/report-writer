@@ -83,7 +83,6 @@ class SignUpNewUser extends Component {
             name="email"
             type="email"
             autoComplete="email"
-            autoFocus
             value={email}
             onChange={this.onChange}
           />

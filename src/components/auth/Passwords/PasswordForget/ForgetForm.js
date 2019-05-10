@@ -6,7 +6,6 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import { withFirebase } from '../../../../firebase';
 import Message from '../../../ui/Message';
-import BackButton from '../../../ui/Buttons/BackButton';
 
 const INITIAL_STATE = {
   email: '',
@@ -42,7 +41,7 @@ class ForgetForm extends Component {
 
     return (
       <Form onSubmit={this.onSubmit}>
-        <FormControl>
+        <FormControl fullWidth>
           <InputLabel htmlFor="email">Email Address</InputLabel>
           <Input
             id="email"
@@ -56,7 +55,7 @@ class ForgetForm extends Component {
         </FormControl>
 
         <SubmitButton disabled={isInvalid}>Reset My Password</SubmitButton>
-        <BackButton link="/signin" />
+
         {success && (
           <div>
             <Message type="success">

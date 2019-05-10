@@ -1,17 +1,20 @@
 import React from 'react';
 import { withAuthorization } from '../../../Session';
 import AddNewComment from './AddNewComment';
-import BackButton from '../../../ui/Buttons/BackButton';
 import AuthPage from '../../../layout/Auth/AuthPage';
+import PageContainer from '../../../layout/Container/PageContainer';
+import PageHeader from '../../../layout/Container/PageHeader';
 
 const condition = authUser => !!authUser;
 
 const AddComment = () => {
   return (
-    <AuthPage title="Add comment" icon="comment">
-      <BackButton link="/admin/comments" />
-      <AddNewComment />
-    </AuthPage>
+    <PageContainer>
+      <PageHeader link="/admin/comments" />
+      <AuthPage title="Add comment" icon="comment">
+        <AddNewComment />
+      </AuthPage>
+    </PageContainer>
   );
 };
 

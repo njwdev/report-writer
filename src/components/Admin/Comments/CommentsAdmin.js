@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withFirebase } from '../../../firebase';
 import CommentsList from './CommentsList';
 import LinkButton from '../../ui/Buttons/LinkButton';
+import Loader from '../../ui/Loader';
 
 const INITIAL_STATE = {
   loading: false,
@@ -36,10 +37,10 @@ class CommentsAdmin extends Component {
 
     return (
       <div>
-        {loading && <div>Loading ...</div>}
-        <LinkButton color="secondary" link="admin/comments/add_comment">
+        <LinkButton color="primary" link="admin/comments/add_comment">
           Add Comment
         </LinkButton>
+        {loading && <Loader />}
         <CommentsList comments={comments} onDelete={this.onDeleteHandler} />
       </div>
     );

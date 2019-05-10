@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { AuthUserContext, withAuthentication } from '../../../Session';
 import ForgetForm from './ForgetForm';
 import AuthPage from '../../../layout/Auth/AuthPage';
+import PageContainer from '../../../layout/Container/PageContainer';
+import PageHeader from '../../../layout/Container/PageHeader';
 
 const PasswordForget = () => (
   <AuthUserContext.Consumer>
@@ -10,9 +12,12 @@ const PasswordForget = () => (
       authUser ? (
         <Redirect to="/home" />
       ) : (
-        <AuthPage title="Forgotten your Password?" icon="help">
-          <ForgetForm />
-        </AuthPage>
+        <PageContainer>
+          <PageHeader link="/admin/comments" />
+          <AuthPage title="Forgotten your Password?" icon="help">
+            <ForgetForm />
+          </AuthPage>
+        </PageContainer>
       )
     }
   </AuthUserContext.Consumer>

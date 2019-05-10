@@ -68,7 +68,6 @@ class PasswordChangeForm extends Component {
         {success && (
           <div>
             <Message type="success">Password successfully changed</Message>
-            <BackButton link="/account" />
           </div>
         )}
         {error && <Message type="warning">{error.message}</Message>}
