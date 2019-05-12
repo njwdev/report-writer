@@ -21,15 +21,16 @@ class DeleteButton extends Component {
 
   render() {
     const { open } = this.state;
-    const { onDelete, id } = this.props;
+    const { onDelete, id, text, full } = this.props;
     return (
       <div>
         <Button
           variant="outlined"
           color="secondary"
+          fullWidth={full}
           onClick={this.handleClickOpen}
         >
-          Delete
+          {text || 'Delete'}
         </Button>
         <Dialog
           open={open}
