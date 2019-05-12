@@ -5,7 +5,6 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import SubmitButton from '../../../ui/Buttons/SubmitButton';
-import BackButton from '../../../ui/Buttons/BackButton';
 import Message from '../../../ui/Message';
 
 const INITIAL_STATE = {

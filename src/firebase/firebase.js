@@ -32,6 +32,8 @@ class Firebase {
   passwordUpdateHandler = password =>
     this.auth.currentUser.updatePassword(password);
 
+  deleteUserHandler = () => this.auth.currentUser.delete();
+
   // *** USER API ***
 
   user = uid => this.db.doc(`users/${uid}`);
