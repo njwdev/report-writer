@@ -14,7 +14,7 @@ class DeleteAccount extends Component {
     firebase
       .user(id)
       .delete()
-      .catch(this.setState({ error: true }));
+      .catch(() => this.setState({ error: true }));
   };
 
   render() {
