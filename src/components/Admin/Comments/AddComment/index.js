@@ -4,8 +4,9 @@ import AddNewComment from './AddNewComment';
 import AuthPage from '../../../layout/Auth/AuthPage';
 import PageContainer from '../../../layout/Container/PageContainer';
 import PageHeader from '../../../layout/Container/PageHeader';
+import * as ROLES from '../../../../constants/roles';
 
-const condition = authUser => !!authUser;
+const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
 
 const AddComment = () => {
   return (

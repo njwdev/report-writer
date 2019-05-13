@@ -3,8 +3,9 @@ import { withAuthorization } from '../../Session';
 import UserAdmin from './UserAdmin';
 import PageContainer from '../../layout/Container/PageContainer';
 import PageHeader from '../../layout/Container/PageHeader';
+import * as ROLES from '../../../constants/roles';
 
-const condition = authUser => !!authUser;
+const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
 
 const Users = () => {
   return (
