@@ -1,27 +1,23 @@
 import React from 'react';
 import AuthUserContext from './context';
 import { withFirebase } from '../../firebase';
+import Loader from '../../components/ui/Loader';
 
 const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
     state = {
       authUser: null,
+      loading: true,
     };
 
     componentDidMount() {
       const { firebase } = this.props;
-      // this.listener = firebase.auth.onAuthStateChanged(authUser => {
-      //   authUser
-      //     ? this.setState({ authUser })
-      //     : this.setState({ authUser: null });
-      // });
-
       this.listener = firebase.onAuthUserListener(
         authUser => {
-          this.setState({ authUser });
+          this.setState({ authUser, loading: false });
         },
         () => {
-          this.setState({ authUser: null });
+          this.setState({ authUser: null, loading: false });
         },
       );
     }
@@ -31,11 +27,13 @@ const withAuthentication = Component => {
     }
 
     render() {
-      const { authUser } = this.state;
-      return (
+      const { authUser, loading } = this.state;
+      return !loading ? (
         <AuthUserContext.Provider value={authUser}>
           <Component {...this.props} />
         </AuthUserContext.Provider>
+      ) : (
+        <Loader />
       );
     }
   }
