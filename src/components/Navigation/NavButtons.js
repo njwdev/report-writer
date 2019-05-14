@@ -13,7 +13,7 @@ const authButtons = [
   data('admin', 'Admin', 'verified_user'),
 ];
 
-const nonAuthButtons = [data('signin', 'Sign In')];
+const nonAuthButtons = [data('signin', 'Sign In', 'lock_open')];
 
 const NavButtons = () => {
   return (
@@ -34,7 +34,7 @@ const NavButtons = () => {
                     marginRight: '20%',
                   }}
                 >
-                  {item.icon}{' '}
+                  {item.icon}
                 </i>
                 {item.text}
               </Button>
@@ -50,6 +50,15 @@ const NavButtons = () => {
                 variant="contained"
                 href={`/${item.link}`}
               >
+                <i
+                  className="material-icons"
+                  style={{
+                    marginRight: '20%',
+                    display: 'flex',
+                  }}
+                >
+                  {item.icon}
+                </i>
                 {item.text}
               </Button>
             ))}
