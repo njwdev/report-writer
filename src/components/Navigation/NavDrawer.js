@@ -10,6 +10,19 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Icon from '@material-ui/core/Icon';
 
+const data = (text, icon, link) => {
+  return { text, icon, link };
+};
+
+const navDrawerButtonsUser = [
+  data('Home', 'home', 'home'),
+  data('Account', 'settings', 'account'),
+];
+
+const navDrawerButtonsAdmin = [data('Admin', 'verified_user', 'admin')];
+
+const navDrawerSignOut = [data('Sign Out', 'power_settings_new', null)];
+
 const styles = {
   list: {
     width: 250,
@@ -38,19 +51,44 @@ class NavDrawer extends Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon />
-              <ListItemText primary={text} />
+          {navDrawerButtonsUser.map(item => (
+            <ListItem
+              button
+              key={item.text}
+              component="a"
+              href={`/${item.link}`}
+            >
+              <ListItemIcon>
+                <i className="material-icons">{item.icon} </i>
+              </ListItemIcon>
+              <ListItemText primary={item.text} />
             </ListItem>
           ))}
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon />
-              <ListItemText primary={text} />
+          {navDrawerButtonsAdmin.map(item => (
+            <ListItem
+              button
+              key={item.text}
+              component="a"
+              href={`/${item.link}`}
+            >
+              <ListItemIcon>
+                <i className="material-icons">{item.icon} </i>
+              </ListItemIcon>
+              <ListItemText primary={item.text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {navDrawerSignOut.map(item => (
+            <ListItem button key={item.text}>
+              <ListItemIcon>
+                <i className="material-icons">{item.icon} </i>
+              </ListItemIcon>
+              <ListItemText primary={item.text} />
             </ListItem>
           ))}
         </List>
@@ -59,8 +97,8 @@ class NavDrawer extends Component {
 
     return (
       <div>
-        <IconButton onClick={this.toggleDrawer}>
-          <Icon>menu</Icon>
+        <IconButton style={{ color: '#fff' }} onClick={this.toggleDrawer}>
+          <Icon color="default">menu</Icon>
         </IconButton>
 
         <Drawer anchor="right" open={open} onClose={this.toggleDrawer}>

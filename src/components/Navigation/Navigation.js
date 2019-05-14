@@ -4,10 +4,11 @@ import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-
+import Hidden from '@material-ui/core/Hidden';
 import NavigationStyles from './styles/NavigationStyles';
 import NavButtons from './NavButtons';
 import NavDrawer from './NavDrawer';
+import PropTypes from 'prop-types';
 
 const Navigation = props => {
   const { classes } = props;
@@ -24,15 +25,19 @@ const Navigation = props => {
             Report Writer
           </a>
         </Typography>
-        <NavButtons />
-
-        {/* <Button color="primary" variant="contained" href="/about">
-          About
-        </Button> */}
-        <NavDrawer />
+        <Hidden smDown>
+          <NavButtons />
+        </Hidden>
+        <Hidden mdUp>
+          <NavDrawer />
+        </Hidden>
       </Toolbar>
     </AppBar>
   );
+};
+
+Navigation.propTypes = {
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(NavigationStyles)(Navigation);

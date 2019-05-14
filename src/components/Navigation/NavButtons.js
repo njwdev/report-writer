@@ -3,14 +3,14 @@ import { AuthUserContext } from '../../components/Session/index';
 import Button from '@material-ui/core/Button';
 import SignOutButton from '../auth/SignOut/SignOut';
 
-const data = (link, text) => {
-  return { link, text };
+const data = (link, text, icon) => {
+  return { link, text, icon };
 };
 
 const authButtons = [
-  data('home', 'Home'),
-  data('account', 'Account'),
-  data('admin', 'Admin'),
+  data('home', 'Home', 'home'),
+  data('account', 'Account', 'settings'),
+  data('admin', 'Admin', 'verified_user'),
 ];
 
 const nonAuthButtons = [data('signin', 'Sign In')];
@@ -28,6 +28,14 @@ const NavButtons = () => {
                 variant="contained"
                 href={`/${item.link}`}
               >
+                <i
+                  className="material-icons"
+                  style={{
+                    marginRight: '20%',
+                  }}
+                >
+                  {item.icon}{' '}
+                </i>
                 {item.text}
               </Button>
             ))}
