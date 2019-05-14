@@ -8,7 +8,7 @@ const SignOutButton = ({ firebase }) => (
     variant="contained"
     onClick={firebase.signOutHandler}
   >
-    Sign Out
+    <i className="material-icons">power_settings_new</i>
   </Button>
 );
 
