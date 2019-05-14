@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -9,6 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Icon from '@material-ui/core/Icon';
+import { AuthUserContext } from '../../components/Session/index';
 
 const data = (text, icon, link) => {
   return { text, icon, link };
@@ -22,6 +23,8 @@ const navDrawerButtonsUser = [
 const navDrawerButtonsAdmin = [data('Admin', 'verified_user', 'admin')];
 
 const navDrawerSignOut = [data('Sign Out', 'power_settings_new', null)];
+
+const navDrawerNonAuth = [data('Sign In', 'lock_open', 'signin')];
 
 const styles = {
   list: {
@@ -50,55 +53,82 @@ class NavDrawer extends Component {
 
     const sideList = (
       <div className={classes.list}>
-        <List>
-          {navDrawerButtonsUser.map(item => (
-            <ListItem
-              button
-              key={item.text}
-              component="a"
-              href={`/${item.link}`}
-            >
-              <ListItemIcon>
-                <i className="material-icons">{item.icon} </i>
-              </ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {navDrawerButtonsAdmin.map(item => (
-            <ListItem
-              button
-              key={item.text}
-              component="a"
-              href={`/${item.link}`}
-            >
-              <ListItemIcon>
-                <i className="material-icons">{item.icon} </i>
-              </ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {navDrawerSignOut.map(item => (
-            <ListItem button key={item.text}>
-              <ListItemIcon>
-                <i className="material-icons">{item.icon} </i>
-              </ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItem>
-          ))}
-        </List>
+        <AuthUserContext.Consumer>
+          {authUser =>
+            authUser ? (
+              <Fragment>
+                <List>
+                  {navDrawerButtonsUser.map(item => (
+                    <ListItem
+                      button
+                      key={item.text}
+                      component="a"
+                      href={`/${item.link}`}
+                    >
+                      <ListItemIcon>
+                        <i className="material-icons">{item.icon} </i>
+                      </ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItem>
+                  ))}
+                </List>
+                <Divider />
+                <List>
+                  {navDrawerButtonsAdmin.map(item => (
+                    <ListItem
+                      button
+                      key={item.text}
+                      component="a"
+                      href={`/${item.link}`}
+                    >
+                      <ListItemIcon>
+                        <i className="material-icons">{item.icon} </i>
+                      </ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItem>
+                  ))}
+                </List>
+                <Divider />
+                <List>
+                  {navDrawerSignOut.map(item => (
+                    <ListItem button key={item.text}>
+                      <ListItemIcon>
+                        <i className="material-icons">{item.icon} </i>
+                      </ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItem>
+                  ))}
+                </List>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <List>
+                  {navDrawerNonAuth.map(item => (
+                    <ListItem
+                      button
+                      key={item.text}
+                      component="a"
+                      href={`/${item.link}`}
+                    >
+                      <ListItemIcon>
+                        <i className="material-icons">{item.icon} </i>
+                      </ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItem>
+                  ))}
+                </List>
+                <Divider />
+              </Fragment>
+            )
+          }
+        </AuthUserContext.Consumer>
       </div>
     );
 
     return (
       <div>
-        <IconButton style={{ color: '#fff' }} onClick={this.toggleDrawer}>
-          <Icon color="default">menu</Icon>
+        <IconButton style={{ color: '#ffffff' }} onClick={this.toggleDrawer}>
+          <Icon className="iconButton">menu</Icon>
         </IconButton>
 
         <Drawer anchor="right" open={open} onClose={this.toggleDrawer}>
