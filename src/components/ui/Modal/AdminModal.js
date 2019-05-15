@@ -8,6 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import DeleteButton from '../Buttons/DeleteButton';
+import MakeAdmin from '../../Admin/Users/MakeAdminForm/MakeAdmin';
 
 class AdminModal extends Component {
   state = {
@@ -24,7 +25,7 @@ class AdminModal extends Component {
 
   render() {
     const { open } = this.state;
-    const { primary, secondary, id, type, onDelete } = this.props;
+    const { primary, secondary, id, type, onDelete, isAdmin } = this.props;
 
     const data = (title, text) => {
       return { title, text };
@@ -34,7 +35,12 @@ class AdminModal extends Component {
       data(type === 'User' ? 'Email: ' : null, secondary),
       data('Data type:', type),
       data('ID:', id),
-      // data('Created:', timeStamp),
+      data(
+        type === 'User' ? 'Admin:' : null,
+        type === 'User' ? (
+          <MakeAdmin isAdmin={isAdmin === 'ADMIN' ? true : false} uid={id} />
+        ) : null,
+      ),
     ];
 
     return (
@@ -52,7 +58,7 @@ class AdminModal extends Component {
           <DialogTitle id="form-dialog-title">{primary}</DialogTitle>
           <DialogContent>
             {listItems.map(item => (
-              <DialogContentText key={item.title}>
+              <DialogContentText key={Math.random()}>
                 <strong>{item.title} </strong>
                 {item.text}
               </DialogContentText>
