@@ -15,7 +15,7 @@ const authButtons = [
 
 const adminButtons = [data('admin', 'Admin', 'verified_user')];
 
-const nonAuthButtons = [data('signin', 'Sign In', 'lock_open')];
+const nonAuthButtons = [data('signin', 'Login', 'lock_open')];
 
 const signOutButton = [
   data('logout', 'Logout', 'power_settings_new', 'secondary'),
