@@ -45,9 +45,9 @@ class Firebase {
             const dbUser = snapshot.data();
 
             // default empty roles
-            if (!dbUser.roles) {
-              dbUser.roles = {};
-            }
+            // if (!dbUser.roles) {
+            //   dbUser.roles = {};
+            // }
 
             // merge auth and db user
             authUser = {
@@ -64,6 +64,7 @@ class Firebase {
     });
   // *** USER API ***
 
+  userAuth = () => this.auth.currentUser.email;
   user = uid => this.db.doc(`users/${uid}`);
   users = () => this.db.collection('users');
 

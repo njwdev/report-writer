@@ -8,6 +8,8 @@ const UserList = props => {
   return (
     <List dense>
       {users.map(user => {
+        const date = user.created ? user.created.seconds * 1000 : null;
+        const displayDate = new Date(date);
         return (
           <AdminList
             key={user.uid}
@@ -17,6 +19,7 @@ const UserList = props => {
             id={user.uid}
             type="User"
             isAdmin={user.roles.ADMIN}
+            created={displayDate.toString()}
           />
         );
       })}

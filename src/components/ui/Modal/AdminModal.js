@@ -25,7 +25,16 @@ class AdminModal extends Component {
 
   render() {
     const { open } = this.state;
-    const { primary, secondary, id, type, onDelete, isAdmin } = this.props;
+    const {
+      primary,
+      secondary,
+      id,
+      type,
+      onDelete,
+      isAdmin,
+      author,
+      created,
+    } = this.props;
 
     const data = (title, text) => {
       return { title, text };
@@ -33,8 +42,14 @@ class AdminModal extends Component {
 
     const listItems = [
       data(type === 'User' ? 'Email: ' : null, secondary),
+      data(
+        type === 'Comment' ? 'Author:' : null,
+        type === 'Comment' ? author : null,
+      ),
       data('Data type:', type),
+      data('Created:', created),
       data('ID:', id),
+
       data(
         type === 'User' ? 'Admin:' : null,
         type === 'User' ? (

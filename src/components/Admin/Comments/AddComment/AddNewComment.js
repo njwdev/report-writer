@@ -6,6 +6,8 @@ import Message from '../../../ui/Message';
 const INITIAL_STATE = {
   type: '',
   comment: '',
+  author: '',
+  created: '',
   success: false,
   error: null,
 };
@@ -16,14 +18,17 @@ class AddNewComment extends Component {
   };
 
   onSubmit = e => {
-    const { type, comment } = this.state;
+    const { type, comment, author, created } = this.state;
     const { firebase } = this.props;
     e.preventDefault();
+
     firebase
       .comments()
       .add({
         type,
         comment,
+        author,
+        created,
       })
 
       .then(() => this.setState({ ...INITIAL_STATE, success: true }))
@@ -31,7 +36,13 @@ class AddNewComment extends Component {
   };
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    const { firebase } = this.props;
+    console.log(firebase.userAuth());
+    this.setState({
+      [e.target.name]: e.target.value,
+      author: firebase.userAuth(),
+      created: new Date(),
+    });
   };
 
   onReset = () => this.setState({ ...INITIAL_STATE });

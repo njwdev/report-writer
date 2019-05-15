@@ -16,13 +16,14 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
+  created: '',
   error: null,
 };
 
 class SignUpNewUser extends Component {
   state = { ...INITIAL_STATE };
   onSubmit = e => {
-    const { username, email, passwordOne } = this.state;
+    const { username, email, passwordOne, created } = this.state;
     const { firebase, history } = this.props;
     const roles = {};
 
@@ -36,6 +37,7 @@ class SignUpNewUser extends Component {
             username,
             email,
             roles,
+            created,
           },
           {
             merge: true,
@@ -53,7 +55,7 @@ class SignUpNewUser extends Component {
   };
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value, created: new Date() });
   };
 
   onCheck = event => {
