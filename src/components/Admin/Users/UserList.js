@@ -1,6 +1,6 @@
 import React from 'react';
 import List from '@material-ui/core/List';
-import AdminList from '../../layout/Lists/AdminList';
+import AdminList from '../Lists/AdminList';
 import { withFirebase } from '../../../firebase';
 
 const UserList = props => {

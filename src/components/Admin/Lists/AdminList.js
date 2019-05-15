@@ -7,7 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import Icon from '@material-ui/core/Icon';
 import Divider from '@material-ui/core/Divider';
-import AdminModal from '../../ui/Modal/AdminModal';
+import AdminModal from './AdminModal';
 
 const AdminList = props => {
   const { icon, primary, secondary } = props;
