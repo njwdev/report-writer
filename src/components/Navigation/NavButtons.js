@@ -1,21 +1,27 @@
 import React, { Fragment } from 'react';
 import { AuthUserContext } from '../../components/Session/index';
 import Button from '@material-ui/core/Button';
-import SignOutButton from '../auth/SignOut/SignOut';
+import * as ROLES from '../../constants/roles';
+import { withFirebase } from '../../firebase';
 
-const data = (link, text, icon) => {
-  return { link, text, icon };
+const data = (link, text, icon, color) => {
+  return { link, text, icon, color };
 };
 
 const authButtons = [
-  data('home', 'Home', 'home'),
-  data('account', 'Account', 'settings'),
-  data('admin', 'Admin', 'verified_user'),
+  data('home', 'Home', 'home', 'primary'),
+  data('account', 'Account', 'settings', 'primary'),
 ];
+
+const adminButtons = [data('admin', 'Admin', 'verified_user')];
 
 const nonAuthButtons = [data('signin', 'Sign In', 'lock_open')];
 
-const NavButtons = () => {
+const signOutButton = [
+  data('logout', 'Logout', 'power_settings_new', 'secondary'),
+];
+
+const NavButtons = props => {
   return (
     <AuthUserContext.Consumer>
       {authUser =>
@@ -24,7 +30,7 @@ const NavButtons = () => {
             {authButtons.map(item => (
               <Button
                 key={item.link}
-                color="primary"
+                color={item.color}
                 variant="contained"
                 href={`/${item.link}`}
               >
@@ -39,7 +45,47 @@ const NavButtons = () => {
                 {item.text}
               </Button>
             ))}
-            <SignOutButton />
+            {authUser && !!authUser.roles[ROLES.ADMIN] ? (
+              <Fragment>
+                {adminButtons.map(item => (
+                  <Button
+                    key={item.link}
+                    color={'primary'}
+                    variant="contained"
+                    href={`/${item.link}`}
+                  >
+                    <i
+                      className="material-icons"
+                      style={{
+                        marginRight: '20%',
+                      }}
+                    >
+                      {item.icon}
+                    </i>
+                    {item.text}
+                  </Button>
+                ))}
+              </Fragment>
+            ) : null}
+
+            {signOutButton.map(item => (
+              <Button
+                key={item.link}
+                color={item.color}
+                variant="contained"
+                onClick={props.firebase.signOutHandler}
+              >
+                <i
+                  className="material-icons"
+                  style={{
+                    marginRight: '20%',
+                  }}
+                >
+                  {item.icon}
+                </i>
+                {item.text}
+              </Button>
+            ))}
           </Fragment>
         ) : (
           <Fragment>
@@ -69,4 +115,4 @@ const NavButtons = () => {
   );
 };
 
-export default NavButtons;
+export default withFirebase(NavButtons);
