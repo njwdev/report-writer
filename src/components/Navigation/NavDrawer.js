@@ -10,6 +10,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Icon from '@material-ui/core/Icon';
 import { AuthUserContext } from '../../components/Session/index';
+import { withFirebase } from '../../firebase';
+import * as ROLES from '../../constants/roles';
 
 const data = (text, icon, link) => {
   return { text, icon, link };
@@ -22,7 +24,7 @@ const navDrawerButtonsUser = [
 
 const navDrawerButtonsAdmin = [data('Admin', 'verified_user', 'admin')];
 
-const navDrawerSignOut = [data('Sign Out', 'power_settings_new', null)];
+const navDrawerSignOut = [data('Logout', 'power_settings_new', null)];
 
 const navDrawerNonAuth = [data('Sign In', 'lock_open', 'signin')];
 
@@ -73,25 +75,31 @@ class NavDrawer extends Component {
                   ))}
                 </List>
                 <Divider />
-                <List>
-                  {navDrawerButtonsAdmin.map(item => (
-                    <ListItem
-                      button
-                      key={item.text}
-                      component="a"
-                      href={`/${item.link}`}
-                    >
-                      <ListItemIcon>
-                        <i className="material-icons">{item.icon} </i>
-                      </ListItemIcon>
-                      <ListItemText primary={item.text} />
-                    </ListItem>
-                  ))}
-                </List>
+                {authUser && !!authUser.roles[ROLES.ADMIN] ? (
+                  <List>
+                    {navDrawerButtonsAdmin.map(item => (
+                      <ListItem
+                        button
+                        key={item.text}
+                        component="a"
+                        href={`/${item.link}`}
+                      >
+                        <ListItemIcon>
+                          <i className="material-icons">{item.icon} </i>
+                        </ListItemIcon>
+                        <ListItemText primary={item.text} />
+                      </ListItem>
+                    ))}
+                  </List>
+                ) : null}
                 <Divider />
                 <List>
                   {navDrawerSignOut.map(item => (
-                    <ListItem button key={item.text}>
+                    <ListItem
+                      button
+                      key={item.text}
+                      onClick={this.props.firebase.signOutHandler}
+                    >
                       <ListItemIcon>
                         <i className="material-icons">{item.icon} </i>
                       </ListItemIcon>
@@ -150,4 +158,4 @@ NavDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(NavDrawer);
+export default withFirebase(withStyles(styles)(NavDrawer));
