@@ -52,13 +52,6 @@ class AdminModal extends Component {
       data('ID:', id),
     ];
 
-    // const makeAdmin = data(
-    //   type === 'User' ? 'Admin:' : null,
-    //   type === 'User' ? (
-    //     <MakeAdmin isAdmin={isAdmin === 'ADMIN' ? true : false} uid={id} />
-    //   ) : null,
-    // );
-
     return (
       <div>
         <IconButton aria-label="Delete" onClick={this.handleClickOpen}>
@@ -81,20 +74,22 @@ class AdminModal extends Component {
             ))}
           </DialogContent>
           <Divider />
-          <DialogContent>
-            <DialogContentText>
-              <strong>Admin Status:</strong>
-            </DialogContentText>
-            {
-              (type === 'User' ? 'Admin:' : null,
-              type === 'User' ? (
-                <MakeAdmin
-                  isAdmin={isAdmin === 'ADMIN' ? true : false}
-                  uid={id}
-                />
-              ) : null)
-            }
-          </DialogContent>
+          {type === 'User' ? (
+            <DialogContent>
+              <DialogContentText>
+                <strong>Admin Status:</strong>
+              </DialogContentText>
+              {
+                (type === 'User' ? 'Admin:' : null,
+                type === 'User' ? (
+                  <MakeAdmin
+                    isAdmin={isAdmin === 'ADMIN' ? true : false}
+                    uid={id}
+                  />
+                ) : null)
+              }
+            </DialogContent>
+          ) : null}
           <DialogActions style={{}}>
             {onDelete ? <DeleteButton onDelete={onDelete} id={id} /> : null}
             <Button onClick={this.handleClose} color="primary">
