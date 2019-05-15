@@ -43,6 +43,7 @@ class MakeAdmin extends Component {
 
   render() {
     const { isAdmin } = this.state;
+    const { firebase, uid } = this.props;
 
     return (
       <Fragment>
@@ -55,11 +56,11 @@ class MakeAdmin extends Component {
                 checked={isAdmin}
                 onChange={this.onSubmit}
                 style={{ margin: '0px', padding: '0px' }}
+                disabled={uid === firebase.userUid()}
               />
             }
             label={isAdmin ? 'Admin' : 'Not Admin'}
           />
-          {/* {changed ? <button type="submit">Confirm</button> : null} */}
         </FormGroup>
       </Fragment>
     );
