@@ -7,16 +7,19 @@ const UserList = props => {
   const { users } = props;
   return (
     <List dense>
-      {users.map(user => (
-        <AdminList
-          key={user.uid}
-          icon="person"
-          primary={user.username}
-          secondary={user.email}
-          id={user.uid}
-          type="User"
-        />
-      ))}
+      {users.map(user => {
+        return (
+          <AdminList
+            key={user.uid}
+            icon="person"
+            primary={user.username}
+            secondary={user.email}
+            id={user.uid}
+            type="User"
+            isAdmin={user.roles.ADMIN}
+          />
+        );
+      })}
     </List>
   );
 };

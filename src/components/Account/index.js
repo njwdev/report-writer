@@ -11,7 +11,6 @@ const Account = () => {
   return (
     <AuthUserContext.Consumer>
       {authUser => {
-        console.log(authUser.roles);
         return (
           <PageContainer>
             <PageHeader link="/" />

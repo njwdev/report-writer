@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { withFirebase } from '../../../firebase';
 import * as ROUTES from '../../../constants/routes';
-import * as ROLES from '../../../constants/roles';
 import Form from '../../layout/Forms/Form';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
@@ -17,21 +16,15 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
-  isAdmin: false,
   error: null,
 };
 
 class SignUpNewUser extends Component {
   state = { ...INITIAL_STATE };
   onSubmit = e => {
-    const { username, email, passwordOne, isAdmin } = this.state;
+    const { username, email, passwordOne } = this.state;
     const { firebase, history } = this.props;
-
     const roles = {};
-
-    if (isAdmin) {
-      roles[ROLES.ADMIN] = ROLES.ADMIN;
-    }
 
     e.preventDefault();
     firebase
@@ -68,14 +61,7 @@ class SignUpNewUser extends Component {
   };
 
   render() {
-    const {
-      username,
-      email,
-      passwordOne,
-      passwordTwo,
-      isAdmin,
-      error,
-    } = this.state;
+    const { username, email, passwordOne, passwordTwo, error } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
@@ -130,15 +116,7 @@ class SignUpNewUser extends Component {
             onChange={this.onChange}
           />
         </FormControl>
-        <label>
-          Admin:
-          <input
-            name="isAdmin"
-            type="checkbox"
-            checked={isAdmin}
-            onChange={this.onCheck}
-          />
-        </label>
+
         <SubmitButton disabled={isInvalid}>Sign up</SubmitButton>
 
         {error && <Message type="warning">{error.message}</Message>}
