@@ -31,7 +31,7 @@ class DeleteAccount extends Component {
 
         {error && (
           <Message type="warning">
-            You need to sign in again to complete this operation
+            This operation requires a recent sign in
           </Message>
         )}
       </div>

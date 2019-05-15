@@ -20,6 +20,7 @@ const AccountContent = props => {
     data(<DeleteAccount />),
     data(<SignOut />),
   ];
+
   return (
     <List>
       {accountSettings.map(item => (

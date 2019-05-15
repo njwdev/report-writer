@@ -3,7 +3,7 @@ import AuthPage from '../layout/Auth/AuthPage';
 import { AuthUserContext, withAuthorization } from '../Session';
 import PageContainer from '../layout/Container/PageContainer';
 import PageHeader from '../layout/Container/PageHeader';
-import AccountContent from './AccountContent/AccountContent';
+import AccountContent from './AccountContent';
 
 const condition = authUser => !!authUser;
 
