@@ -8,6 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import DeleteButton from '../Buttons/DeleteButton';
+import Divider from '@material-ui/core/Divider';
 import MakeAdmin from '../../Admin/Users/MakeAdminForm/MakeAdmin';
 
 class AdminModal extends Component {
@@ -49,14 +50,14 @@ class AdminModal extends Component {
       data('Data type:', type),
       data('Created:', created),
       data('ID:', id),
-
-      data(
-        type === 'User' ? 'Admin:' : null,
-        type === 'User' ? (
-          <MakeAdmin isAdmin={isAdmin === 'ADMIN' ? true : false} uid={id} />
-        ) : null,
-      ),
     ];
+
+    // const makeAdmin = data(
+    //   type === 'User' ? 'Admin:' : null,
+    //   type === 'User' ? (
+    //     <MakeAdmin isAdmin={isAdmin === 'ADMIN' ? true : false} uid={id} />
+    //   ) : null,
+    // );
 
     return (
       <div>
@@ -79,7 +80,22 @@ class AdminModal extends Component {
               </DialogContentText>
             ))}
           </DialogContent>
-          <DialogActions>
+          <Divider />
+          <DialogContent>
+            <DialogContentText>
+              <strong>Admin Status:</strong>
+            </DialogContentText>
+            {
+              (type === 'User' ? 'Admin:' : null,
+              type === 'User' ? (
+                <MakeAdmin
+                  isAdmin={isAdmin === 'ADMIN' ? true : false}
+                  uid={id}
+                />
+              ) : null)
+            }
+          </DialogContent>
+          <DialogActions style={{}}>
             {onDelete ? <DeleteButton onDelete={onDelete} id={id} /> : null}
             <Button onClick={this.handleClose} color="primary">
               Back

@@ -1,13 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { withFirebase } from '../../../../firebase';
-import Checkbox from '@material-ui/core/Checkbox';
+
 import * as ROLES from '../../../../constants/roles';
+import Switch from '@material-ui/core/Switch';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 class MakeAdmin extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { isAdmin: this.props.isAdmin, changed: false };
+    this.state = {
+      isAdmin: this.props.isAdmin,
+      changed: false,
+    };
   }
 
   onCheck = e => {
@@ -24,11 +30,11 @@ class MakeAdmin extends Component {
     const { isAdmin } = this.state;
     this.setState({ isAdmin: !this.state.isAdmin });
     const roles = {};
-    if (isAdmin) {
+    if (!isAdmin) {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
     }
-
-    if (firebase.user(uid) !== firebase.auth.currentUser) {
+    //Not working currently - should be check to stop deleting yourself as admin
+    if (firebase.user(uid) !== firebase.auth.currentUser.uid) {
       firebase.user(uid).update({
         roles,
       });
@@ -36,17 +42,26 @@ class MakeAdmin extends Component {
   };
 
   render() {
-    const { isAdmin, changed } = this.state;
+    const { isAdmin } = this.state;
+
     return (
-      <form onSubmit={this.onSubmit}>
-        <Checkbox
-          name="isAdmin"
-          checked={isAdmin}
-          onChange={this.onCheck}
-          style={{ margin: '0px', padding: '0px' }}
-        />
-        {changed ? <button type="submit">Confirm</button> : null}
-      </form>
+      <Fragment>
+        <FormGroup row>
+          <FormControlLabel
+            control={
+              <Switch
+                name="isAdmin"
+                checkedIcon={<i className="material-icons">verified_user</i>}
+                checked={isAdmin}
+                onChange={this.onSubmit}
+                style={{ margin: '0px', padding: '0px' }}
+              />
+            }
+            label={isAdmin ? 'Admin' : 'Not Admin'}
+          />
+          {/* {changed ? <button type="submit">Confirm</button> : null} */}
+        </FormGroup>
+      </Fragment>
     );
   }
 }
