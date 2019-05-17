@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
 import { withFirebase } from '../../../../firebase';
 import NewCommentForm from './NewCommentForm';
-import Button from '@material-ui/core/Button';
 import Message from '../../../ui/Message';
+
 const INITIAL_STATE = {
   type: '',
   comment: '',
@@ -13,9 +14,7 @@ const INITIAL_STATE = {
 };
 
 class AddNewComment extends Component {
-  state = {
-    ...INITIAL_STATE,
-  };
+  state = { ...INITIAL_STATE };
 
   onSubmit = e => {
     const { type, comment, author, created } = this.state;
@@ -61,12 +60,7 @@ class AddNewComment extends Component {
         {success ? (
           <div>
             <Message type="success">Comment added successfully</Message>
-            <Button
-              onClick={this.onReset}
-              variant="contained"
-              color="primary"
-              fullWidth
-            >
+            <Button onClick={this.onReset} variant="contained" color="primary" fullWidth>
               Add a new comment
             </Button>
           </div>
