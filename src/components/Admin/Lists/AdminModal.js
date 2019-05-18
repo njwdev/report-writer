@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ModalContent from './ModalContent';
 
 class AdminModal extends Component {
-  state = {
-    open: false,
-  };
+  state = { open: false };
 
   handleClickOpen = () => {
     this.setState({ open: true });
@@ -18,9 +17,7 @@ class AdminModal extends Component {
     const { open } = this.state;
     const { secondary, id, type, author, created } = this.props;
 
-    const data = (title, text) => {
-      return { title, text };
-    };
+    const data = (title, text) => ({ title, text });
 
     const userListItems = [
       data('Email: ', secondary),
@@ -52,5 +49,13 @@ class AdminModal extends Component {
     );
   }
 }
+
+AdminModal.propTypes = {
+  secondary: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  created: PropTypes.string.isRequired,
+};
 
 export default AdminModal;

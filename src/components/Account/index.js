@@ -7,21 +7,17 @@ import AccountContent from './AccountContent';
 
 const condition = authUser => !!authUser;
 
-const Account = () => {
-  return (
-    <AuthUserContext.Consumer>
-      {authUser => {
-        return (
-          <PageContainer>
-            <PageHeader link="/" />
-            <AuthPage title="Account Settings" icon="settings">
-              <AccountContent authUser={authUser} />
-            </AuthPage>
-          </PageContainer>
-        );
-      }}
-    </AuthUserContext.Consumer>
-  );
-};
+const Account = () => (
+  <AuthUserContext.Consumer>
+    {authUser => (
+      <PageContainer>
+        <PageHeader link="/" />
+        <AuthPage title="Account Settings" icon="settings">
+          <AccountContent authUser={authUser} />
+        </AuthPage>
+      </PageContainer>
+    )}
+  </AuthUserContext.Consumer>
+);
 
 export default withAuthorization(condition)(Account);

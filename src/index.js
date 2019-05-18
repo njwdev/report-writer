@@ -2,20 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
-import App from './containers/App/App';
-import Firebase, { FirebaseContext } from './firebase';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import App from './containers/App/App';
+import Firebase, { FirebaseContext } from './firebase';
 
 const theme = createMuiTheme({
   palette: {
     type: 'light',
-    primary: {
-      main: '#1a237e',
-    },
-    secondary: {
-      main: '#bf360c',
-    },
+    primary: { main: '#1a237e' },
+    secondary: { main: '#bf360c' },
     background: {
       default: '#1a237e',
       contrastText: '#fff',

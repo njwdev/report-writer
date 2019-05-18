@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,29 +10,14 @@ import MakeAdminButton from './MakeAdminButton';
 import ModalButtons from './ModalButtons';
 
 const ModalContent = props => {
-  const {
-    open,
-    onOpen,
-    onClose,
-    listItems,
-    type,
-    primary,
-    isAdmin,
-    id,
-    onDelete,
-  } = props;
+  const { open, onOpen, onClose, listItems, type, primary, isAdmin, id, onDelete } = props;
   return (
     <div>
       <IconButton aria-label="Open" onClick={onOpen}>
         <Icon>add</Icon>
       </IconButton>
 
-      <Dialog
-        open={open}
-        onClose={onClose}
-        aria-labelledby="modal-title"
-        fullWidth
-      >
+      <Dialog open={open} onClose={onClose} aria-labelledby="modal-title" fullWidth>
         <DialogTitle id="modal-title">{primary}</DialogTitle>
         <ListItems listItems={listItems} />
         <Divider />
@@ -41,6 +27,18 @@ const ModalContent = props => {
       </Dialog>
     </div>
   );
+};
+
+ModalContent.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onOpen: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+  listItems: PropTypes.instanceOf(Array).isRequired,
+  type: PropTypes.string.isRequired,
+  primary: PropTypes.string.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default ModalContent;

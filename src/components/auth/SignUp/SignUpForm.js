@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import { withFirebase } from '../../../firebase';
-import * as ROUTES from '../../../constants/routes';
-import Form from '../../layout/Forms/Form';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import { withFirebase } from '../../../firebase';
+import * as ROUTES from '../../../constants/routes';
+import Form from '../../layout/Forms/Form';
 import SubmitButton from '../../ui/Buttons/SubmitButton';
 import Message from '../../ui/Message';
 import LinkButton from '../../ui/Buttons/LinkButton';
@@ -22,6 +23,7 @@ const INITIAL_STATE = {
 
 class SignUpNewUser extends Component {
   state = { ...INITIAL_STATE };
+
   onSubmit = e => {
     const { username, email, passwordOne, created } = this.state;
     const { firebase, history } = this.props;
@@ -30,20 +32,15 @@ class SignUpNewUser extends Component {
     e.preventDefault();
     firebase
       .createUserWithEmailAndPasswordHandler(email, passwordOne)
-      .then(authUser => {
-        // Create a user in your Firebase realtime database
-        return firebase.user(authUser.user.uid).set(
-          {
-            username,
-            email,
-            roles,
-            created,
-          },
-          {
-            merge: true,
-          },
-        );
-      })
+      .then(authUser => firebase.user(authUser.user.uid).set(
+        {
+          username,
+          email,
+          roles,
+          created,
+        },
+        { merge: true },
+      ))
 
       .then(authUser => {
         this.setState({ ...INITIAL_STATE });
@@ -65,11 +62,7 @@ class SignUpNewUser extends Component {
   render() {
     const { username, email, passwordOne, passwordTwo, error } = this.state;
 
-    const isInvalid =
-      passwordOne !== passwordTwo ||
-      passwordOne === '' ||
-      email === '' ||
-      username === '';
+    const isInvalid = passwordOne !== passwordTwo || passwordOne === '' || email === '' || username === '';
 
     return (
       <Form onSubmit={this.onSubmit}>
@@ -122,22 +115,22 @@ class SignUpNewUser extends Component {
         <SubmitButton disabled={isInvalid}>Sign up</SubmitButton>
 
         {error && <Message type="warning">{error.message}</Message>}
-        <LinkButton
-          link="signin"
-          color="secondary"
-          variant="outlined"
-          size="small"
-          fullWidth
-        >
+        <LinkButton link="signin" color="secondary" variant="outlined" size="small" fullWidth>
           Already have an account? Sign in here
         </LinkButton>
       </Form>
     );
   }
 }
+
 const SignUpForm = compose(
   withRouter,
   withFirebase,
 )(SignUpNewUser);
+
+SignUpNewUser.propTypes = {
+  firebase: PropTypes.shape({}).isRequired,
+  history: PropTypes.shape({}).isRequired,
+};
 
 export default SignUpForm;

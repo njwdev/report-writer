@@ -1,9 +1,3 @@
-const appStyles = theme => ({
-  '@global': {
-    body: {
-      backgroundColor: theme.palette.common.white,
-    },
-  },
-});
+const appStyles = theme => ({ '@global': { body: { backgroundColor: theme.palette.common.white } } });
 
 export default appStyles;

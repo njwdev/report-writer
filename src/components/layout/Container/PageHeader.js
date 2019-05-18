@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import BackButton from '../../ui/Buttons/BackButton';
 
@@ -10,6 +11,13 @@ const PageHeader = props => {
       {link ? <BackButton link={link} /> : null}
     </Grid>
   );
+};
+
+PageHeader.defaultProps = { link: undefined, title: undefined };
+
+PageHeader.propTypes = {
+  title: PropTypes.string,
+  link: PropTypes.string,
 };
 
 export default PageHeader;

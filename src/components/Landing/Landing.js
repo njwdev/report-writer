@@ -19,11 +19,7 @@ const Landing = props => {
       title: 'Write your reports',
       subheader: 'Enter the website',
       price: 'Free trial',
-      description: [
-        '100+ samples to choose from',
-        'Quick and easy',
-        'Admin support',
-      ],
+      description: ['100+ samples to choose from', 'Quick and easy', 'Admin support'],
       buttonText: 'Get started',
       buttonVariant: 'contained',
     },
@@ -35,21 +31,10 @@ const Landing = props => {
       <main className={classes.layout}>
         {/* Hero unit */}
         <div className={classes.heroContent}>
-          <Typography
-            component="h1"
-            variant="h2"
-            align="center"
-            color="textPrimary"
-            gutterBottom
-          >
+          <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
             Reports Writer
           </Typography>
-          <Typography
-            variant="h6"
-            align="center"
-            color="textSecondary"
-            component="p"
-          >
+          <Typography variant="h6" align="center" color="textSecondary" component="p">
             Write your reports more quickly and efficiently.
           </Typography>
         </div>
@@ -79,12 +64,7 @@ const Landing = props => {
                   ))}
                 </CardContent>
                 <CardActions className={classes.cardActions}>
-                  <Button
-                    fullWidth
-                    variant={tier.buttonVariant}
-                    color="secondary"
-                    href="/signup"
-                  >
+                  <Button fullWidth variant={tier.buttonVariant} color="secondary" href="/signup">
                     {tier.buttonText}
                   </Button>
                 </CardActions>
@@ -97,8 +77,6 @@ const Landing = props => {
   );
 };
 
-Landing.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+Landing.propTypes = { classes: PropTypes.shape({}).isRequired };
 
 export default withStyles(landingStyles)(Landing);

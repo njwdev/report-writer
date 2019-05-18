@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -7,9 +8,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 class DeleteButton extends Component {
-  state = {
-    open: false,
-  };
+  state = { open: false };
 
   handleClickOpen = () => {
     this.setState({ open: true });
@@ -39,25 +38,17 @@ class DeleteButton extends Component {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{'Delete?'}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">Delete?</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               Are you sure you want to delete? This is action cannot be undone.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button
-              onClick={() => onDelete(id)}
-              color="secondary"
-              variant="text"
-            >
+            <Button onClick={() => onDelete(id)} color="secondary" variant="text">
               Delete
             </Button>
-            <Button
-              onClick={this.handleClose}
-              color="primary"
-              variant="contained"
-            >
+            <Button onClick={this.handleClose} color="primary" variant="contained">
               No, go back
             </Button>
           </DialogActions>
@@ -66,5 +57,12 @@ class DeleteButton extends Component {
     );
   }
 }
+
+DeleteButton.propTypes = {
+  onDelete: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  full: PropTypes.bool.isRequired,
+};
 
 export default DeleteButton;

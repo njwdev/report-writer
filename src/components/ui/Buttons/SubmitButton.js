@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 
 const SubmitButton = props => {
@@ -15,6 +16,11 @@ const SubmitButton = props => {
       {children}
     </Button>
   );
+};
+
+SubmitButton.propTypes = {
+  children: PropTypes.node.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default SubmitButton;

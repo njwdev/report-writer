@@ -8,15 +8,13 @@ import * as ROLES from '../../../../constants/roles';
 
 const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
 
-const AddComment = () => {
-  return (
-    <PageContainer>
-      <PageHeader link="/admin/comments" />
-      <AuthPage title="Add comment" icon="comment">
-        <AddNewComment />
-      </AuthPage>
-    </PageContainer>
-  );
-};
+const AddComment = () => (
+  <PageContainer>
+    <PageHeader link="/admin/comments" />
+    <AuthPage title="Add comment" icon="comment">
+      <AddNewComment />
+    </AuthPage>
+  </PageContainer>
+);
 
 export default withAuthorization(condition)(AddComment);

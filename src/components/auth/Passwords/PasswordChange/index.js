@@ -7,15 +7,13 @@ import PageHeader from '../../../layout/Container/PageHeader';
 
 const condition = authUser => !!authUser;
 
-const PasswordChange = () => {
-  return (
-    <PageContainer>
-      <PageHeader link="/account" />
-      <AuthPage title="Change Password" icon="lock">
-        <ChangeForm />
-      </AuthPage>
-    </PageContainer>
-  );
-};
+const PasswordChange = () => (
+  <PageContainer>
+    <PageHeader link="/account" />
+    <AuthPage title="Change Password" icon="lock">
+      <ChangeForm />
+    </AuthPage>
+  </PageContainer>
+);
 
 export default withAuthorization(condition)(PasswordChange);

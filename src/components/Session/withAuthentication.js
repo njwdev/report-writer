@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AuthUserContext from './context';
 import { withFirebase } from '../../firebase';
-import Loader from '../../components/ui/Loader';
+import Loader from '../ui/Loader';
 
 const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
@@ -37,6 +38,8 @@ const withAuthentication = Component => {
       );
     }
   }
+
+  WithAuthentication.propTypes = { firebase: PropTypes.shape({}).isRequired };
 
   return withFirebase(WithAuthentication);
 };

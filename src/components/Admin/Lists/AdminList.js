@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -32,6 +33,12 @@ const AdminList = props => {
       <Divider />
     </div>
   );
+};
+
+AdminList.propTypes = {
+  icon: PropTypes.string.isRequired,
+  primary: PropTypes.string.isRequired,
+  secondary: PropTypes.string.isRequired,
 };
 
 export default AdminList;

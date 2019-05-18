@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
 import { withFirebase } from '../../../../firebase';
 import NewCommentForm from './NewCommentForm';
-import Button from '@material-ui/core/Button';
 import Message from '../../../ui/Message';
+
 const INITIAL_STATE = {
   type: '',
   comment: '',
@@ -13,9 +15,11 @@ const INITIAL_STATE = {
 };
 
 class AddNewComment extends Component {
-  state = {
-    ...INITIAL_STATE,
-  };
+  state = { ...INITIAL_STATE };
+
+  componentWillUnmount() {
+    this.setState({ ...INITIAL_STATE });
+  }
 
   onSubmit = e => {
     const { type, comment, author, created } = this.state;
@@ -37,7 +41,7 @@ class AddNewComment extends Component {
 
   onChange = e => {
     const { firebase } = this.props;
-    console.log(firebase.userAuth());
+
     this.setState({
       [e.target.name]: e.target.value,
       author: firebase.userAuth(),
@@ -46,10 +50,6 @@ class AddNewComment extends Component {
   };
 
   onReset = () => this.setState({ ...INITIAL_STATE });
-
-  componentWillUnmount() {
-    this.setState({ ...INITIAL_STATE });
-  }
 
   render() {
     const { comment, type, error, success } = this.state;
@@ -61,12 +61,7 @@ class AddNewComment extends Component {
         {success ? (
           <div>
             <Message type="success">Comment added successfully</Message>
-            <Button
-              onClick={this.onReset}
-              variant="contained"
-              color="primary"
-              fullWidth
-            >
+            <Button onClick={this.onReset} variant="contained" color="primary" fullWidth>
               Add a new comment
             </Button>
           </div>
@@ -84,5 +79,7 @@ class AddNewComment extends Component {
     );
   }
 }
+
+AddNewComment.propTypes = { firebase: PropTypes.shape({}).isRequired };
 
 export default withFirebase(AddNewComment);

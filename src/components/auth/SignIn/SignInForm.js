@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import { withFirebase } from '../../../firebase';
-import * as ROUTES from '../../../constants/routes';
-import Form from '../../layout/Forms/Form';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import { withFirebase } from '../../../firebase';
+import * as ROUTES from '../../../constants/routes';
+import Form from '../../layout/Forms/Form';
 import Message from '../../ui/Message';
 import LinkButton from '../../ui/Buttons/LinkButton';
 import SubmitButton from '../../ui/Buttons/SubmitButton';
@@ -74,32 +75,24 @@ class SignInUser extends Component {
 
         {error && (
           <Message type="warning">
-            There was a problem with your sign in. Check your email and/or
-            password
+            There was a problem with your sign in. Check your email and/or password
           </Message>
         )}
-        <LinkButton
-          link="password_forget"
-          color="secondary"
-          variant="text"
-          size="small"
-          fullWidth
-        >
+        <LinkButton link="password_forget" color="secondary" variant="text" size="small" fullWidth>
           Forgotten your password?
         </LinkButton>
-        <LinkButton
-          link="signup"
-          color="primary"
-          variant="outlined"
-          size="small"
-          fullWidth
-        >
-          Don't have an account? Sign up here
+        <LinkButton link="signup" color="primary" variant="outlined" size="small" fullWidth>
+          Don&apos;t have an account? Sign up here
         </LinkButton>
       </Form>
     );
   }
 }
+
+SignInUser.propTypes = {
+  firebase: PropTypes.shape({}).isRequired,
+  history: PropTypes.shape({}).isRequired,
+};
 
 const SignInForm = compose(
   withRouter,

@@ -7,18 +7,16 @@ import * as ROLES from '../../constants/roles';
 
 const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
 
-const Admin = () => {
-  return (
-    <AuthUserContext.Consumer>
-      {authUser => (
-        <PageContainer>
-          <PageHeader title="Admin" link="/home" />
-          <LinkButton link="admin/users">Users</LinkButton>
-          <LinkButton link="admin/comments">Comments</LinkButton>
-        </PageContainer>
-      )}
-    </AuthUserContext.Consumer>
-  );
-};
+const Admin = () => (
+  <AuthUserContext.Consumer>
+    (
+    <PageContainer>
+      <PageHeader title="Admin" link="/home" />
+      <LinkButton link="admin/users">Users</LinkButton>
+      <LinkButton link="admin/comments">Comments</LinkButton>
+    </PageContainer>
+    )
+  </AuthUserContext.Consumer>
+);
 
 export default withAuthorization(condition)(Admin);

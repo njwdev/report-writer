@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import AdminList from '../Lists/AdminList';
 import { withFirebase } from '../../../firebase';
@@ -26,5 +27,7 @@ const UserList = props => {
     </List>
   );
 };
+
+UserList.propTypes = { users: PropTypes.instanceOf(Array).isRequired };
 
 export default withFirebase(UserList);
