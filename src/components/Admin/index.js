@@ -9,13 +9,13 @@ const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
 
 const Admin = () => (
   <AuthUserContext.Consumer>
-    (
-    <PageContainer>
-      <PageHeader title="Admin" link="/home" />
-      <LinkButton link="admin/users">Users</LinkButton>
-      <LinkButton link="admin/comments">Comments</LinkButton>
-    </PageContainer>
-    )
+    {() => (
+      <PageContainer>
+        <PageHeader title="Admin" link="/home" />
+        <LinkButton link="admin/users">Users</LinkButton>
+        <LinkButton link="admin/comments">Comments</LinkButton>
+      </PageContainer>
+    )}
   </AuthUserContext.Consumer>
 );
 
