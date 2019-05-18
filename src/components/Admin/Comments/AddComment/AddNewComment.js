@@ -21,6 +21,7 @@ class AddNewComment extends Component {
     this.setState({ ...INITIAL_STATE });
   }
 
+
   onSubmit = e => {
     const { type, comment, author, created } = this.state;
     const { firebase } = this.props;
