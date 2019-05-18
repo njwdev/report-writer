@@ -50,11 +50,13 @@ class AdminModal extends Component {
   }
 }
 
+AdminModal.defaultProps = { author: undefined };
+
 AdminModal.propTypes = {
   secondary: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
+  author: PropTypes.string,
   created: PropTypes.string.isRequired,
 };
 

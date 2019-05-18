@@ -58,11 +58,13 @@ class DeleteButton extends Component {
   }
 }
 
+DeleteButton.defaultProps = { text: undefined, full: undefined };
+
 DeleteButton.propTypes = {
   onDelete: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  full: PropTypes.bool.isRequired,
+  text: PropTypes.string,
+  full: PropTypes.bool,
 };
 
 export default DeleteButton;

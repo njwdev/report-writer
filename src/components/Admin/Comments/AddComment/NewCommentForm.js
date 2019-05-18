@@ -43,11 +43,13 @@ const NewCommentForm = props => {
   );
 };
 
+NewCommentForm.defaultProps = { type: undefined, comment: undefined };
+
 NewCommentForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
-  comment: PropTypes.shape({}).isRequired,
+  type: PropTypes.string,
+  comment: PropTypes.shape({}),
   isInvalid: PropTypes.bool.isRequired,
 };
 

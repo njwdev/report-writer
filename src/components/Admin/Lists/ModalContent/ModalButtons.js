@@ -18,8 +18,10 @@ const ModalButtons = props => {
   );
 };
 
+ModalButtons.defaultProps = { onDelete: null };
+
 ModalButtons.propTypes = {
-  onDelete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func,
   close: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
 };
