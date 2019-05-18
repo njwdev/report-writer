@@ -17,8 +17,10 @@ const MakeAdminButton = props => {
   );
 };
 
+MakeAdminButton.defaultProps = { isAdmin: undefined };
+
 MakeAdminButton.propTypes = {
-  isAdmin: PropTypes.bool.isRequired,
+  isAdmin: PropTypes.string,
   id: PropTypes.string.isRequired,
 };
 

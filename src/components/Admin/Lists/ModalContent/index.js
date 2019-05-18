@@ -29,6 +29,8 @@ const ModalContent = props => {
   );
 };
 
+ModalContent.defaultProps = { onDelete: null, isAdmin: undefined };
+
 ModalContent.propTypes = {
   open: PropTypes.bool.isRequired,
   onOpen: PropTypes.func.isRequired,
@@ -36,9 +38,9 @@ ModalContent.propTypes = {
   listItems: PropTypes.instanceOf(Array).isRequired,
   type: PropTypes.string.isRequired,
   primary: PropTypes.string.isRequired,
-  isAdmin: PropTypes.bool.isRequired,
+  isAdmin: PropTypes.string,
   id: PropTypes.string.isRequired,
-  onDelete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func,
 };
 
 export default ModalContent;
