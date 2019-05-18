@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import { withFirebase } from '../../../../firebase';
+import PropTypes from 'prop-types';
 
-import * as ROLES from '../../../../constants/roles';
 import Switch from '@material-ui/core/Switch';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import * as ROLES from '../../../../constants/roles';
+import { withFirebase } from '../../../../firebase';
 
 class MakeAdmin extends Component {
   constructor(props) {
@@ -33,11 +34,9 @@ class MakeAdmin extends Component {
     if (!isAdmin) {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
     }
-    //Not working currently - should be check to stop deleting yourself as admin
+    // Not working currently - should be check to stop deleting yourself as admin
     if (firebase.user(uid) !== firebase.auth.currentUser.uid) {
-      firebase.user(uid).update({
-        roles,
-      });
+      firebase.user(uid).update({ roles });
     }
   };
 
@@ -49,7 +48,7 @@ class MakeAdmin extends Component {
       <Fragment>
         <FormGroup row>
           <FormControlLabel
-            control={
+            control={(
               <Switch
                 name="isAdmin"
                 checkedIcon={<i className="material-icons">verified_user</i>}
@@ -58,7 +57,7 @@ class MakeAdmin extends Component {
                 style={{ margin: '0px', padding: '0px' }}
                 disabled={uid === firebase.userUid()}
               />
-            }
+)}
             label={isAdmin ? 'Admin' : 'Not Admin'}
           />
         </FormGroup>
@@ -66,5 +65,11 @@ class MakeAdmin extends Component {
     );
   }
 }
+
+MakeAdmin.propTypes = {
+  firebase: PropTypes.shape({}).isRequired,
+  uid: PropTypes.string.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
+};
 
 export default withFirebase(MakeAdmin);

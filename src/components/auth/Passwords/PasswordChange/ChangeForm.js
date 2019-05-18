@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { withFirebase } from '../../../../firebase';
-import Form from '../../../layout/Forms/Form';
+import PropTypes from 'prop-types';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import Form from '../../../layout/Forms/Form';
+import { withFirebase } from '../../../../firebase';
 import SubmitButton from '../../../ui/Buttons/SubmitButton';
 import Message from '../../../ui/Message';
 
@@ -15,9 +16,7 @@ const INITIAL_STATE = {
 };
 
 class PasswordChangeForm extends Component {
-  state = {
-    ...INITIAL_STATE,
-  };
+  state = { ...INITIAL_STATE };
 
   onSubmit = e => {
     e.preventDefault();
@@ -45,21 +44,11 @@ class PasswordChangeForm extends Component {
       <Form onSubmit={this.onSubmit}>
         <FormControl margin="normal" fullWidth>
           <InputLabel htmlFor="password">New Password</InputLabel>
-          <Input
-            name="passwordOne"
-            value={passwordOne}
-            onChange={this.onChange}
-            type="password"
-          />
+          <Input name="passwordOne" value={passwordOne} onChange={this.onChange} type="password" />
         </FormControl>
         <FormControl margin="normal" fullWidth>
           <InputLabel htmlFor="password">Confirm New Password</InputLabel>
-          <Input
-            name="passwordTwo"
-            value={passwordTwo}
-            onChange={this.onChange}
-            type="password"
-          />
+          <Input name="passwordTwo" value={passwordTwo} onChange={this.onChange} type="password" />
         </FormControl>
 
         <SubmitButton disabled={isInvalid}>Reset Password</SubmitButton>
@@ -74,5 +63,7 @@ class PasswordChangeForm extends Component {
     );
   }
 }
+
+PasswordChangeForm.propTypes = { firebase: PropTypes.shape({}).isRequired };
 
 export default withFirebase(PasswordChangeForm);

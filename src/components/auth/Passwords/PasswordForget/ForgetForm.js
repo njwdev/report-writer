@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import Form from '../../../layout/Forms/Form';
-import SubmitButton from '../../../ui/Buttons/SubmitButton';
+import PropTypes from 'prop-types';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import SubmitButton from '../../../ui/Buttons/SubmitButton';
+import Form from '../../../layout/Forms/Form';
 import { withFirebase } from '../../../../firebase';
 import Message from '../../../ui/Message';
 
@@ -59,8 +60,7 @@ class ForgetForm extends Component {
         {success && (
           <div>
             <Message type="success">
-              An email has been sent with instructions on how to reset your
-              password
+              An email has been sent with instructions on how to reset your password
             </Message>
           </div>
         )}
@@ -69,5 +69,6 @@ class ForgetForm extends Component {
     );
   }
 }
+ForgetForm.propTypes = { firebase: PropTypes.shape({}).isRequired };
 
 export default withFirebase(ForgetForm);

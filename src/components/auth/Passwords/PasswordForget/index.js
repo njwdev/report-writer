@@ -8,17 +8,16 @@ import PageHeader from '../../../layout/Container/PageHeader';
 
 const PasswordForget = () => (
   <AuthUserContext.Consumer>
-    {authUser =>
-      authUser ? (
-        <Redirect to="/home" />
-      ) : (
-        <PageContainer>
-          <PageHeader link="/admin/comments" />
-          <AuthPage title="Forgotten your Password?" icon="help">
-            <ForgetForm />
-          </AuthPage>
-        </PageContainer>
-      )
+    {authUser => (authUser ? (
+      <Redirect to="/home" />
+    ) : (
+      <PageContainer>
+        <PageHeader link="/admin/comments" />
+        <AuthPage title="Forgotten your Password?" icon="help">
+          <ForgetForm />
+        </AuthPage>
+      </PageContainer>
+    ))
     }
   </AuthUserContext.Consumer>
 );

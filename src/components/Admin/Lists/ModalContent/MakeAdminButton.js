@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import MakeAdmin from '../../Users/MakeAdminForm/MakeAdmin';
@@ -11,9 +12,14 @@ const MakeAdminButton = props => {
         <strong>Admin Status:</strong>
       </DialogContentText>
 
-      <MakeAdmin isAdmin={isAdmin === 'ADMIN' ? true : false} uid={id} />
+      <MakeAdmin isAdmin={isAdmin === 'ADMIN'} uid={id} />
     </DialogContent>
   );
+};
+
+MakeAdminButton.propTypes = {
+  isAdmin: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default MakeAdminButton;

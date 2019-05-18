@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withFirebase } from '../../../firebase';
 import DeleteButton from '../../ui/Buttons/DeleteButton';
 import Message from '../../ui/Message';
 
 class DeleteAccount extends Component {
-  state = {
-    error: false,
-  };
+  state = { error: false };
 
   deleteUser = id => {
     const { firebase } = this.props;
@@ -29,14 +28,12 @@ class DeleteAccount extends Component {
           id={firebase.auth.currentUser.uid}
         />
 
-        {error && (
-          <Message type="warning">
-            This operation requires a recent sign in
-          </Message>
-        )}
+        {error && <Message type="warning">This operation requires a recent sign in</Message>}
       </div>
     );
   }
 }
+
+DeleteAccount.propTypes = { firebase: PropTypes.shape({}).isRequired };
 
 export default withFirebase(DeleteAccount);

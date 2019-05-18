@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import AdminList from '../Lists/AdminList';
 
@@ -25,6 +26,11 @@ const CommentsList = props => {
       })}
     </List>
   );
+};
+
+CommentsList.propTypes = {
+  comments: PropTypes.instanceOf(Array).isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default CommentsList;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { withFirebase } from '../../../../firebase';
 import NewCommentForm from './NewCommentForm';
@@ -15,6 +16,11 @@ const INITIAL_STATE = {
 
 class AddNewComment extends Component {
   state = { ...INITIAL_STATE };
+
+  componentWillUnmount() {
+    this.setState({ ...INITIAL_STATE });
+  }
+
 
   onSubmit = e => {
     const { type, comment, author, created } = this.state;
@@ -36,7 +42,7 @@ class AddNewComment extends Component {
 
   onChange = e => {
     const { firebase } = this.props;
-    console.log(firebase.userAuth());
+
     this.setState({
       [e.target.name]: e.target.value,
       author: firebase.userAuth(),
@@ -45,10 +51,6 @@ class AddNewComment extends Component {
   };
 
   onReset = () => this.setState({ ...INITIAL_STATE });
-
-  componentWillUnmount() {
-    this.setState({ ...INITIAL_STATE });
-  }
 
   render() {
     const { comment, type, error, success } = this.state;
@@ -78,5 +80,7 @@ class AddNewComment extends Component {
     );
   }
 }
+
+AddNewComment.propTypes = { firebase: PropTypes.shape({}).isRequired };
 
 export default withFirebase(AddNewComment);
