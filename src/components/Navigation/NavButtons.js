@@ -18,70 +18,75 @@ const nonAuthButtons = [data('signin', 'Login', 'lock_open')];
 
 const signOutButton = [data('logout', 'Logout', 'power_settings_new', 'secondary')];
 
-const NavButtons = props => (
-  <AuthUserContext.Consumer>
-    {authUser => (authUser ? (
-      <Fragment>
-        {authButtons.map(item => (
-          <Button key={item.link} color={item.color} variant="contained" href={`/${item.link}`}>
-            <i className="material-icons" style={{ marginRight: '20%' }}>
-              {item.icon}
-            </i>
-            {item.text}
-          </Button>
-        ))}
-        {authUser && !!authUser.roles[ROLES.ADMIN] ? (
-          <Fragment>
-            {adminButtons.map(item => (
-              <Button key={item.link} color="primary" variant="contained" href={`/${item.link}`}>
-                <i className="material-icons" style={{ marginRight: '20%' }}>
-                  {item.icon}
-                </i>
-                {item.text}
-              </Button>
-            ))}
-          </Fragment>
-        ) : null}
+const NavButtons = props => {
+  const { firebase } = props;
+  return (
+    <AuthUserContext.Consumer>
+      {authUser => (authUser ? (
+        <Fragment>
+          {authButtons.map(item => (
+            <Button key={item.link} color={item.color} variant="contained" href={`/${item.link}`}>
+              <i className="material-icons" style={{ marginRight: '20%' }}>
+                {item.icon}
+              </i>
+              {item.text}
+            </Button>
+          ))}
+          {authUser && !!authUser.roles[ROLES.ADMIN] ? (
+            <Fragment>
+              {adminButtons.map(item => (
+                <Button
+                  key={item.link}
+                  color="primary"
+                  variant="contained"
+                  href={`/${item.link}`}
+                >
+                  <i className="material-icons" style={{ marginRight: '20%' }}>
+                    {item.icon}
+                  </i>
+                  {item.text}
+                </Button>
+              ))}
+            </Fragment>
+          ) : null}
 
-        {signOutButton.map(item => (
-          <Button
-            key={item.link}
-            color={item.color}
-            variant="contained"
-            onClick={props.firebase.signOutHandler}
-          >
-            <i className="material-icons" style={{ marginRight: '20%' }}>
-              {item.icon}
-            </i>
-            {item.text}
-          </Button>
-        ))}
-      </Fragment>
-    ) : (
-      <Fragment>
-        {nonAuthButtons.map(item => (
-          <Button key={item.link} color="primary" variant="contained" href={`/${item.link}`}>
-            <i
-              className="material-icons"
-              style={{
-                marginRight: '20%',
-                display: 'flex',
-              }}
+          {signOutButton.map(item => (
+            <Button
+              key={item.link}
+              color={item.color}
+              variant="contained"
+              onClick={firebase.signOutHandler}
             >
-              {item.icon}
-            </i>
-            {item.text}
-          </Button>
-        ))}
-      </Fragment>
-    ))
-    }
-  </AuthUserContext.Consumer>
-);
-
-NavButtons.propTypes = {
-  firebase: PropTypes.shape({}).isRequired,
-  signOutHandler: PropTypes.func.isRequired,
+              <i className="material-icons" style={{ marginRight: '20%' }}>
+                {item.icon}
+              </i>
+              {item.text}
+            </Button>
+          ))}
+        </Fragment>
+      ) : (
+        <Fragment>
+          {nonAuthButtons.map(item => (
+            <Button key={item.link} color="primary" variant="contained" href={`/${item.link}`}>
+              <i
+                className="material-icons"
+                style={{
+                  marginRight: '20%',
+                  display: 'flex',
+                }}
+              >
+                {item.icon}
+              </i>
+              {item.text}
+            </Button>
+          ))}
+        </Fragment>
+      ))
+      }
+    </AuthUserContext.Consumer>
+  );
 };
+
+NavButtons.propTypes = { firebase: PropTypes.shape({}).isRequired };
 
 export default withFirebase(NavButtons);

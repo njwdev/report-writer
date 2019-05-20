@@ -38,7 +38,7 @@ class NavDrawer extends Component {
 
   render() {
     const { open } = this.state;
-    const { classes } = this.props;
+    const { classes, firebase } = this.props;
 
     const sideList = (
       <div className={classes.list}>
@@ -71,7 +71,7 @@ class NavDrawer extends Component {
               <Divider />
               <List>
                 {navDrawerSignOut.map(item => (
-                  <ListItem button key={item.text} onClick={this.props.firebase.signOutHandler}>
+                  <ListItem button key={item.text} onClick={firebase.signOutHandler}>
                     <ListItemIcon>
                       <i className="material-icons">{item.icon} </i>
                     </ListItemIcon>
@@ -116,7 +116,10 @@ class NavDrawer extends Component {
   }
 }
 
-NavDrawer.propTypes = { classes: PropTypes.shape({}).isRequired,
-firebase: PropTypes.shape({}).isRequired, };
+NavDrawer.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+  firebase: PropTypes.shape({}).isRequired,
+
+};
 
 export default withFirebase(withStyles(styles)(NavDrawer));
