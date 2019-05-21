@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import { withFirebase } from '../../../firebase';
 import Loader from '../../ui/Loader';
+import CommentButtons from './CommentButtons';
 
 const INITIAL_STATE = {
   loading: false,
@@ -33,35 +35,27 @@ class Comments extends Component {
     const negativeComments = comments.filter(comment => comment.type === 'negative');
     const closingComments = comments.filter(comment => comment.type === 'closing');
 
+    const data = (title, comms) => ({ title, comms });
+
+    const listItems = [
+      data('Intros', introComments),
+      data('Positives', positiveComments),
+      data('Negatives', negativeComments),
+      data('Closings', closingComments),
+    ];
+
     return (
-      <div>
-        <h1>Comments</h1>
-        {loading ? <Loader /> : null}
-        <div>
-          <h4>Intros</h4>
-          {introComments.map(comment => (
-            <div key={comment.uid}>{comment.comment}</div>
+      <Paper>
+        <h3>Comments</h3>
+        <Grid container direction="row" justify="center">
+          {loading ? <Loader /> : null}
+          {listItems.map(item => (
+            <Grid item xs={5} key={item.title}>
+              <CommentButtons title={item.title} comments={item.comms} />
+            </Grid>
           ))}
-        </div>
-        <div>
-          <h4>Positive</h4>
-          {positiveComments.map(comment => (
-            <div key={comment.uid}>{comment.comment}</div>
-          ))}
-        </div>
-        <div>
-          <h4>Negative</h4>
-          {negativeComments.map(comment => (
-            <div key={comment.uid}>{comment.comment}</div>
-          ))}
-        </div>
-        <div>
-          <h4>Closing</h4>
-          {closingComments.map(comment => (
-            <div key={comment.uid}>{comment.comment}</div>
-          ))}
-        </div>
-      </div>
+        </Grid>
+      </Paper>
     );
   }
 }

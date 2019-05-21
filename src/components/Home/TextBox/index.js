@@ -1,15 +1,23 @@
 import React from 'react';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
 
 const TextBox = props => {
   const {} = props;
   return (
-    <div>
-      <h1>Text Box</h1>
-      <div style={{ border: '1px solid red' }}>
-        This is where the chosen phrases will go. It should be editable
-      </div>
-      <button>copy</button>
-    </div>
+    <Paper style={{ padding: 8 }}>
+      <TextField
+        id="outlined-full-width"
+        label="Your comment"
+        // style={{ margin: 8 }}
+        // placeholder="Your comment here"
+        helperText="Start selecting comments to build your report"
+        fullWidth
+        margin="normal"
+        variant="outlined"
+        InputLabelProps={{ shrink: true }}
+      />
+    </Paper>
   );
 };
 

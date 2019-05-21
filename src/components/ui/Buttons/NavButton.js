@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 const NavButton = props => {
   const { link, icon, text } = props;
   return (
-    <Button component={NavLink} to={`/${link}`} variant="raised" color="primary">
+    <Button component={NavLink} to={`/${link}`} variant="contained" color="primary">
       <i className="material-icons" style={{ marginRight: '20%' }}>
         {icon}
       </i>
