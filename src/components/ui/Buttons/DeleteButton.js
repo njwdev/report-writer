@@ -35,12 +35,12 @@ class DeleteButton extends Component {
           open={open}
           onClose={this.handleClose}
           maxWidth="xs"
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
+          aria-labelledby="alert-title"
+          aria-describedby="alert-description"
         >
-          <DialogTitle id="alert-dialog-title">Delete?</DialogTitle>
+          <DialogTitle id="alert-title">Delete?</DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
+            <DialogContentText id="alert-description">
               Are you sure you want to delete? This is action cannot be undone.
             </DialogContentText>
           </DialogContent>

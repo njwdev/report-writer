@@ -32,7 +32,7 @@ const NavButtons = () => (
       return (
         <Fragment>
           {buttonsToRender.map(item => (
-            <NavButton link={item.link} icon={item.icon} text={item.text} />
+            <NavButton key={item.text} link={item.link} icon={item.icon} text={item.text} />
           ))}
           {authUser ? <SignOutButton /> : null}
         </Fragment>
