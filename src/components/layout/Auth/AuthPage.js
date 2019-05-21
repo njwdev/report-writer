@@ -14,7 +14,7 @@ const AuthPage = props => {
         <Avatar className={classes.avatar}>
           <i className="material-icons">{icon}</i>
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5" className={classes.typography}>
           {title}
         </Typography>
         {children}
