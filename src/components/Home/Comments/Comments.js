@@ -40,25 +40,25 @@ class Comments extends Component {
         <div>
           <h4>Intros</h4>
           {introComments.map(comment => (
-            <div>{comment.comment}</div>
+            <div key={comment.uid}>{comment.comment}</div>
           ))}
         </div>
         <div>
           <h4>Positive</h4>
           {positiveComments.map(comment => (
-            <div>{comment.comment}</div>
+            <div key={comment.uid}>{comment.comment}</div>
           ))}
         </div>
         <div>
           <h4>Negative</h4>
           {negativeComments.map(comment => (
-            <div>{comment.comment}</div>
+            <div key={comment.uid}>{comment.comment}</div>
           ))}
         </div>
         <div>
           <h4>Closing</h4>
           {closingComments.map(comment => (
-            <div>{comment.comment}</div>
+            <div key={comment.uid}>{comment.comment}</div>
           ))}
         </div>
       </div>

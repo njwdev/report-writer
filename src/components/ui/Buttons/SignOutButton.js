@@ -7,7 +7,7 @@ const SignOutButton = ({ firebase }) => (
   <Button color="secondary" variant="contained" onClick={firebase.signOutHandler}>
     <i style={{ marginRight: '20%' }} className="material-icons">
       power_settings_new
-    </i>{' '}
+    </i>
     Logout
   </Button>
 );
