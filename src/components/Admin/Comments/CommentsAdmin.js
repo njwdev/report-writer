@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import { withFirebase } from '../../../firebase';
 import CommentsList from './CommentsList';
 import { LinkButton } from '../../ui/Buttons';
