@@ -5,7 +5,7 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Form from '../../../layout/Forms/Form';
 import { withFirebase } from '../../../../firebase';
-import SubmitButton from '../../../ui/Buttons/SubmitButton';
+import { SubmitButton } from '../../../ui/Buttons';
 import Message from '../../../ui/Message';
 
 const INITIAL_STATE = {

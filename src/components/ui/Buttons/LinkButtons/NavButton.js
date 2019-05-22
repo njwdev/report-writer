@@ -3,14 +3,19 @@ import PropTypes from 'prop-types';
 
 import { NavLink } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 
 const NavButton = props => {
   const { link, icon, text } = props;
   return (
-    <Button component={NavLink} to={`/${link}`} variant="contained" color="primary">
-      <i className="material-icons" style={{ marginRight: '20%' }}>
-        {icon}
-      </i>
+    <Button
+      component={NavLink}
+      to={`/${link}`}
+      variant="contained"
+      color="primary"
+      style={{ margin: '0px 2px' }}
+    >
+      <Icon style={{ marginRight: '5px' }}>{icon}</Icon>
       {text}
     </Button>
   );

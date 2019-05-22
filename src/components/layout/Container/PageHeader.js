@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import BackButton from '../../ui/Buttons/BackButton';
+import { BackButton } from '../../ui/Buttons';
 
 const PageHeader = props => {
   const { title, link } = props;

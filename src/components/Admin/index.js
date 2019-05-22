@@ -1,7 +1,7 @@
 import React from 'react';
 import { AuthUserContext, withAuthorization } from '../Session';
 import PageContainer from '../layout/Container/PageContainer';
-import LinkButton from '../ui/Buttons/LinkButton';
+import { LinkButton } from '../ui/Buttons';
 import PageHeader from '../layout/Container/PageHeader';
 import * as ROLES from '../../constants/roles';
 
