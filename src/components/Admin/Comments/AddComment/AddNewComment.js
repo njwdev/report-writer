@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { withFirebase } from '../../../../firebase';
 import NewCommentForm from './NewCommentForm';
+
 import Message from '../../../ui/Message';
 
 const INITIAL_STATE = {
@@ -20,7 +21,6 @@ class AddNewComment extends Component {
   componentWillUnmount() {
     this.setState({ ...INITIAL_STATE });
   }
-
 
   onSubmit = e => {
     const { type, comment, author, created } = this.state;
