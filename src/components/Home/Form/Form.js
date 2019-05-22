@@ -8,23 +8,35 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { CopyButton } from '../../ui/Buttons';
+import CopyButton from './CopyButton';
 
 class CommentForm extends Component {
+  state = {
+    value: '',
+    copied: false,
+  };
+
+  onCommentChange = e => {
+    this.setState({ value: e.target.value });
+  };
+
+  onCopy = () => {
+    this.setState({ copied: true });
+  };
+
   render() {
+    const { value } = this.state;
     return (
       <Paper style={{ padding: '0px 5px' }}>
         <h3>Form</h3>
         <TextField
           id="outlined-full-width"
           label="Your comment"
-          // style={{ margin: 8 }}
-          // placeholder="Your comment here"
-          helperText="Start selecting comments to build your report"
           fullWidth
-          margin="normal"
           variant="outlined"
-          InputLabelProps={{ shrink: true }}
+          value={value}
+          // onChange={({ target: { value } }) => this.setState({ value, copied: false })}
+          onChange={this.onCommentChange}
         />
         <Grid container direction="row" justify="space-between" alignItems="center">
           <Grid item xs={5}>
@@ -55,7 +67,7 @@ class CommentForm extends Component {
             </RadioGroup>
           </Grid>
           <Grid item xs={2}>
-            <CopyButton />
+            <CopyButton onCopy={this.onCopy} value={value} />
           </Grid>
         </Grid>
       </Paper>
