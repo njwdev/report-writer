@@ -8,9 +8,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import { withFirebase } from '../../../firebase';
 import * as ROUTES from '../../../constants/routes';
 import Form from '../../layout/Forms/Form';
-import SubmitButton from '../../ui/Buttons/SubmitButton';
+import { SubmitButton, LinkButton } from '../../ui/Buttons';
 import Message from '../../ui/Message';
-import LinkButton from '../../ui/Buttons/LinkButton';
 
 const INITIAL_STATE = {
   username: '',

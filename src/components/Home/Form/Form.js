@@ -8,7 +8,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import CopyButton from '../../ui/Buttons/CopyButton';
+import { CopyButton } from '../../ui/Buttons';
 
 class CommentForm extends Component {
   render() {

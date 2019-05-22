@@ -5,8 +5,7 @@ import { withFirebase } from '../../firebase';
 import { AuthUserContext } from '../Session/index';
 import * as ROLES from '../../constants/roles';
 // Buttons
-import SignOutButton from '../ui/Buttons/SignOutButton';
-import NavButton from '../ui/Buttons/NavButton';
+import { NavButton, SignOutButton } from '../ui/Buttons';
 
 const data = (link, text, icon, color) => ({ link, text, icon, color });
 

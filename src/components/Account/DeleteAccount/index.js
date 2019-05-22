@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withFirebase } from '../../../firebase';
-import DeleteButton from '../../ui/Buttons/DeleteButton';
+import { DeleteButton } from '../../ui/Buttons';
 import Message from '../../ui/Message';
 
 class DeleteAccount extends Component {

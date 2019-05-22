@@ -9,8 +9,7 @@ import { withFirebase } from '../../../firebase';
 import * as ROUTES from '../../../constants/routes';
 import Form from '../../layout/Forms/Form';
 import Message from '../../ui/Message';
-import LinkButton from '../../ui/Buttons/LinkButton';
-import SubmitButton from '../../ui/Buttons/SubmitButton';
+import { SubmitButton, LinkButton } from '../../ui/Buttons';
 
 const INITIAL_STATE = {
   email: '',

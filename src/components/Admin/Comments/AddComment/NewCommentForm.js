@@ -6,7 +6,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import InputLabel from '@material-ui/core/InputLabel';
 import Form from '../../../layout/Forms/Form';
-import SubmitButton from '../../../ui/Buttons/SubmitButton';
+import { SubmitButton } from '../../../ui/Buttons';
 
 const NewCommentForm = props => {
   const { onSubmit, onChange, type, comment, isInvalid } = props;

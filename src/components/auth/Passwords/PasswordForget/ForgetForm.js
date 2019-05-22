@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import SubmitButton from '../../../ui/Buttons/SubmitButton';
+import { SubmitButton } from '../../../ui/Buttons';
 import Form from '../../../layout/Forms/Form';
 import { withFirebase } from '../../../../firebase';
 import Message from '../../../ui/Message';

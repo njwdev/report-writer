@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
-import DeleteButton from '../../../ui/Buttons/DeleteButton';
+import { DeleteButton } from '../../../ui/Buttons';
 
 const ModalButtons = props => {
   const { onDelete, close, id } = props;
