@@ -22,12 +22,12 @@ class AdminModal extends Component {
     const userListItems = [
       data('Email: ', secondary),
       data('Data type:', type),
-      data('Created:', created),
+      data('Created: ', created),
       data('ID:', id),
     ];
 
     const commentListItems = [
-      data(null, secondary),
+      data('Comment: ', secondary),
       data('Author:', author),
       data('Data type:', type),
       data('Created:', created),

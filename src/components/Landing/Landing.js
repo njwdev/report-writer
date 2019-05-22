@@ -12,13 +12,6 @@ import landingStyles from './styles/LandingStyles';
 const Landing = props => {
   const { classes } = props;
 
-  const tiers = [
-    {
-      buttonText: 'Get started',
-      buttonVariant: 'contained',
-    },
-  ];
-
   return (
     <Fragment>
       <CssBaseline />
@@ -34,17 +27,15 @@ const Landing = props => {
         </div>
         {/* End hero unit */}
         <Grid container spacing={40} alignItems="flex-end">
-          {tiers.map(tier => (
-            <Grid item key={tier.title} xs={12} sm={12} md={12} lg={12}>
-              <Card>
-                <CardActions className={classes.cardActions}>
-                  <Button fullWidth variant={tier.buttonVariant} color="secondary" href="/signup">
-                    {tier.buttonText}
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            <Card>
+              <CardActions className={classes.cardActions}>
+                <Button fullWidth variant="contained" color="secondary" href="/signup">
+                  Get Started
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
         </Grid>
       </main>
     </Fragment>
