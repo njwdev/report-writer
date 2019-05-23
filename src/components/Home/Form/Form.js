@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
@@ -8,52 +7,50 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import CopyButton from './CopyButton';
+import { CopyButton, ResetButton } from '../../ui/Buttons';
+import PaperContainer from '../../layout/Container/PaperContainer';
+
+const INITIAL_STATE = {
+  commentValue: '',
+  copied: false,
+};
 
 class CommentForm extends Component {
-  state = {
-    value: '',
-    copied: false,
-  };
+  state = { ...INITIAL_STATE };
 
   onCommentChange = e => {
-    this.setState({ value: e.target.value });
+    this.setState({ commentValue: e.target.value });
   };
 
   onCopy = () => {
     this.setState({ copied: true });
   };
 
+  onReset = () => {
+    this.setState({ ...INITIAL_STATE });
+  };
+
   render() {
-    const { value } = this.state;
+    const { commentValue, copied } = this.state;
     return (
-      <Paper style={{ padding: '0px 5px' }}>
+      <PaperContainer>
         <h3>Form</h3>
-        <TextField
-          id="outlined-full-width"
-          label="Your comment"
-          fullWidth
-          variant="outlined"
-          value={value}
-          // onChange={({ target: { value } }) => this.setState({ value, copied: false })}
-          onChange={this.onCommentChange}
-        />
+
         <Grid container direction="row" justify="space-between" alignItems="center">
-          <Grid item xs={5}>
+          <Grid item xs={6}>
             <FormControl margin="normal" fullWidth>
-              <InputLabel htmlFor="email">Name</InputLabel>
+              <InputLabel htmlFor="name">Name</InputLabel>
               <Input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
+                id="name"
+                name="name"
+                type="name"
                 autoFocus
-                // value={email}
+                // value={name}
                 onChange={this.onChange}
               />
             </FormControl>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} style={{ textAlign: 'center' }}>
             <RadioGroup
               aria-label="Gender"
               name="gender1"
@@ -66,11 +63,27 @@ class CommentForm extends Component {
               <FormControlLabel value="male" control={<Radio />} label="he" />
             </RadioGroup>
           </Grid>
-          <Grid item xs={2}>
-            <CopyButton onCopy={this.onCopy} value={value} />
+        </Grid>
+        <Grid container direction="row" justify="space-between" alignItems="center">
+          <Grid item xs={9}>
+            <TextField
+              id="outlined-full-width"
+              label="Your comment"
+              fullWidth
+              multiline
+              variant="outlined"
+              value={commentValue}
+              onChange={this.onCommentChange}
+            />
+          </Grid>
+          <Grid item xs={3} style={{ textAlign: 'center' }}>
+            <CopyButton onCopy={this.onCopy} value={commentValue} />
+            {copied ? <div style={{ color: 'green', margin: '3px' }}>Copied!</div> : null}
           </Grid>
         </Grid>
-      </Paper>
+
+        <ResetButton onClick={this.onReset} />
+      </PaperContainer>
     );
   }
 }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { withFirebase } from '../../../firebase';
 import Loader from '../../ui/Loader';
 import CommentButtons from './CommentButtons';
+import PaperContainer from '../../layout/Container/PaperContainer';
 
 const INITIAL_STATE = {
   loading: false,
@@ -45,17 +45,17 @@ class Comments extends Component {
     ];
 
     return (
-      <Paper>
+      <PaperContainer>
         <h3>Comments</h3>
         <Grid container direction="row" justify="center">
           {loading ? <Loader /> : null}
           {listItems.map(item => (
-            <Grid item xs={5} key={item.title}>
+            <Grid item xs={6} key={item.title}>
               <CommentButtons title={item.title} comments={item.comms} />
             </Grid>
           ))}
         </Grid>
-      </Paper>
+      </PaperContainer>
     );
   }
 }

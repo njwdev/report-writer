@@ -7,6 +7,7 @@ import DeleteButton from './LogicButtons/DeleteButton';
 import SignOutButton from './LogicButtons/SignOutButton';
 import SubmitButton from './LogicButtons/SubmitButton';
 import CopyButton from './LogicButtons/CopyButton';
+import ResetButton from './LogicButtons/ResetButton';
 
 export { BackButton };
 export { LinkButton };
@@ -16,3 +17,4 @@ export { DeleteButton };
 export { SignOutButton };
 export { SubmitButton };
 export { CopyButton };
+export { ResetButton };
