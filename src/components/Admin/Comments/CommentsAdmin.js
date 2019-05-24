@@ -45,9 +45,7 @@ class CommentsAdmin extends Component {
           Add Comment
         </LinkButton>
         {loading && <Loader />}
-        <CommentsPanels />
-
-        <CommentsList comments={comments} onDelete={this.onDeleteHandler} />
+        <CommentsPanels comments={comments} onDelete={this.onDeleteHandler} />
       </div>
     );
   }

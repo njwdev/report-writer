@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import ListItem from '@material-ui/core/ListItem';
-
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -12,14 +11,14 @@ import Divider from '@material-ui/core/Divider';
 import AdminModal from './AdminModal';
 
 const AdminList = props => {
-  const { icon, primary, secondary } = props;
+  const { icon, isAdmin, primary, secondary } = props;
 
   return (
     <div>
       <Paper>
         <ListItem>
           <ListItemAvatar>
-            <Avatar>
+            <Avatar style={{ background: isAdmin ? '#28B463' : null }}>
               <Icon>{icon}</Icon>
             </Avatar>
           </ListItemAvatar>
@@ -38,8 +37,10 @@ const AdminList = props => {
 
 AdminList.propTypes = {
   icon: PropTypes.string.isRequired,
+  isAdmin: PropTypes.string,
   primary: PropTypes.string.isRequired,
   secondary: PropTypes.string.isRequired,
 };
 
+AdminList.defaultProps = { isAdmin: '' };
 export default AdminList;
