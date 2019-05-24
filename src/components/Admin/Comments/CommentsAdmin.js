@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withFirebase } from '../../../firebase';
-import CommentsList from './CommentsList';
 import { LinkButton } from '../../ui/Buttons';
 import Loader from '../../ui/Loader';
 import CommentsPanels from './CommentsPanels/CommentsPanels';
