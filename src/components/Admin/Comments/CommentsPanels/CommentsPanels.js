@@ -5,29 +5,41 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 
 import Typography from '@material-ui/core/Typography';
+import CommentsList from '../CommentsList';
 
 const data = (type, content) => ({ type, content });
 
-const commentsPanels = [
-  data('Intro', 'intro comment'),
-  data('Positive', 'positive comment'),
-  data('Negative', 'negative comment'),
-  data('Closing', 'closing comment'),
-];
+const CommentsPanels = props => {
+  const { comments, onDelete } = props;
+  const introComments = comments.filter(comment => comment.type === 'intro');
+  const positiveComments = comments.filter(comment => comment.type === 'positive');
+  const negativeComments = comments.filter(comment => comment.type === 'negative');
+  const closingComments = comments.filter(comment => comment.type === 'closing');
+  const commentsPanels = [
+    data('Intro', introComments),
+    data('Positive', positiveComments),
+    data('Negative', negativeComments),
+    data('Closing', closingComments),
+  ];
+  return (
+    <Fragment>
+      {commentsPanels.map(item => (
+        <ExpansionPanel key={item.type} style={{ backgroundColor: 'primary' }}>
+          <ExpansionPanelSummary expandIcon={<i className="material-icons">expand_more</i>}>
+            <Typography>{item.type}</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <CommentsList comments={item.content} onDelete={onDelete} />
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      ))}
+    </Fragment>
+  );
+};
 
-const CommentsPanels = () => (
-  <Fragment>
-    {commentsPanels.map(type => (
-      <ExpansionPanel key={type.category} style={{ backgroundColor: 'primary' }}>
-        <ExpansionPanelSummary expandIcon={<i className="material-icons">expand_more</i>}>
-          <Typography>{type.type}</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>{type.content}</ExpansionPanelDetails>
-      </ExpansionPanel>
-    ))}
-  </Fragment>
-);
-
-CommentsPanels.propTypes = {};
+CommentsPanels.propTypes = {
+  comments: PropTypes.instanceOf(Array).isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
 
 export default CommentsPanels;

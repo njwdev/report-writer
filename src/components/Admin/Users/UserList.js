@@ -6,6 +6,7 @@ import { withFirebase } from '../../../firebase';
 
 const UserList = props => {
   const { users } = props;
+
   return (
     <List dense>
       {users.map(user => {
