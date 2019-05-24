@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Typography from '@material-ui/core/Typography';
+import Comment from './Comment/Comment';
 
 class CommentModal extends React.Component {
   state = { open: false };
@@ -21,26 +19,17 @@ class CommentModal extends React.Component {
 
   render() {
     const { open } = this.state;
-    const { title, comments } = this.props;
+    const { title, comments, onCommentAdd } = this.props;
     return (
       <div style={{ margin: '3px' }}>
         <Button variant="contained" color="primary" fullWidth onClick={this.handleClickOpen}>
           {title}
         </Button>
-        <Dialog
-          fullWidth
-          open={open}
-          onClose={this.handleClose}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">{title}</DialogTitle>
-          <DialogContent>
-            {comments.map(comment => (
-              <div key={comment.uid}>
-                <Typography style={{ border: '1px solid black' }}>{comment.comment}</Typography>
-              </div>
-            ))}
-          </DialogContent>
+        <Dialog fullWidth open={open} onClose={this.handleClose} aria-labelledby="comment-title">
+          <DialogTitle id="comment-title">{title}</DialogTitle>
+          {comments.map(comment => (
+            <Comment key={comment.uid} text={comment.comment} onClick={onCommentAdd} />
+          ))}
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Back
@@ -55,6 +44,7 @@ class CommentModal extends React.Component {
 CommentModal.propTypes = {
   title: PropTypes.string.isRequired,
   comments: PropTypes.instanceOf(Array).isRequired,
+  onCommentAdd: PropTypes.func.isRequired,
 };
 
 export default CommentModal;
