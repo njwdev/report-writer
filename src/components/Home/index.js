@@ -1,7 +1,7 @@
 import React from 'react';
 import { withAuthorization } from '../Session';
 import PageContainer from '../layout/Container/PageContainer';
-import Form from './Form/Form';
+import Form from './Form';
 
 const condition = authUser => !!authUser;
 
