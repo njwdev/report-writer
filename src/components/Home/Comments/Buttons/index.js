@@ -4,9 +4,9 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Comment from './Comment/Comment';
+import Comment from '../Comment';
 
-class CommentModal extends React.Component {
+class CommentButtons extends React.Component {
   state = { open: false };
 
   handleClickOpen = () => {
@@ -41,10 +41,10 @@ class CommentModal extends React.Component {
   }
 }
 
-CommentModal.propTypes = {
+CommentButtons.propTypes = {
   title: PropTypes.string.isRequired,
   comments: PropTypes.instanceOf(Array).isRequired,
   onCommentAdd: PropTypes.func.isRequired,
 };
 
-export default CommentModal;
+export default CommentButtons;
