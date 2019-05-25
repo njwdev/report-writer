@@ -5,7 +5,7 @@ import { withFirebase } from '../../firebase';
 import { AuthUserContext } from '../Session/index';
 import * as ROLES from '../../constants/roles';
 // Buttons
-import { NavButton, SignOutButton } from '../ui/Buttons';
+import { NavButton, LogoutButton } from '../ui/Buttons';
 
 const data = (link, text, icon, color) => ({ link, text, icon, color });
 
@@ -14,7 +14,7 @@ const authButtons = [
   data('account', 'Account', 'settings', 'primary'),
 ];
 const adminButtons = [data('admin', 'Admin', 'verified_user')];
-const nonAuthButtons = [data('signin', 'Login', 'lock_open')];
+const nonAuthButtons = [data('login', 'Login', 'lock_open')];
 let buttonsToRender = null;
 
 const NavButtons = () => (
@@ -33,7 +33,7 @@ const NavButtons = () => (
           {buttonsToRender.map(item => (
             <NavButton key={item.text} link={item.link} icon={item.icon} text={item.text} />
           ))}
-          {authUser ? <SignOutButton /> : null}
+          {authUser ? <LogoutButton /> : null}
         </Fragment>
       );
     }}

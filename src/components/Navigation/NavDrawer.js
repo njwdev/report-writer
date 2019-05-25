@@ -9,6 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Icon from '@material-ui/core/Icon';
+import NavDrawerLogout from '../ui/Buttons/LogicButtons/NavDrawerLogout';
 import { AuthUserContext } from '../Session/index';
 import { withFirebase } from '../../firebase';
 import * as ROLES from '../../constants/roles';
@@ -19,9 +20,9 @@ const navDrawerButtonsUser = [data('Home', 'home', 'home'), data('Account', 'set
 
 const navDrawerButtonsAdmin = [data('Admin', 'verified_user', 'admin')];
 
-const navDrawerSignOut = [data('Logout', 'power_settings_new', null)];
+const navDrawerNonAuth = [data('Login', 'lock_open', 'login')];
 
-const navDrawerNonAuth = [data('Sign In', 'lock_open', 'signin')];
+let navDrawerToRender = null;
 
 const styles = {
   list: { width: 250 },
@@ -38,27 +39,23 @@ class NavDrawer extends Component {
 
   render() {
     const { open } = this.state;
-    const { classes, firebase } = this.props;
+    const { classes } = this.props;
 
     const sideList = (
       <div className={classes.list}>
         <AuthUserContext.Consumer>
-          {authUser => (authUser ? (
-            <Fragment>
-              <List>
-                {navDrawerButtonsUser.map(item => (
-                  <ListItem button key={item.text} component="a" href={`/${item.link}`}>
-                    <ListItemIcon>
-                      <i className="material-icons">{item.icon} </i>
-                    </ListItemIcon>
-                    <ListItemText primary={item.text} />
-                  </ListItem>
-                ))}
-              </List>
-              <Divider />
-              {authUser && !!authUser.roles[ROLES.ADMIN] ? (
+          {authUser => {
+            if (!authUser) {
+              navDrawerToRender = navDrawerNonAuth;
+            } else if (authUser && !!authUser.roles[ROLES.ADMIN]) {
+              navDrawerToRender = navDrawerButtonsUser.concat(navDrawerButtonsAdmin);
+            } else {
+              navDrawerToRender = navDrawerButtonsUser;
+            }
+            return (
+              <Fragment>
                 <List>
-                  {navDrawerButtonsAdmin.map(item => (
+                  {navDrawerToRender.map(item => (
                     <ListItem button key={item.text} component="a" href={`/${item.link}`}>
                       <ListItemIcon>
                         <i className="material-icons">{item.icon} </i>
@@ -66,36 +63,13 @@ class NavDrawer extends Component {
                       <ListItemText primary={item.text} />
                     </ListItem>
                   ))}
+                  <Divider />
+
+                  {authUser ? <NavDrawerLogout /> : null}
                 </List>
-              ) : null}
-              <Divider />
-              <List>
-                {navDrawerSignOut.map(item => (
-                  <ListItem button key={item.text} onClick={firebase.signOutHandler}>
-                    <ListItemIcon>
-                      <i className="material-icons">{item.icon} </i>
-                    </ListItemIcon>
-                    <ListItemText primary={item.text} />
-                  </ListItem>
-                ))}
-              </List>
-            </Fragment>
-          ) : (
-            <Fragment>
-              <List>
-                {navDrawerNonAuth.map(item => (
-                  <ListItem button key={item.text} component="a" href={`/${item.link}`}>
-                    <ListItemIcon>
-                      <i className="material-icons">{item.icon} </i>
-                    </ListItemIcon>
-                    <ListItemText primary={item.text} />
-                  </ListItem>
-                ))}
-              </List>
-              <Divider />
-            </Fragment>
-          ))
-          }
+              </Fragment>
+            );
+          }}
         </AuthUserContext.Consumer>
       </div>
     );
@@ -119,7 +93,6 @@ class NavDrawer extends Component {
 NavDrawer.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   firebase: PropTypes.shape({}).isRequired,
-
 };
 
 export default withFirebase(withStyles(styles)(NavDrawer));

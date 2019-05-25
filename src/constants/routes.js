@@ -1,7 +1,7 @@
 // Non Auth
 export const LANDING = '/';
 export const SIGN_UP = '/signup';
-export const SIGN_IN = '/signin';
+export const LOGIN = '/login';
 export const PASSWORD_FORGET = '/password_forget';
 export const ABOUT = '/about';
 // Auth

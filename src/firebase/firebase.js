@@ -26,7 +26,7 @@ class Firebase {
   // eslint-disable-next-line max-len
   signInWithEmailAndPasswordHandler = (email, password) => this.auth.signInWithEmailAndPassword(email, password);
 
-  signOutHandler = () => this.auth.signOut();
+  logoutHandler = () => this.auth.signOut();
 
   passwordResetHandler = email => this.auth.sendPasswordResetEmail(email);
 
