@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { withFirebase } from '../../../firebase';
 
-const SignOutButton = ({ firebase }) => (
-  <Button color="secondary" variant="contained" onClick={firebase.signOutHandler}>
+const LogoutButton = ({ firebase }) => (
+  <Button color="secondary" variant="contained" onClick={firebase.logoutHandler}>
     <i style={{ marginRight: '20%' }} className="material-icons">
       power_settings_new
     </i>{' '}
@@ -12,6 +12,6 @@ const SignOutButton = ({ firebase }) => (
   </Button>
 );
 
-SignOutButton.propTypes = { firebase: PropTypes.shape({}).isRequired };
+LogoutButton.propTypes = { firebase: PropTypes.shape({}).isRequired };
 
-export default withFirebase(SignOutButton);
+export default withFirebase(LogoutButton);

@@ -28,7 +28,7 @@ class DeleteAccount extends Component {
           id={firebase.auth.currentUser.uid}
         />
 
-        {error && <Message type="warning">This operation requires a recent sign in</Message>}
+        {error && <Message type="warning">This operation requires a recent login</Message>}
       </div>
     );
   }

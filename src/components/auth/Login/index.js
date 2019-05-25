@@ -1,20 +1,20 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import SignInForm from './SignInForm';
+import LoginForm from './LoginForm';
 import { AuthUserContext, withAuthentication } from '../../Session';
 import AuthPage from '../../layout/Auth/AuthPage';
 
-const SignIn = () => (
+const Login = () => (
   <AuthUserContext.Consumer>
     {authUser => (authUser ? (
       <Redirect to="/home" />
     ) : (
-      <AuthPage title="Sign in" icon="lock_open">
-        <SignInForm />
+      <AuthPage title="Login" icon="lock_open">
+        <LoginForm />
       </AuthPage>
     ))
     }
   </AuthUserContext.Consumer>
 );
 
-export default withAuthentication(SignIn);
+export default withAuthentication(Login);

@@ -7,7 +7,7 @@ import About from '../../components/About/About';
 import NotFound from '../../components/ui/NotFound';
 import * as ROUTES from '../../constants/routes';
 import Landing from '../../components/Landing/Landing';
-import SignIn from '../../components/auth/SignIn/index';
+import Login from '../../components/auth/Login/index';
 import SignUp from '../../components/auth/SignUp/index';
 import Admin from '../../components/Admin';
 import Navigation from '../../components/Navigation/Navigation';
@@ -33,7 +33,7 @@ const Application = () => (
         <Route exact path={ROUTES.COMMENTS_LIST} component={Comments} />
         <Route exact path={ROUTES.ADD_NEW_COMMENT} component={AddComment} />
         <Route exact path={ROUTES.ACCOUNT} component={Account} />
-        <Route exact path={ROUTES.SIGN_IN} component={SignIn} />
+        <Route exact path={ROUTES.LOGIN} component={Login} />
         <Route exact path={ROUTES.SIGN_UP} component={SignUp} />
         <Route exact path={ROUTES.PASSWORD_FORGET} component={PasswordForget} />
         <Route exact path={ROUTES.PASSWORD_CHANGE} component={PasswordChange} />

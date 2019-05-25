@@ -114,8 +114,8 @@ class SignUpNewUser extends Component {
         <SubmitButton disabled={isInvalid}>Sign up</SubmitButton>
 
         {error && <Message type="warning">{error.message}</Message>}
-        <LinkButton link="signin" color="secondary" variant="outlined" size="small" fullWidth>
-          Already have an account? Sign in here
+        <LinkButton link="login" color="secondary" variant="outlined" size="small" fullWidth>
+          Already have an account? Login here
         </LinkButton>
       </Form>
     );

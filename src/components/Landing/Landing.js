@@ -19,7 +19,7 @@ const Landing = props => {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-            Reports Writer
+            Report Writer
           </Typography>
           <Typography variant="h6" align="center" color="textSecondary" component="p">
             Write your reports more quickly and efficiently.

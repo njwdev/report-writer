@@ -17,7 +17,7 @@ const INITIAL_STATE = {
   error: null,
 };
 
-class SignInUser extends Component {
+class LoginUser extends Component {
   state = { ...INITIAL_STATE };
 
   onSubmit = e => {
@@ -70,11 +70,11 @@ class SignInUser extends Component {
           />
         </FormControl>
 
-        <SubmitButton disabled={isInvalid}>Sign in</SubmitButton>
+        <SubmitButton disabled={isInvalid}>Login</SubmitButton>
 
         {error && (
           <Message type="warning">
-            There was a problem with your sign in. Check your email and/or password
+            There was a problem logging in. Check your email and/or password
           </Message>
         )}
         <LinkButton link="password_forget" color="secondary" variant="text" size="small" fullWidth>
@@ -88,14 +88,14 @@ class SignInUser extends Component {
   }
 }
 
-SignInUser.propTypes = {
+LoginUser.propTypes = {
   firebase: PropTypes.shape({}).isRequired,
   history: PropTypes.shape({}).isRequired,
 };
 
-const SignInForm = compose(
+const LoginForm = compose(
   withRouter,
   withFirebase,
-)(SignInUser);
+)(LoginUser);
 
-export default SignInForm;
+export default LoginForm;
