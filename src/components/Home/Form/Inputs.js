@@ -9,23 +9,23 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const Inputs = props => {
-  const { onChange, name } = props;
+  const { onNameChange, name, pronounType, onPronounSelect } = props;
   return (
     <Grid container direction="row" justify="space-between" alignItems="center">
       <Grid item xs={6}>
         <FormControl margin="normal" fullWidth>
           <InputLabel htmlFor="name">Name</InputLabel>
-          <Input id="name" name="name" type="name" autoFocus value={name} onChange={onChange} />
+          <Input id="name" name="name" type="name" autoFocus value={name} onChange={onNameChange} />
         </FormControl>
       </Grid>
       <Grid item xs={6} style={{ textAlign: 'center' }}>
         <RadioGroup
           aria-label="Gender"
-          name="gender1"
+          name="pronounType"
           style={{ display: 'inline' }}
           // className={classes.group}
-          // value={this.state.value}
-          // onChange={this.handleChange}
+          value={pronounType}
+          onChange={onPronounSelect}
         >
           <FormControlLabel value="female" control={<Radio />} label="she" />
           <FormControlLabel value="male" control={<Radio />} label="he" />
@@ -35,6 +35,11 @@ const Inputs = props => {
   );
 };
 
-Inputs.propTypes = { onChange: PropTypes.func.isRequired, name: PropTypes.string.isRequired };
+Inputs.propTypes = {
+  onNameChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  pronounType: PropTypes.string.isRequired,
+  onPronounSelect: PropTypes.func.isRequired,
+};
 
 export default Inputs;
