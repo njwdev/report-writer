@@ -18,10 +18,16 @@ class ModalContainer extends React.Component {
 
   render() {
     const { open } = this.state;
-    const { title, children } = this.props;
+    const { title, children, disabled } = this.props;
     return (
       <div style={{ margin: '3px' }}>
-        <Button variant="contained" color="primary" fullWidth onClick={this.handleClickOpen}>
+        <Button
+          variant="contained"
+          color="primary"
+          fullWidth
+          onClick={this.handleClickOpen}
+          disabled={disabled}
+        >
           {title}
         </Button>
         <Dialog fullWidth open={open} onClose={this.handleClose} aria-labelledby="comment-title">
@@ -41,6 +47,7 @@ class ModalContainer extends React.Component {
 ModalContainer.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default ModalContainer;

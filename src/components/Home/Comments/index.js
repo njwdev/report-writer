@@ -29,7 +29,7 @@ class HomeComments extends Component {
 
   render() {
     const { comments, loading } = this.state;
-    const { onCommentAdd } = this.props;
+    const { onCommentAdd, name, pronoun, disabled } = this.props;
 
     const introComments = comments.filter(comment => comment.type === 'intro');
     const positiveComments = comments.filter(comment => comment.type === 'positive');
@@ -46,14 +46,17 @@ class HomeComments extends Component {
     ];
     return (
       <PaperContainer>
+        {loading ? <Loader /> : null}
         <Grid container direction="row" justify="center">
-          {loading ? <Loader /> : null}
           {listItems.map(item => (
             <Grid item xs={6} key={item.title}>
               <CommentButtons
                 title={item.title}
                 comments={item.comms}
                 onCommentAdd={onCommentAdd}
+                name={name}
+                pronoun={pronoun}
+                disabled={disabled}
               />
             </Grid>
           ))}
@@ -66,6 +69,9 @@ class HomeComments extends Component {
 HomeComments.propTypes = {
   firebase: PropTypes.shape({}).isRequired,
   onCommentAdd: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  pronoun: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default withFirebase(HomeComments);

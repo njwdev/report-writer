@@ -44,18 +44,26 @@ class CommentForm extends Component {
     this.setState({ commentValue: newComment });
   };
 
-  onFormat = () => {
-    const { commentValue } = this.state;
-    console.log(commentValue);
-  };
-
   render() {
-    const { commentValue, copied, studentName } = this.state;
+    const { commentValue, copied, studentName, pronounType } = this.state;
+    const isValid = studentName !== '' && pronounType !== '';
+
     return (
       <PaperContainer>
         <h3>Form</h3>
-        <Inputs onChange={this.onNameChange} name={studentName} />
-        <Comments onCommentAdd={this.onCommentAdd} />
+        <Inputs
+          onNameChange={this.onNameChange}
+          name={studentName}
+          onPronounSelect={this.onPronounSelect}
+          pronounType={pronounType}
+        />
+
+        <Comments
+          onCommentAdd={this.onCommentAdd}
+          name={studentName}
+          pronoun={pronounType}
+          disabled={!isValid}
+        />
 
         <TextBox
           onChange={this.onCommentChange}
