@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withFirebase } from '../../../firebase';
-import UserList from './UserList';
+// import UserList from './UserList';
 import Loader from '../../ui/Loader';
+import UsersPanels from './UsersPanels/UsersPanels';
 
 const INITIAL_STATE = {
   loading: false,
@@ -35,7 +36,7 @@ class UserAdmin extends Component {
     return (
       <div>
         {loading && <Loader />}
-        <UserList users={users} />
+        <UsersPanels users={users} />
       </div>
     );
   }
