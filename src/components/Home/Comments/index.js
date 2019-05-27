@@ -29,12 +29,16 @@ class HomeComments extends Component {
 
   render() {
     const { comments, loading } = this.state;
-    const { onCommentAdd, name, pronoun, disabled } = this.props;
+    const { onCommentAdd, name, pronoun, disabled, termType } = this.props;
 
-    const introComments = comments.filter(comment => comment.type === 'intro');
-    const positiveComments = comments.filter(comment => comment.type === 'positive');
-    const negativeComments = comments.filter(comment => comment.type === 'negative');
-    const closingComments = comments.filter(comment => comment.type === 'closing');
+    const filteredComments = comments.filter(
+      comment => comment.term === termType || comment.term === 'any' || !comment.term,
+    );
+
+    const introComments = filteredComments.filter(comment => comment.type === 'intro');
+    const positiveComments = filteredComments.filter(comment => comment.type === 'positive');
+    const negativeComments = filteredComments.filter(comment => comment.type === 'negative');
+    const closingComments = filteredComments.filter(comment => comment.type === 'closing');
 
     const data = (title, comms) => ({ title, comms });
 
@@ -72,6 +76,7 @@ HomeComments.propTypes = {
   name: PropTypes.string.isRequired,
   pronoun: PropTypes.string.isRequired,
   disabled: PropTypes.bool.isRequired,
+  termType: PropTypes.string.isRequired,
 };
 
 export default withFirebase(HomeComments);
