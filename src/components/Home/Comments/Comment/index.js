@@ -6,13 +6,13 @@ import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 
 const Comment = props => {
-  const { text, onClick } = props;
+  const { text, onCommentAdd } = props;
   return (
     <Paper style={{ margin: '3px 5px', padding: '3px' }}>
       <Typography variant="caption">{text}</Typography>
 
       <div style={{ textAlign: 'right' }}>
-        <IconButton color="secondary" onClick={onClick}>
+        <IconButton color="secondary" onClick={() => onCommentAdd(text)}>
           <Icon fontSize="small">add_comment</Icon>
         </IconButton>
       </div>
@@ -20,5 +20,8 @@ const Comment = props => {
   );
 };
 
-Comment.propTypes = { text: PropTypes.string.isRequired, onClick: PropTypes.func.isRequired };
+Comment.propTypes = {
+  text: PropTypes.string.isRequired,
+  onCommentAdd: PropTypes.func.isRequired,
+};
 export default Comment;
