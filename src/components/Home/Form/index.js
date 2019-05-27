@@ -33,18 +33,30 @@ class CommentForm extends Component {
     this.setState({ studentName: e.target.value });
   };
 
-  onCommentAdd = () => {
-    console.log('comment added');
+  onPronounSelect = e => {
+    this.setState({ pronounType: e.target.value });
+  };
+
+  onCommentAdd = comment => {
+    const { commentValue } = this.state;
+    const selectedComment = comment;
+    const newComment = commentValue + selectedComment;
+    this.setState({ commentValue: newComment });
+  };
+
+  onFormat = () => {
+    const { commentValue } = this.state;
+    console.log(commentValue);
   };
 
   render() {
     const { commentValue, copied, studentName } = this.state;
-
     return (
       <PaperContainer>
         <h3>Form</h3>
-        <Comments onCommentAdd={this.onCommentAdd} />
         <Inputs onChange={this.onNameChange} name={studentName} />
+        <Comments onCommentAdd={this.onCommentAdd} />
+
         <TextBox
           onChange={this.onCommentChange}
           onCopy={this.onCopy}
