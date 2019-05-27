@@ -12,6 +12,7 @@ const INITIAL_STATE = {
   copied: false,
   studentName: '',
   pronounType: '',
+  termType: 'any',
 };
 
 class CommentForm extends Component {
@@ -37,6 +38,10 @@ class CommentForm extends Component {
     this.setState({ pronounType: e.target.value });
   };
 
+  onTermSelect = e => {
+    this.setState({ termType: e.target.value });
+  };
+
   onCommentAdd = comment => {
     const { commentValue } = this.state;
     const selectedComment = comment;
@@ -45,7 +50,7 @@ class CommentForm extends Component {
   };
 
   render() {
-    const { commentValue, copied, studentName, pronounType } = this.state;
+    const { commentValue, copied, studentName, pronounType, termType } = this.state;
     const isValid = studentName !== '' && pronounType !== '';
 
     return (
@@ -56,6 +61,8 @@ class CommentForm extends Component {
           name={studentName}
           onPronounSelect={this.onPronounSelect}
           pronounType={pronounType}
+          onTermSelect={this.onTermSelect}
+          termType={termType}
         />
 
         <Comments
@@ -63,6 +70,7 @@ class CommentForm extends Component {
           name={studentName}
           pronoun={pronounType}
           disabled={!isValid}
+          termType={termType}
         />
 
         <TextBox

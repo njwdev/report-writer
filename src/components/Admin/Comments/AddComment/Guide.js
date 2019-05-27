@@ -10,7 +10,6 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 // Other
 import PageContainer from '../../../layout/Container/PageContainer';
-import PageHeader from '../../../layout/Container/PageHeader';
 
 const styles = theme => ({
   root: {
@@ -37,7 +36,7 @@ const Guide = props => {
   const { classes } = props;
   return (
     <PageContainer>
-      <PageHeader title="Guide" />
+      <h3>Guide</h3>
       <List dense className={classes.root}>
         {listItems.map(item => (
           <Fragment key={item.code}>
