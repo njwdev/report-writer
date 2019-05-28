@@ -12,9 +12,13 @@ const data = (link, text, icon, color) => ({ link, text, icon, color });
 const authButtons = [
   data('home', 'Home', 'home', 'primary'),
   data('account', 'Account', 'settings', 'primary'),
+  data('about', 'About', 'help', 'primary'),
 ];
 const adminButtons = [data('admin', 'Admin', 'verified_user')];
-const nonAuthButtons = [data('login', 'Login', 'lock_open')];
+const nonAuthButtons = [
+  data('login', 'Login', 'lock_open'),
+  data('about', 'About', 'help', 'primary'),
+];
 let buttonsToRender = null;
 
 const NavButtons = () => (

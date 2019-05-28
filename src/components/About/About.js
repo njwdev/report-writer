@@ -9,6 +9,8 @@ const About = () => (
     <PageHeader title="About" link="/about" />
     <div>
       <h1>Welcome to the about page</h1>
+      <p>Always render user guide, render admin guide only if admin</p>
+      <p> Contact form and version</p>
       <List>
         <ListItem>
           <a href="mailto:someone@example.com" target="_top">
