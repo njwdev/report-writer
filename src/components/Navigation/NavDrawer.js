@@ -16,11 +16,15 @@ import * as ROLES from '../../constants/roles';
 
 const data = (text, icon, link) => ({ text, icon, link });
 
-const navDrawerButtonsUser = [data('Home', 'home', 'home'), data('Account', 'settings', 'account')];
+const navDrawerButtonsUser = [
+  data('Home', 'home', 'home'),
+  data('Account', 'settings', 'account'),
+  data('About', 'help', 'about'),
+];
 
 const navDrawerButtonsAdmin = [data('Admin', 'verified_user', 'admin')];
 
-const navDrawerNonAuth = [data('Login', 'lock_open', 'login')];
+const navDrawerNonAuth = [data('Login', 'lock_open', 'login'), data('About', 'help', 'about')];
 
 let navDrawerToRender = null;
 
