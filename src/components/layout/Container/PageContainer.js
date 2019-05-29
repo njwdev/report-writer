@@ -12,7 +12,7 @@ const PageContainer = props => {
       alignItems="center"
       style={{ padding: '10px' }}
     >
-      <Grid item xs={12} md={8}>
+      <Grid item xs={12} sm={8} md={6}>
         {children}
       </Grid>
     </Grid>
