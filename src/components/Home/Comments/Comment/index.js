@@ -9,11 +9,11 @@ const Comment = props => {
   const { text, onCommentAdd, name, pronoun } = props;
 
   const formattedText = text
-    .replace(/XXX/gi, name)
-    .replace(/XSP/gi, pronoun === 'male' ? 'he' : 'she')
-    .replace(/XPA/gi, pronoun === 'male' ? 'his' : 'her')
-    .replace(/XOP/gi, pronoun === 'male' ? 'him' : 'her')
-    .replace(/XPP/gi, pronoun === 'male' ? 'his' : 'hers');
+    .replace(/1NNN/g, name)
+    .replace(/1SSS/g, pronoun === 'male' ? 'he' : 'she')
+    .replace(/1OOO/g, pronoun === 'male' ? 'him' : 'her')
+    .replace(/1AAA/g, pronoun === 'male' ? 'his' : 'her')
+    .replace(/1PPP/g, pronoun === 'male' ? 'his' : 'hers');
 
   const textToDisplay = `${formattedText.charAt(0).toUpperCase() + formattedText.slice(1)} `;
   return (

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
+import FilledInput from '@material-ui/core/FilledInput';
+import TextField from '@material-ui/core/TextField';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import InputLabel from '@material-ui/core/InputLabel';
 import Switch from '@material-ui/core/Switch';
@@ -17,9 +19,11 @@ const NewCommentForm = props => {
     <PaperContainer>
       <Form onSubmit={onSubmit} autoComplete="off">
         <FormControl fullWidth>
-          <InputLabel htmlFor="comment">Add comment</InputLabel>
-          <Input
+          {/* <InputLabel htmlFor="comment">Add comment</InputLabel> */}
+          <TextField
             multiline
+            variant="outlined"
+            label="Add comment"
             value={comment}
             name="comment"
             type="comment"
@@ -46,26 +50,35 @@ const NewCommentForm = props => {
           </Grid>
           <Grid item xs={6} style={{ textAlign: 'center' }}>
             <FormControlLabel
-              control={<Switch checked={showTermSelect} onChange={onCheck} color="secondary" />}
+              control={(
+                <Switch
+                  checked={showTermSelect}
+                  onChange={onCheck}
+                  color="secondary"
+                  disabled={term !== 'any'}
+                />
+)}
               label="Term specific?"
               labelPlacement="start"
             />
           </Grid>
           {showTermSelect ? (
-            <FormControl fullWidth style={{ marginTop: '5px' }}>
-              <InputLabel htmlFor="type-native-helper">Term</InputLabel>
-              <NativeSelect
-                value={term}
-                onChange={onChange}
-                input={<Input name="term" id="type-native-helper" />}
-              >
-                <option value="any">Any</option>
-                <option value="first">First</option>
-                <option value="second">Second</option>
-                <option value="third">Third</option>
-                <option value="summer">Summer Course</option>
-              </NativeSelect>
-            </FormControl>
+            <Grid item xs={6}>
+              <FormControl fullWidth style={{ marginTop: '5px' }}>
+                <InputLabel htmlFor="type-native-helper">Term</InputLabel>
+                <NativeSelect
+                  value={term}
+                  onChange={onChange}
+                  input={<FilledInput name="term" id="type-native-helper" />}
+                >
+                  <option value="any">Any</option>
+                  <option value="first">First</option>
+                  <option value="second">Second</option>
+                  <option value="third">Third</option>
+                  <option value="summer">Summer Course</option>
+                </NativeSelect>
+              </FormControl>
+            </Grid>
           ) : null}
           <SubmitButton disabled={isInvalid}> Submit </SubmitButton>
         </Grid>

@@ -8,8 +8,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
+import PaperContainer from '../../../layout/Container/PaperContainer';
 // Other
-import PageContainer from '../../../layout/Container/PageContainer';
 
 const styles = theme => ({
   root: {
@@ -25,17 +25,17 @@ const styles = theme => ({
 const data = (title, examples, code) => ({ title, examples, code });
 
 const listItems = [
-  data("Student's Name", 'Maria, Alberto, etc.', 'XXX'),
-  data('Subject pronouns', 'he, she, you', 'XSP'),
-  data('Object pronouns', 'him, her, you', 'XOP'),
-  data('Possessive adjectives', 'his, her, your', 'XPA'),
-  data('Possessive pronouns', 'his, hers, yours', 'XPP'),
+  data("Student's Name", 'Maria, Alberto, etc.', '1NNN'),
+  data('Subject pronouns', 'he, she, you', '1SSS'),
+  data('Object pronouns', 'him, her, you', '1OOO'),
+  data('Possessive adjectives', 'his, her, your', '1AAA'),
+  data('Possessive pronouns', 'his, hers, yours', '1PPP'),
 ];
 
 const Guide = props => {
   const { classes } = props;
   return (
-    <PageContainer>
+    <PaperContainer>
       <h3>Guide</h3>
       <List dense className={classes.root}>
         {listItems.map(item => (
@@ -50,7 +50,7 @@ const Guide = props => {
           </Fragment>
         ))}
       </List>
-    </PageContainer>
+    </PaperContainer>
   );
 };
 
