@@ -9,6 +9,7 @@ import PaperContainer from '../../layout/Container/PaperContainer';
 const INITIAL_STATE = {
   loading: false,
   comments: [],
+  searchValue: '',
 };
 
 class HomeComments extends Component {
@@ -27,18 +28,25 @@ class HomeComments extends Component {
     });
   }
 
+  onSearchChange = e => {
+    e.preventDefault();
+    this.setState({ searchValue: e.target.value });
+  };
+
   render() {
-    const { comments, loading } = this.state;
+    const { comments, loading, searchValue } = this.state;
     const { onCommentAdd, name, pronoun, disabled, termType } = this.props;
 
     const filteredComments = comments.filter(
       comment => comment.term === termType || comment.term === 'any' || !comment.term,
     );
 
-    const introComments = filteredComments.filter(comment => comment.type === 'intro');
-    const positiveComments = filteredComments.filter(comment => comment.type === 'positive');
-    const negativeComments = filteredComments.filter(comment => comment.type === 'negative');
-    const closingComments = filteredComments.filter(comment => comment.type === 'closing');
+    const commentsToDisplay = filteredComments.filter(comment => comment.comment.includes(searchValue));
+
+    const introComments = commentsToDisplay.filter(comment => comment.type === 'intro');
+    const positiveComments = commentsToDisplay.filter(comment => comment.type === 'positive');
+    const negativeComments = commentsToDisplay.filter(comment => comment.type === 'negative');
+    const closingComments = commentsToDisplay.filter(comment => comment.type === 'closing');
 
     const data = (title, comms) => ({ title, comms });
 
@@ -61,6 +69,8 @@ class HomeComments extends Component {
                 name={name}
                 pronoun={pronoun}
                 disabled={disabled}
+                searchValue={searchValue}
+                onSearchChange={this.onSearchChange}
               />
             </Grid>
           ))}
