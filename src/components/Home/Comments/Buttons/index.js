@@ -4,6 +4,8 @@ import FilledInput from '@material-ui/core/FilledInput';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
 import Comment from '../Comment';
 import ModalContainer from '../../../layout/Modals/ModalContainer';
 
@@ -17,11 +19,18 @@ const CommentButtons = props => {
     disabled,
     searchValue,
     onSearchChange,
+    onShuffle,
   } = props;
   return (
     <ModalContainer title={title} disabled={disabled}>
-      <Grid container direction="row" justify="center" alignItems="center">
-        <Grid item xs={10}>
+      <Grid
+        container
+        direction="row"
+        justify="space-between"
+        alignItems="center"
+        style={{ margin: 'auto', padding: '3px' }}
+      >
+        <Grid item xs={9}>
           <FormControl fullWidth>
             <InputLabel htmlFor="includes">Includes...</InputLabel>
             <FilledInput
@@ -31,6 +40,11 @@ const CommentButtons = props => {
               onChange={onSearchChange}
             />
           </FormControl>
+        </Grid>
+        <Grid item style={{ margin: 'auto', padding: '3px' }}>
+          <IconButton onClick={onShuffle}>
+            <Icon>replay</Icon>
+          </IconButton>
         </Grid>
       </Grid>
 
@@ -57,6 +71,7 @@ CommentButtons.propTypes = {
   disabled: PropTypes.bool.isRequired,
   searchValue: PropTypes.string.isRequired,
   onSearchChange: PropTypes.func.isRequired,
+  onShuffle: PropTypes.func.isRequired,
 };
 
 export default CommentButtons;
