@@ -12,21 +12,46 @@ const INITIAL_STATE = {
   searchValue: '',
 };
 
+function shuffle(array) {
+  let m = array.length;
+  let t;
+  let i;
+  // While there remain elements to shuffle…
+  while (m) {
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
+    // And swap it with the current element.
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+  return array;
+}
+
 class HomeComments extends Component {
   state = { ...INITIAL_STATE };
 
   componentDidMount() {
     const { firebase } = this.props;
     this.setState({ loading: true });
-    this.commentList = firebase.comments().onSnapshot(snapshot => {
-      const comments = [];
-      snapshot.forEach(doc => comments.push({ ...doc.data(), uid: doc.id }));
-      this.setState({
-        comments,
-        loading: false,
+    this.commentList = firebase
+      .comments()
+      .orderBy('created')
+      .onSnapshot(snapshot => {
+        const comments = [];
+        // snapshot.forEach(doc => comments.push({ ...doc.data(), uid: doc.id }));
+        snapshot.forEach(doc => comments.push({ ...doc.data(), uid: doc.id }));
+        this.setState({
+          comments,
+          loading: false,
+        });
       });
-    });
   }
+
+  onShuffle = () => {
+    const { comments } = this.state;
+    this.setState({ comments: shuffle(comments) });
+  };
 
   onSearchChange = e => {
     e.preventDefault();
@@ -41,7 +66,7 @@ class HomeComments extends Component {
       comment => comment.term === termType || comment.term === 'any' || !comment.term,
     );
 
-    const commentsToDisplay = filteredComments.filter(comment => comment.comment.includes(searchValue));
+    const commentsToDisplay = filteredComments.filter(c => c.comment.includes(searchValue));
 
     const introComments = commentsToDisplay.filter(comment => comment.type === 'intro');
     const positiveComments = commentsToDisplay.filter(comment => comment.type === 'positive');
@@ -56,6 +81,7 @@ class HomeComments extends Component {
       data('Negatives', negativeComments),
       data('Closings', closingComments),
     ];
+
     return (
       <PaperContainer>
         {loading ? <Loader /> : null}
@@ -71,6 +97,7 @@ class HomeComments extends Component {
                 disabled={disabled}
                 searchValue={searchValue}
                 onSearchChange={this.onSearchChange}
+                onShuffle={this.onShuffle}
               />
             </Grid>
           ))}
