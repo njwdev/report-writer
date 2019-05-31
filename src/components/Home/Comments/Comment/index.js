@@ -11,7 +11,7 @@ const Comment = props => {
   const formattedText = text
     .replace(/1NNN/g, name)
     .replace(/1SSS/g, pronoun === 'male' ? 'he' : 'she')
-    .replace(/1OOO/g, pronoun === 'male' ? 'him' : 'her')
+    .replace(/1YYY/g, pronoun === 'male' ? 'him' : 'her')
     .replace(/1AAA/g, pronoun === 'male' ? 'his' : 'her')
     .replace(/1PPP/g, pronoun === 'male' ? 'his' : 'hers');
 
