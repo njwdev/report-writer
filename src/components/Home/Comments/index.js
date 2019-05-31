@@ -12,18 +12,21 @@ const INITIAL_STATE = {
   searchValue: '',
 };
 
+// Shuffle function - Fisher-Yates shuffle (eslint rules disabled for the function)
 function shuffle(array) {
-  let m = array.length;
-  let t;
-  let i;
+  /* eslint-disable no-param-reassign */
+  let currentIndex = array.length;
+  let tempValue;
+  let randomIndex;
   // While there remain elements to shuffle…
-  while (m) {
+  while (currentIndex) {
     // Pick a remaining element…
-    i = Math.floor(Math.random() * m--);
+    // eslint-disable-next-line no-plusplus
+    randomIndex = Math.floor(Math.random() * currentIndex--);
     // And swap it with the current element.
-    t = array[m];
-    array[m] = array[i];
-    array[i] = t;
+    tempValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = tempValue;
   }
   return array;
 }
@@ -42,7 +45,7 @@ class HomeComments extends Component {
         // snapshot.forEach(doc => comments.push({ ...doc.data(), uid: doc.id }));
         snapshot.forEach(doc => comments.push({ ...doc.data(), uid: doc.id }));
         this.setState({
-          comments,
+          comments: shuffle(comments),
           loading: false,
         });
       });
@@ -76,10 +79,10 @@ class HomeComments extends Component {
     const data = (title, comms) => ({ title, comms });
 
     const listItems = [
-      data('Intros', introComments),
-      data('Positives', positiveComments),
-      data('Negatives', negativeComments),
-      data('Closings', closingComments),
+      data('Intros', introComments.slice(0, -5)),
+      data('Positives', positiveComments.slice(0, -5)),
+      data('Negatives', negativeComments.slice(0, -5)),
+      data('Closings', closingComments.slice(0, -5)),
     ];
 
     return (

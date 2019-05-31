@@ -10,6 +10,7 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import PaperContainer from '../../../layout/Container/PaperContainer';
 // Other
+import commentCodes from '../../../../constants/commentCodes';
 
 const styles = theme => ({
   root: {
@@ -25,11 +26,11 @@ const styles = theme => ({
 const data = (title, examples, code) => ({ title, examples, code });
 
 const listItems = [
-  data("Student's Name", 'Maria, Alberto, etc.', '1NNN'),
-  data('Subject pronouns', 'he, she, you', '1SSS'),
-  data('Object pronouns', 'him, her, you', '1OOO'),
-  data('Possessive adjectives', 'his, her, your', '1AAA'),
-  data('Possessive pronouns', 'his, hers, yours', '1PPP'),
+  data("Student's Name", 'Maria, Alberto, etc.', commentCodes.name),
+  data('Subject pronouns', 'he, she, you', commentCodes.subject),
+  data('Object pronouns', 'him, her, you', commentCodes.object),
+  data('Possessive adjectives', 'his, her, your', commentCodes.adjective),
+  data('Possessive pronouns', 'his, hers, yours', commentCodes.possessive),
 ];
 
 const Guide = props => {
