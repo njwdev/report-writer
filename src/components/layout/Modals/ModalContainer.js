@@ -20,7 +20,7 @@ class ModalContainer extends React.Component {
     const { open } = this.state;
     const { title, children, disabled } = this.props;
     return (
-      <div style={{ margin: '3px' }}>
+      <div style={{ margin: ' 3px' }}>
         <Button
           variant="contained"
           color="primary"

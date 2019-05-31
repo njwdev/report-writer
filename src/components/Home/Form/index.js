@@ -55,7 +55,7 @@ class CommentForm extends Component {
 
     return (
       <PaperContainer>
-        <h3>Form</h3>
+     
         <Inputs
           onNameChange={this.onNameChange}
           name={studentName}

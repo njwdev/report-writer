@@ -8,7 +8,13 @@ import { CopyButton } from '../../ui/Buttons';
 const TextBox = props => {
   const { value, onChange, copied, onCopy } = props;
   return (
-    <Grid container direction="row" justify="space-between" alignItems="center">
+    <Grid
+      container
+      direction="row"
+      justify="space-between"
+      alignItems="center"
+      style={{ margin: '15px auto' }}
+    >
       <Grid item xs={9}>
         <TextField
           id="outlined-full-width"
