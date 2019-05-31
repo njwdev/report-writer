@@ -31,22 +31,24 @@ const Inputs = props => {
           <FormControlLabel value="male" control={<Radio />} label="he" />
         </RadioGroup>
       </Grid>
-      <FormControl fullWidth style={{ marginTop: '5px' }}>
-        <InputLabel htmlFor="type-native-helper" shrink>
-          Term
-        </InputLabel>
-        <NativeSelect
-          value={termType}
-          onChange={onTermSelect}
-          input={<Input name="term" id="type-native-helper" />}
-        >
-          <option value="any">Any</option>
-          <option value="first">First</option>
-          <option value="second">Second</option>
-          <option value="third">Third</option>
-          <option value="summer">Summer Course</option>
-        </NativeSelect>
-      </FormControl>
+      <Grid item xs={6}>
+        <FormControl fullWidth style={{ marginTop: '5px' }}>
+          <InputLabel htmlFor="type-native-helper" shrink>
+            Term
+          </InputLabel>
+          <NativeSelect
+            value={termType}
+            onChange={onTermSelect}
+            input={<Input name="term" id="type-native-helper" />}
+          >
+            <option value="any">Any</option>
+            <option value="first">First</option>
+            <option value="second">Second</option>
+            <option value="third">Third</option>
+            <option value="summer">Summer Course</option>
+          </NativeSelect>
+        </FormControl>
+      </Grid>
     </Grid>
   );
 };
