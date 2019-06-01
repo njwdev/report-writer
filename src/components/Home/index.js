@@ -9,9 +9,7 @@ const desc = "Add your student's name, the pronoun you wish to use, and the term
 const Home = () => (
   <PageContainer>
     <PageHeader title="Write your report" pageDescription={desc} />
-    <div>
-      <Form />
-    </div>
+    <Form />
   </PageContainer>
 );
 

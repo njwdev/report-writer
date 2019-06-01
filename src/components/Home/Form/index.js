@@ -55,7 +55,6 @@ class CommentForm extends Component {
 
     return (
       <PaperContainer>
-     
         <Inputs
           onNameChange={this.onNameChange}
           name={studentName}
@@ -64,7 +63,6 @@ class CommentForm extends Component {
           onTermSelect={this.onTermSelect}
           termType={termType}
         />
-
         <Comments
           onCommentAdd={this.onCommentAdd}
           name={studentName}
@@ -72,7 +70,6 @@ class CommentForm extends Component {
           disabled={!isValid}
           termType={termType}
         />
-
         <TextBox
           onChange={this.onCommentChange}
           onCopy={this.onCopy}

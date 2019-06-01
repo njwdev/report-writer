@@ -67,7 +67,7 @@ class Firebase {
 
   // COMMENTS API
 
-  comment = id => this.db.doc(`comments/${id}`);
+  comment = uid => this.db.doc(`comments/${uid}`);
 
   comments = () => this.db.collection('comments');
 }

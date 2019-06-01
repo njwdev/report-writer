@@ -8,20 +8,18 @@ import * as ROLES from '../../../../constants/roles';
 import { withFirebase } from '../../../../firebase';
 
 class MakeAdmin extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isAdmin: this.props.isAdmin,
-      changed: false,
-    };
-  }
+  state = {
+    // eslint-disable-next-line react/destructuring-assignment
+    isAdmin: this.props.isAdmin,
+    changed: false,
+  };
 
   onCheck = e => {
+    const { isAdmin, changed } = this.state;
     e.preventDefault();
     this.setState({
-      isAdmin: !this.state.isAdmin,
-      changed: !this.state.changed,
+      isAdmin: !isAdmin,
+      changed: !changed,
     });
   };
 
@@ -29,12 +27,12 @@ class MakeAdmin extends Component {
     e.preventDefault();
     const { firebase, uid } = this.props;
     const { isAdmin } = this.state;
-    this.setState({ isAdmin: !this.state.isAdmin });
+    this.setState({ isAdmin: !isAdmin });
     const roles = {};
     if (!isAdmin) {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
     }
-    // Not working currently - should be check to stop deleting yourself as admin
+
     if (firebase.user(uid) !== firebase.auth.currentUser.uid) {
       firebase.user(uid).update({ roles });
     }
