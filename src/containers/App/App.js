@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 
 import Home from '../../components/Home';
-import About from '../../components/About/About';
+import About from '../../components/About';
 import NotFound from '../../components/ui/NotFound';
 import * as ROUTES from '../../constants/routes';
 import Landing from '../../components/Landing/Landing';

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import { withFirebase } from '../../../../firebase';
+import { withFirebase } from '../../firebase';
 
 const LogoutButton = ({ firebase }) => (
   <Button
