@@ -28,7 +28,7 @@ const CommentButtons = props => {
         direction="row"
         justify="space-between"
         alignItems="center"
-        style={{ margin: 'auto', padding: '3px' }}
+        style={{ margin: 'auto', padding: '10px' }}
       >
         <Grid item xs={9}>
           <FormControl fullWidth>

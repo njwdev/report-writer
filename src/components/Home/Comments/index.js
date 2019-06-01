@@ -79,10 +79,10 @@ class HomeComments extends Component {
     const data = (title, comms) => ({ title, comms });
 
     const listItems = [
-      data('Intros', introComments.slice(0, -5)),
-      data('Positives', positiveComments.slice(0, -5)),
-      data('Negatives', negativeComments.slice(0, -5)),
-      data('Closings', closingComments.slice(0, -5)),
+      data('Intros', introComments.slice(0, 5)),
+      data('Positives', positiveComments.slice(0, 5)),
+      data('Negatives', negativeComments.slice(0, 5)),
+      data('Closings', closingComments.slice(0, 5)),
     ];
 
     return (
