@@ -13,3 +13,4 @@ export const ADMIN = '/admin';
 export const USERS_LIST = '/admin/users';
 export const COMMENTS_LIST = '/admin/comments';
 export const ADD_NEW_COMMENT = '/admin/comments/add_comment';
+export const EDIT_COMMENT = '/admin/comments/:id';
