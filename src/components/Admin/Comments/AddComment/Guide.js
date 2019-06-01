@@ -27,10 +27,10 @@ const data = (title, examples, code) => ({ title, examples, code });
 
 const listItems = [
   data("Student's Name", 'Maria, Alberto, etc.', commentCodes.name),
-  data('Subject pronouns', 'he, she, you', commentCodes.subject),
-  data('Object pronouns', 'him, her, you', commentCodes.object),
-  data('Possessive adjectives', 'his, her, your', commentCodes.adjective),
-  data('Possessive pronouns', 'his, hers, yours', commentCodes.possessive),
+  data('Subject pronouns', 'he, she', commentCodes.subject),
+  data('Object pronouns', 'him, her', commentCodes.object),
+  data('Possessive adjectives', 'his, her', commentCodes.adjective),
+  data('Possessive pronouns', 'his, hers', commentCodes.possessive),
 ];
 
 const Guide = props => {
