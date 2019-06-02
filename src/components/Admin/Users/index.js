@@ -4,12 +4,13 @@ import UserAdmin from './UserAdmin';
 import PageContainer from '../../layout/Container/PageContainer';
 import PageHeader from '../../layout/Container/PageHeader';
 import * as ROLES from '../../../constants/roles';
+import { usersDesc } from '../../ui/PageDescriptions';
 
 const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
-const desc = 'A list of all the  currently registered users and admins. Select a user to view details and edit admin status.';
+
 const Users = () => (
   <PageContainer>
-    <PageHeader title="Users" link="/admin" pageDescription={desc} />
+    <PageHeader title="Users" link="/admin" pageDescription={usersDesc} />
     <UserAdmin />
   </PageContainer>
 );

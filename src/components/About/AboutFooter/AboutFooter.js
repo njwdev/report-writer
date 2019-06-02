@@ -10,7 +10,7 @@ const AboutFooter = () => (
     <Typography variant="caption">
       nwjwdev@gmail.com <Icon style={{ fontSize: '12px' }}>copyright</Icon>2019
     </Typography>
-    <Typography variant="caption">Version: 1.0.0</Typography>
+    <Typography variant="caption">Version: 1.0.1</Typography>
   </div>
 );
 

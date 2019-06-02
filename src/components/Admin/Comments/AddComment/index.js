@@ -5,12 +5,13 @@ import PageContainer from '../../../layout/Container/PageContainer';
 import PageHeader from '../../../layout/Container/PageHeader';
 import Guide from './Guide';
 import * as ROLES from '../../../../constants/roles';
+import { addCommentDesc } from '../../../ui/PageDescriptions';
 
 const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
-const desc = 'Use the guide below to add new comments to the database. The codes must be exact. Limit each comment to one sentence.';
+
 const AddComment = () => (
   <PageContainer>
-    <PageHeader title="Add New Comment" link="/admin/comments" pageDescription={desc} />
+    <PageHeader title="Add New Comment" link="/admin/comments" pageDescription={addCommentDesc} />
     <AddNewComment />
     <Guide />
   </PageContainer>

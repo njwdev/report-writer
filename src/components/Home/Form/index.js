@@ -22,14 +22,6 @@ class CommentForm extends Component {
     this.setState({ commentValue: e.target.value });
   };
 
-  onCopy = () => {
-    this.setState({ copied: true });
-  };
-
-  onReset = () => {
-    this.setState({ ...INITIAL_STATE });
-  };
-
   onNameChange = e => {
     this.setState({ studentName: e.target.value });
   };
@@ -49,6 +41,14 @@ class CommentForm extends Component {
     this.setState({ commentValue: newComment });
   };
 
+  onCopy = () => {
+    this.setState({ copied: true });
+  };
+
+  onReset = () => {
+    this.setState({ ...INITIAL_STATE });
+  };
+
   render() {
     const { commentValue, copied, studentName, pronounType, termType } = this.state;
     const isValid = studentName !== '' && pronounType !== '';
@@ -57,10 +57,10 @@ class CommentForm extends Component {
       <PaperContainer>
         <Inputs
           onNameChange={this.onNameChange}
-          name={studentName}
           onPronounSelect={this.onPronounSelect}
-          pronounType={pronounType}
           onTermSelect={this.onTermSelect}
+          name={studentName}
+          pronounType={pronounType}
           termType={termType}
         />
         <Comments

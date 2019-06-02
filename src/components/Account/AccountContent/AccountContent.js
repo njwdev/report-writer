@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import DeleteAccount from '../DeleteAccount';
+import DeleteAccount from '../DeleteAccount/DeleteAccount';
 import { LinkButton } from '../../ui/Buttons';
 
 const data = listItem => ({ listItem });
