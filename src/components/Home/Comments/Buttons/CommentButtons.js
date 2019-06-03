@@ -61,7 +61,7 @@ class CommentButtons extends Component {
               <FormControl fullWidth>
                 <InputLabel htmlFor="includes">Includes...</InputLabel>
                 <FilledInput
-                  autoFocus
+                  autoFocus={false}
                   id="includes"
                   name="includes"
                   value={searchValue}
