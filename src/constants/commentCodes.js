@@ -4,6 +4,7 @@ const commentCodes = {
   object: '1YYY',
   adjective: '1AAA',
   possessive: '1PPP',
+  reflexive: '1RRR',
 };
 
 export default commentCodes;

@@ -31,6 +31,7 @@ const listItems = [
   data('Object pronouns', 'him, her', commentCodes.object),
   data('Possessive adjectives', 'his, her', commentCodes.adjective),
   data('Possessive pronouns', 'his, hers', commentCodes.possessive),
+  data('Reflexive pronouns', 'himself, herself', commentCodes.reflexive),
 ];
 
 const Guide = props => {
