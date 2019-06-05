@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { Divider } from '@material-ui/core';
 import Comment from '../Comment/Comment';
 
 class CommentButtons extends Component {
@@ -53,9 +54,9 @@ class CommentButtons extends Component {
           <Grid
             container
             direction="row"
-            justify="space-between"
+            justify="space-evenly"
             alignItems="center"
-            style={{ margin: 'auto', padding: '10px' }}
+            style={{ textAlign: 'center' }}
           >
             <Grid item xs={7}>
               <FormControl fullWidth>
@@ -69,12 +70,13 @@ class CommentButtons extends Component {
                 />
               </FormControl>
             </Grid>
-            <Grid item style={{ margin: 'auto', padding: '3px' }}>
+            <Grid item>
               <IconButton onClick={onShuffle}>
                 <Icon>replay</Icon>
               </IconButton>
             </Grid>
           </Grid>
+          <Divider />
 
           {comments.map(comment => (
             <Comment
