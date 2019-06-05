@@ -39,6 +39,10 @@ const Guide = props => {
   return (
     <PaperContainer>
       <h3>Guide</h3>
+      <Typography variant="caption" color="secondary">
+        Each entry should end with a full stop (.) or, in rare case, an exclamation (!){' '}
+        <strong>Do not add a space after the final character.</strong>
+      </Typography>
       <List dense className={classes.root}>
         {listItems.map(item => (
           <Fragment key={item.code}>
@@ -52,6 +56,20 @@ const Guide = props => {
           </Fragment>
         ))}
       </List>
+      <h4>Example</h4>
+      <Typography variant="caption">
+        <strong>To be added as four separate comments:</strong>
+      </Typography>
+      <Typography color="secondary" variant="caption">
+        Raquel has done very well this term. She has made good progress in all areas and has
+        excelled herself in writing. She needs to continue working hard on her pronunciation. Have a
+        a great break, Raquel!
+      </Typography>
+      <Typography color="primary" variant="caption">
+        1NNN has done very well this term. 1SSS has made good progress in all areas and has excelled
+        1RRR in writing. 1SSS needs to continue working hard on 1AAA pronunciation. Have a a great
+        break, 1NNN!
+      </Typography>
     </PaperContainer>
   );
 };
