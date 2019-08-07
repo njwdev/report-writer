@@ -9,7 +9,7 @@ import { withFirebase } from '../../../../firebase';
 
 class MakeAdmin extends Component {
   state = {
-    // eslint-disable-next-line react/destructuring-assignment
+    
     isAdmin: this.props.isAdmin,
     changed: false,
   };

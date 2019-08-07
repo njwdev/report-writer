@@ -20,10 +20,10 @@ class Firebase {
   }
 
   // AUTH API
-  // eslint-disable-next-line max-len
+
   createUserWithEmailAndPasswordHandler = (email, password) => this.auth.createUserWithEmailAndPassword(email, password);
 
-  // eslint-disable-next-line max-len
+
   signInWithEmailAndPasswordHandler = (email, password) => this.auth.signInWithEmailAndPassword(email, password);
 
   logoutHandler = () => this.auth.signOut();

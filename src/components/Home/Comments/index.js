@@ -12,16 +12,16 @@ const INITIAL_STATE = {
   searchValue: '',
 };
 
-// Shuffle function - Fisher-Yates shuffle (eslint rules disabled for the function)
+// Shuffle function - Fisher-Yates shuffle
 function shuffle(array) {
-  /* eslint-disable no-param-reassign */
+  /* -disable no-param-reassign */
   let currentIndex = array.length;
   let tempValue;
   let randomIndex;
   // While there remain elements to shuffle…
   while (currentIndex) {
     // Pick a remaining element…
-    // eslint-disable-next-line no-plusplus
+
     randomIndex = Math.floor(Math.random() * currentIndex--);
     // And swap it with the current element.
     tempValue = array[currentIndex];
@@ -66,16 +66,27 @@ class HomeComments extends Component {
     const { onCommentAdd, name, pronoun, disabled, termType } = this.props;
     // 1. Make sure that comments with a different term type are filtered out
     const filteredComments = comments.filter(
-      comment => comment.term === termType || comment.term === 'any' || !comment.term,
+      comment =>
+        comment.term === termType || comment.term === 'any' || !comment.term,
     );
     // 2. Add the function for searching for specific words/characters
-    const commentsToDisplay = filteredComments.filter(c => c.comment.includes(searchValue));
+    const commentsToDisplay = filteredComments.filter(c =>
+      c.comment.includes(searchValue),
+    );
 
     // 3. Filter the comments by type.
-    const introComments = commentsToDisplay.filter(comment => comment.type === 'intro');
-    const positiveComments = commentsToDisplay.filter(comment => comment.type === 'positive');
-    const negativeComments = commentsToDisplay.filter(comment => comment.type === 'negative');
-    const closingComments = commentsToDisplay.filter(comment => comment.type === 'closing');
+    const introComments = commentsToDisplay.filter(
+      comment => comment.type === 'intro',
+    );
+    const positiveComments = commentsToDisplay.filter(
+      comment => comment.type === 'positive',
+    );
+    const negativeComments = commentsToDisplay.filter(
+      comment => comment.type === 'negative',
+    );
+    const closingComments = commentsToDisplay.filter(
+      comment => comment.type === 'closing',
+    );
 
     // 4. A function to make the lists and limit the comments shown to 5
     const data = (title, comms) => ({ title, comms });
