@@ -8,8 +8,7 @@ import UserList from '../UserList';
 
 const data = (type, content) => ({ type, content });
 
-const UsersPanels = props => {
-  const { users } = props;
+const UsersPanels = ({ users }) => {
   const adminUsers = users.filter(user => user.roles.ADMIN);
   const normalUsers = users.filter(user => !user.roles.ADMIN);
 
@@ -18,7 +17,9 @@ const UsersPanels = props => {
     <Fragment>
       {usersPanels.map(user => (
         <ExpansionPanel key={user.type} style={{ backgroundColor: 'primary' }}>
-          <ExpansionPanelSummary expandIcon={<i className="material-icons">expand_more</i>}>
+          <ExpansionPanelSummary
+            expandIcon={<i className='material-icons'>expand_more</i>}
+          >
             <Typography>{user.type}</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>

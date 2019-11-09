@@ -4,8 +4,7 @@ import List from '@material-ui/core/List';
 import Grid from '@material-ui/core/Grid';
 import AdminList from '../Lists/AdminList';
 
-const CommentsList = props => {
-  const { comments, onDelete } = props;
+const CommentsList = ({ comments, onDelete }) => {
   return (
     <Grid item xs={12} sm={12} md={12} lg={12}>
       <List dense>
@@ -15,11 +14,11 @@ const CommentsList = props => {
           return (
             <AdminList
               key={comment.uid}
-              icon="label_important"
+              icon='label_important'
               primary={comment.type}
               secondary={comment.comment}
               id={comment.uid}
-              type="Comment"
+              type='Comment'
               onDelete={onDelete}
               author={comment.author}
               created={displayDate.toString()}
@@ -33,7 +32,7 @@ const CommentsList = props => {
 
 CommentsList.propTypes = {
   comments: PropTypes.instanceOf(Array).isRequired,
-  onDelete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired
 };
 
 export default CommentsList;

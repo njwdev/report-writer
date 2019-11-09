@@ -14,68 +14,76 @@ import PaperContainer from '../../../layout/Container/PaperContainer';
 import { SubmitButton } from '../../../ui/Buttons';
 
 const NewCommentForm = props => {
-  const { onSubmit, onChange, type, term, comment, isInvalid, showTermSelect, onCheck } = props;
+  const {
+    onSubmit,
+    onChange,
+    type,
+    term,
+    comment,
+    isInvalid,
+    showTermSelect,
+    onCheck
+  } = props;
   return (
     <PaperContainer>
-      <Form onSubmit={onSubmit} autoComplete="off">
+      <Form onSubmit={onSubmit} autoComplete='off'>
         <FormControl fullWidth>
-          {/* <InputLabel htmlFor="comment">Add comment</InputLabel> */}
           <TextField
             multiline
-            variant="outlined"
-            label="Add comment"
+            variant='outlined'
+            label='Add comment'
             value={comment}
-            name="comment"
-            type="comment"
-            id="comment"
+            name='comment'
+            type='comment'
+            id='comment'
             onChange={onChange}
           />
         </FormControl>
-        <Grid container direction="row">
+        <Grid container direction='row'>
           <Grid item xs={6}>
             <FormControl fullWidth>
-              <InputLabel htmlFor="type-native-helper">Type</InputLabel>
+              <InputLabel htmlFor='type-native-helper'>Type</InputLabel>
               <NativeSelect
                 value={type}
                 onChange={onChange}
-                input={<Input name="type" id="type-native-helper" />}
+                input={<Input name='type' id='type-native-helper' />}
               >
-                <option value="" />
-                <option value="intro">Intro</option>
-                <option value="positive">Positive</option>
-                <option value="negative">Negative</option>
-                <option value="closing">Closing</option>
+                <option value='' />
+                <option value='intro'>Intro</option>
+                <option value='positive'>Positive</option>
+                <option value='negative'>Negative</option>
+                <option value='closing'>Closing</option>
               </NativeSelect>
             </FormControl>
           </Grid>
           <Grid item xs={6} style={{ textAlign: 'center' }}>
             <FormControlLabel
-              control={(
+              control={
                 <Switch
                   checked={showTermSelect}
                   onChange={onCheck}
-                  color="secondary"
+                  color='secondary'
                   disabled={term !== 'any'}
                 />
-)}
-              label="Term specific?"
-              labelPlacement="start"
+              }
+              label='Term specific?'
+              labelPlacement='start'
             />
           </Grid>
           {showTermSelect ? (
             <Grid item xs={6}>
               <FormControl fullWidth style={{ marginTop: '5px' }}>
-                <InputLabel htmlFor="type-native-helper">Term</InputLabel>
+                <InputLabel htmlFor='type-native-helper'>Term</InputLabel>
                 <NativeSelect
                   value={term}
                   onChange={onChange}
-                  input={<FilledInput name="term" id="type-native-helper" />}
+                  input={<FilledInput name='term' id='type-native-helper' />}
                 >
-                  <option value="any">Any</option>
-                  <option value="first">First</option>
-                  <option value="second">Second</option>
-                  <option value="third">Third</option>
-                  <option value="summer">Summer Course</option>
+                  <option value='any'>Any</option>
+                  <option value='first'>First</option>
+                  <option value='second'>Second</option>
+                  <option value='third'>Third</option>
+                  <option value='summer'>Summer Course</option>
                 </NativeSelect>
               </FormControl>
             </Grid>
@@ -97,7 +105,7 @@ NewCommentForm.propTypes = {
   comment: PropTypes.shape({}),
   isInvalid: PropTypes.bool.isRequired,
   showTermSelect: PropTypes.bool.isRequired,
-  onCheck: PropTypes.func.isRequired,
+  onCheck: PropTypes.func.isRequired
 };
 
 export default NewCommentForm;

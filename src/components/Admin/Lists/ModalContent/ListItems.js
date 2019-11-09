@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 
-const ListItems = props => {
-  const { listItems } = props;
+const ListItems = ({ listItems }) => {
   return (
     <DialogContent>
       {listItems.map(item => (

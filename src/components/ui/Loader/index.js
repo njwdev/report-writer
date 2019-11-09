@@ -3,7 +3,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Loader = () => (
   <div style={{ margin: '10px auto', textAlign: 'center' }}>
-    <CircularProgress color="secondary" />
+    <CircularProgress color='primary' />
   </div>
 );
 

@@ -15,12 +15,12 @@ import commentCodes from '../../../../constants/commentCodes';
 const styles = theme => ({
   root: {
     width: '100%',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper
   },
   code: {
     fontWeight: 'bold',
-    color: theme.palette.primary.main,
-  },
+    color: theme.palette.primary.main
+  }
 });
 
 const data = (title, examples, code) => ({ title, examples, code });
@@ -31,16 +31,16 @@ const listItems = [
   data('Object pronouns', 'him, her', commentCodes.object),
   data('Possessive adjectives', 'his, her', commentCodes.adjective),
   data('Possessive pronouns', 'his, hers', commentCodes.possessive),
-  data('Reflexive pronouns', 'himself, herself', commentCodes.reflexive),
+  data('Reflexive pronouns', 'himself, herself', commentCodes.reflexive)
 ];
 
-const Guide = props => {
-  const { classes } = props;
+const Guide = ({ classes }) => {
   return (
     <PaperContainer>
       <h3>Guide</h3>
-      <Typography variant="caption" color="secondary">
-        Each entry should end with a full stop (.) or, in rare case, an exclamation (!){' '}
+      <Typography variant='caption' color='secondary'>
+        Each entry should end with a full stop (.) or, in rare cases, an
+        exclamation (!){' '}
         <strong>Do not add a space after the final character.</strong>
       </Typography>
       <List dense className={classes.root}>
@@ -57,18 +57,18 @@ const Guide = props => {
         ))}
       </List>
       <h4>Example</h4>
-      <Typography variant="caption">
+      <Typography variant='caption'>
         <strong>To be added as four separate comments:</strong>
       </Typography>
-      <Typography color="secondary" variant="caption">
-        Raquel has done very well this term. She has made good progress in all areas and has
-        excelled herself in writing. She needs to continue working hard on her pronunciation. Have a
-        a great break, Raquel!
+      <Typography color='secondary' variant='caption'>
+        Raquel has done very well this term. She has made good progress in all
+        areas and has excelled herself in writing. She needs to continue working
+        hard on her pronunciation. Have a a great break, Raquel!
       </Typography>
-      <Typography color="primary" variant="caption">
-        1NNN has done very well this term. 1SSS has made good progress in all areas and has excelled
-        1RRR in writing. 1SSS needs to continue working hard on 1AAA pronunciation. Have a a great
-        break, 1NNN!
+      <Typography color='primary' variant='caption'>
+        1NNN has done very well this term. 1SSS has made good progress in all
+        areas and has excelled 1RRR in writing. 1SSS needs to continue working
+        hard on 1AAA pronunciation. Have a a great break, 1NNN!
       </Typography>
     </PaperContainer>
   );

@@ -12,7 +12,7 @@ const INITIAL_STATE = {
   copied: false,
   studentName: '',
   pronounType: '',
-  termType: 'any',
+  termType: 'any'
 };
 
 class CommentForm extends Component {
@@ -50,7 +50,13 @@ class CommentForm extends Component {
   };
 
   render() {
-    const { commentValue, copied, studentName, pronounType, termType } = this.state;
+    const {
+      commentValue,
+      copied,
+      studentName,
+      pronounType,
+      termType
+    } = this.state;
     const isValid = studentName !== '' && pronounType !== '';
 
     return (

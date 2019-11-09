@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+// MUI
 import Grid from '@material-ui/core/Grid';
+// Internal
+import { withFirebase } from '../../../firebase';
 import Loader from '../../ui/Loader';
 import CommentButtons from './Buttons/CommentButtons';
-import { withFirebase } from '../../../firebase';
-import PaperContainer from '../../layout/Container/PaperContainer';
 
 const INITIAL_STATE = {
   loading: false,
   comments: [],
-  searchValue: '',
+  searchValue: ''
 };
 
 // Shuffle function - Fisher-Yates shuffle
@@ -46,7 +47,7 @@ class HomeComments extends Component {
         this.setState({
           // Start with random order of comments
           comments: shuffle(comments),
-          loading: false,
+          loading: false
         });
       });
   }
@@ -67,25 +68,25 @@ class HomeComments extends Component {
     // 1. Make sure that comments with a different term type are filtered out
     const filteredComments = comments.filter(
       comment =>
-        comment.term === termType || comment.term === 'any' || !comment.term,
+        comment.term === termType || comment.term === 'any' || !comment.term
     );
     // 2. Add the function for searching for specific words/characters
     const commentsToDisplay = filteredComments.filter(c =>
-      c.comment.includes(searchValue),
+      c.comment.includes(searchValue)
     );
 
     // 3. Filter the comments by type.
     const introComments = commentsToDisplay.filter(
-      comment => comment.type === 'intro',
+      comment => comment.type === 'intro'
     );
     const positiveComments = commentsToDisplay.filter(
-      comment => comment.type === 'positive',
+      comment => comment.type === 'positive'
     );
     const negativeComments = commentsToDisplay.filter(
-      comment => comment.type === 'negative',
+      comment => comment.type === 'negative'
     );
     const closingComments = commentsToDisplay.filter(
-      comment => comment.type === 'closing',
+      comment => comment.type === 'closing'
     );
 
     // 4. A function to make the lists and limit the comments shown to 5
@@ -94,13 +95,13 @@ class HomeComments extends Component {
       data('Intros', introComments.slice(0, 5)),
       data('Positives', positiveComments.slice(0, 5)),
       data('Negatives', negativeComments.slice(0, 5)),
-      data('Closings', closingComments.slice(0, 5)),
+      data('Closings', closingComments.slice(0, 5))
     ];
 
     return (
-      <PaperContainer>
+      <Fragment>
         {loading ? <Loader /> : null}
-        <Grid container direction="row" justify="center">
+        <Grid container direction='row' justify='center'>
           {listItems.map(item => (
             <Grid item xs={6} key={item.title}>
               <CommentButtons
@@ -117,7 +118,7 @@ class HomeComments extends Component {
             </Grid>
           ))}
         </Grid>
-      </PaperContainer>
+      </Fragment>
     );
   }
 }
@@ -128,7 +129,7 @@ HomeComments.propTypes = {
   name: PropTypes.string.isRequired,
   pronoun: PropTypes.string.isRequired,
   disabled: PropTypes.bool.isRequired,
-  termType: PropTypes.string.isRequired,
+  termType: PropTypes.string.isRequired
 };
 
 export default withFirebase(HomeComments);

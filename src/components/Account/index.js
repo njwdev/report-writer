@@ -1,6 +1,7 @@
 import React from 'react';
-import AuthPage from '../layout/Auth/AuthPage';
+// Internal
 import { AuthUserContext, withAuthorization } from '../Session';
+import AuthPage from '../layout/Auth/AuthPage';
 import PageContainer from '../layout/Container/PageContainer';
 import PageHeader from '../layout/Container/PageHeader';
 import AccountContent from './AccountContent/AccountContent';
@@ -11,8 +12,8 @@ const Account = () => (
   <AuthUserContext.Consumer>
     {authUser => (
       <PageContainer>
-        <PageHeader link="/" />
-        <AuthPage title="Account Settings" icon="settings">
+        <PageHeader link='/' />
+        <AuthPage title='Account Settings' icon='settings'>
           <AccountContent authUser={authUser} />
         </AuthPage>
       </PageContainer>

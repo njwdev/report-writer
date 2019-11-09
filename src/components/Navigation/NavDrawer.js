@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+// MUI
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,28 +10,32 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Icon from '@material-ui/core/Icon';
-import NavDrawerLogout from './NavDrawerLogout';
+// Internal
 import { AuthUserContext } from '../Session/index';
 import { withFirebase } from '../../firebase';
 import * as ROLES from '../../constants/roles';
+import NavDrawerLogout from './NavDrawerLogout';
 
 const data = (text, icon, link) => ({ text, icon, link });
 
 const navDrawerButtonsUser = [
-  data('Home', 'home', 'home'),
+  data('Write', 'edit', 'home'),
   data('Account', 'settings', 'account'),
-  data('About', 'help', 'about'),
+  data('About', 'help', 'about')
 ];
 
 const navDrawerButtonsAdmin = [data('Admin', 'verified_user', 'admin')];
 
-const navDrawerNonAuth = [data('Login', 'lock_open', 'login'), data('About', 'help', 'about')];
+const navDrawerNonAuth = [
+  data('Login', 'lock_open', 'login'),
+  data('About', 'help', 'about')
+];
 
 let navDrawerToRender = null;
 
 const styles = {
   list: { width: 250 },
-  fullList: { width: 'auto' },
+  fullList: { width: 'auto' }
 };
 
 class NavDrawer extends Component {
@@ -52,7 +57,9 @@ class NavDrawer extends Component {
             if (!authUser) {
               navDrawerToRender = navDrawerNonAuth;
             } else if (authUser && !!authUser.roles[ROLES.ADMIN]) {
-              navDrawerToRender = navDrawerButtonsUser.concat(navDrawerButtonsAdmin);
+              navDrawerToRender = navDrawerButtonsUser.concat(
+                navDrawerButtonsAdmin
+              );
             } else {
               navDrawerToRender = navDrawerButtonsUser;
             }
@@ -60,15 +67,19 @@ class NavDrawer extends Component {
               <Fragment>
                 <List>
                   {navDrawerToRender.map(item => (
-                    <ListItem button key={item.text} component="a" href={`/${item.link}`}>
+                    <ListItem
+                      button
+                      key={item.text}
+                      component='a'
+                      href={`/${item.link}`}
+                    >
                       <ListItemIcon>
-                        <i className="material-icons">{item.icon} </i>
+                        <Icon>{item.icon} </Icon>
                       </ListItemIcon>
                       <ListItemText primary={item.text} />
                     </ListItem>
                   ))}
                   <Divider />
-
                   {authUser ? <NavDrawerLogout /> : null}
                 </List>
               </Fragment>
@@ -80,12 +91,17 @@ class NavDrawer extends Component {
 
     return (
       <div>
-        <IconButton style={{ color: '#ffffff' }} onClick={this.toggleDrawer}>
-          <Icon className="iconButton">menu</Icon>
+        <IconButton color='inherit' onClick={this.toggleDrawer}>
+          <Icon>menu</Icon>
         </IconButton>
 
-        <Drawer anchor="right" open={open} onClose={this.toggleDrawer}>
-          <div tabIndex={0} role="button" onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}>
+        <Drawer anchor='right' open={open} onClose={this.toggleDrawer}>
+          <div
+            tabIndex={0}
+            role='button'
+            onClick={this.toggleDrawer}
+            onKeyDown={this.toggleDrawer}
+          >
             {sideList}
           </div>
         </Drawer>
@@ -96,7 +112,7 @@ class NavDrawer extends Component {
 
 NavDrawer.propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  firebase: PropTypes.shape({}).isRequired,
+  firebase: PropTypes.shape({}).isRequired
 };
 
 export default withFirebase(withStyles(styles)(NavDrawer));

@@ -1,15 +1,15 @@
 const navigationStyles = theme => ({
   appBar: {
     position: 'relative',
-    backgroundColor: theme.palette.background.default,
-    color: theme.palette.background.contrastText,
+    backgroundColor: theme.palette.primary.dark,
+    color: theme.palette.background.contrastText
   },
   toolbarTitle: { flex: 1 },
-  button: { color: theme.palette.background.contrastText },
+  button: { color: theme.palette.primary.light },
   siteTitle: {
     color: 'inherit',
-    textDecoration: 'none',
-  },
+    textDecoration: 'none'
+  }
 });
 
 export default navigationStyles;

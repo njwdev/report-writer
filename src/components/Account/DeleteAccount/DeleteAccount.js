@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// Internal
 import { withFirebase } from '../../../firebase';
 import { DeleteButton } from '../../ui/Buttons';
 import Message from '../../ui/Message';
@@ -22,13 +23,17 @@ class DeleteAccount extends Component {
     return (
       <div>
         <DeleteButton
-          text="Delete Account"
+          text='Delete Account'
           full
           onDelete={this.deleteUser}
           id={firebase.auth.currentUser.uid}
         />
 
-        {error && <Message type="warning">This operation requires a recent login</Message>}
+        {error && (
+          <Message type='warning'>
+            This operation requires a recent login
+          </Message>
+        )}
       </div>
     );
   }

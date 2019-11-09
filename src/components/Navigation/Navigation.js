@@ -1,21 +1,41 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+// MUI
+import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
 import Hidden from '@material-ui/core/Hidden';
-import PropTypes from 'prop-types';
-import NavigationStyles from './styles/NavigationStyles';
+// Internal
 import NavButtons from './NavButtons';
 import NavDrawer from './NavDrawer';
+// Styles
+const styles = theme => ({
+  appBar: {
+    position: 'relative',
+    backgroundColor: theme.palette.primary.dark,
+    color: theme.palette.background.contrastText
+  },
+  toolbarTitle: {
+    flex: 1
+  },
+  siteTitle: {
+    color: 'inherit',
+    textDecoration: 'none'
+  }
+});
 
-const Navigation = props => {
-  const { classes } = props;
+const Navigation = ({ classes }) => {
   return (
-    <AppBar position="static" color="default" className={classes.appBar}>
+    <AppBar position='static' color='primary' className={classes.appBar}>
       <Toolbar>
-        <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-          <a className={classes.siteTitle} href="/">
+        <Typography
+          variant='h6'
+          color='inherit'
+          noWrap
+          className={classes.toolbarTitle}
+        >
+          <a className={classes.siteTitle} href='/'>
             Report Writer
           </a>
         </Typography>
@@ -32,4 +52,4 @@ const Navigation = props => {
 
 Navigation.propTypes = { classes: PropTypes.shape({}).isRequired };
 
-export default withStyles(NavigationStyles)(Navigation);
+export default withStyles(styles)(Navigation);

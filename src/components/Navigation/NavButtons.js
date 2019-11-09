@@ -11,14 +11,14 @@ import LogoutButton from './LogoutButton';
 const data = (link, text, icon, color) => ({ link, text, icon, color });
 
 const authButtons = [
-  data('home', 'Home', 'home', 'primary'),
+  data('home', 'Write', 'edit', 'primary'),
   data('account', 'Account', 'settings', 'primary'),
-  data('about', 'About', 'help', 'primary'),
+  data('about', '', 'help', 'primary')
 ];
-const adminButtons = [data('admin', 'Admin', 'verified_user')];
+const adminButtons = [data('admin', 'Admin', 'verified_user', 'secondary')];
 const nonAuthButtons = [
   data('login', 'Login', 'lock_open'),
-  data('about', 'About', 'help', 'primary'),
+  data('about', '', 'help', 'primary')
 ];
 let buttonsToRender = null;
 
@@ -36,7 +36,13 @@ const NavButtons = () => (
       return (
         <Fragment>
           {buttonsToRender.map(item => (
-            <NavButton key={item.text} link={item.link} icon={item.icon} text={item.text} />
+            <NavButton
+              key={item.text}
+              link={item.link}
+              icon={item.icon}
+              text={item.text}
+              color={item.color}
+            />
           ))}
           {authUser ? <LogoutButton /> : null}
         </Fragment>
