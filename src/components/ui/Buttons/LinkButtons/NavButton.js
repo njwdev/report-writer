@@ -10,11 +10,11 @@ const NavButton = ({ link, icon, text, color }) => {
     <Button
       component={NavLink}
       to={`/${link}`}
-      variant='contained'
-      color={color || 'primary'}
-      style={{ margin: '0px 2px' }}
+      variant='outlined'
+      color={color || 'inherit'}
+      style={{ margin: '0px 1px' }}
     >
-      <Icon style={{ marginRight: '5px' }}>{icon}</Icon>
+      <Icon>{icon}</Icon>
       {text}
     </Button>
   );

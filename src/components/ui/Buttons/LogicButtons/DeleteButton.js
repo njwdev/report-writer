@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// MUI
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -24,8 +25,8 @@ class DeleteButton extends Component {
     return (
       <div>
         <Button
-          variant="outlined"
-          color="secondary"
+          variant='outlined'
+          color='secondary'
           fullWidth={full}
           onClick={this.handleClickOpen}
         >
@@ -34,21 +35,29 @@ class DeleteButton extends Component {
         <Dialog
           open={open}
           onClose={this.handleClose}
-          maxWidth="xs"
-          aria-labelledby="alert-title"
-          aria-describedby="alert-description"
+          maxWidth='xs'
+          aria-labelledby='alert-title'
+          aria-describedby='alert-description'
         >
-          <DialogTitle id="alert-title">Delete?</DialogTitle>
+          <DialogTitle id='alert-title'>Delete?</DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-description">
+            <DialogContentText id='alert-description'>
               Are you sure you want to delete? This is action cannot be undone.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => onDelete(id)} color="secondary" variant="text">
+            <Button
+              onClick={() => onDelete(id)}
+              color='secondary'
+              variant='text'
+            >
               Delete
             </Button>
-            <Button onClick={this.handleClose} color="primary" variant="contained">
+            <Button
+              onClick={this.handleClose}
+              color='primary'
+              variant='contained'
+            >
               No, go back
             </Button>
           </DialogActions>
@@ -58,13 +67,11 @@ class DeleteButton extends Component {
   }
 }
 
-DeleteButton.defaultProps = { text: undefined, full: undefined };
-
 DeleteButton.propTypes = {
   onDelete: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   text: PropTypes.string,
-  full: PropTypes.bool,
+  full: PropTypes.bool
 };
 
 export default DeleteButton;

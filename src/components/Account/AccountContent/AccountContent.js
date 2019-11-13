@@ -5,27 +5,21 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 // Internal
-import DeleteAccount from '../DeleteAccount/DeleteAccount';
+import DeleteAccount from './DeleteAccount';
 import { LinkButton } from '../../ui/Buttons';
 
-const data = listItem => ({ listItem });
-
 const AccountContent = ({ authUser }) => {
-  const accountSettings = [
-    data(`Email: ${authUser.email}`),
-    data(
-      <LinkButton link='account/changepassword'>Change Password</LinkButton>
-    ),
-    data(<DeleteAccount />)
-  ];
-
   return (
     <List>
-      {accountSettings.map(item => (
-        <ListItem key={Math.random()}>
-          <ListItemText>{item.listItem}</ListItemText>
-        </ListItem>
-      ))}
+      <ListItem>Email: {authUser.email}</ListItem>
+      <ListItem button>
+        <LinkButton link='account/changepassword'>Change Password</LinkButton>
+      </ListItem>
+      <ListItem button>
+        <ListItemText>
+          <DeleteAccount />
+        </ListItemText>
+      </ListItem>
     </List>
   );
 };

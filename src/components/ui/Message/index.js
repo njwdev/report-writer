@@ -1,15 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Paper from '@material-ui/core/Paper';
+// MUI
 import { withStyles } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import styles from './styles';
+// Style
+const styles = theme => ({
+  root: {
+    padding: theme.spacing.unit * 2,
+    margin: '5px auto'
+  },
+  success: {
+    color: '#28B463',
+    fontWeight: 'bold'
+  },
+  warning: {
+    color: theme.palette.error.main,
+    fontWeight: 'bold'
+  }
+});
 
-const Message = props => {
-  const { classes, children, type } = props;
+const Message = ({ classes, children, type }) => {
   return (
     <Paper className={classes.root}>
-      <Typography className={type === 'success' ? classes.success : classes.warning}>
+      <Typography
+        // Set to div to avoid nesting in <p></p> tag console errors
+        component='div'
+        className={type === 'success' ? classes.success : classes.warning}
+      >
         {children}
       </Typography>
     </Paper>
@@ -17,9 +35,8 @@ const Message = props => {
 };
 
 Message.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
   children: PropTypes.node.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string
 };
 
 export default withStyles(styles)(Message);

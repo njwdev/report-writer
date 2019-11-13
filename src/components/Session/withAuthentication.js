@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// Internal
 import AuthUserContext from './context';
 import { withFirebase } from '../../firebase';
 import Loader from '../ui/Loader';
@@ -8,7 +9,7 @@ const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
     state = {
       authUser: null,
-      loading: true,
+      loading: true
     };
 
     componentDidMount() {
@@ -19,7 +20,7 @@ const withAuthentication = Component => {
         },
         () => {
           this.setState({ authUser: null, loading: false });
-        },
+        }
       );
     }
 
