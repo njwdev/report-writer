@@ -5,6 +5,7 @@ import PageContainer from '../layout/Container/PageContainer';
 import PageHeader from '../layout/Container/PageHeader';
 import Form from './Form';
 import Instructions from '../layout/Container/Instructions';
+import { shuffle } from './functions';
 
 const condition = authUser => !!authUser;
 
@@ -15,23 +16,23 @@ const INITIAL_STATE = {
 };
 
 // Shuffle function - Fisher-Yates shuffle
-function shuffle(array) {
-  /* -disable no-param-reassign */
-  let currentIndex = array.length;
-  let tempValue;
-  let randomIndex;
-  // While there remain elements to shuffle…
-  while (currentIndex) {
-    // Pick a remaining element…
+// function shuffle(array) {
+//   /* -disable no-param-reassign */
+//   let currentIndex = array.length;
+//   let tempValue;
+//   let randomIndex;
+//   // While there remain elements to shuffle…
+//   while (currentIndex) {
+//     // Pick a remaining element…
 
-    randomIndex = Math.floor(Math.random() * currentIndex--);
-    // And swap it with the current element.
-    tempValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = tempValue;
-  }
-  return array;
-}
+//     randomIndex = Math.floor(Math.random() * currentIndex--);
+//     // And swap it with the current element.
+//     tempValue = array[currentIndex];
+//     array[currentIndex] = array[randomIndex];
+//     array[randomIndex] = tempValue;
+//   }
+//   return array;
+// }
 
 class Home extends Component {
   state = { ...INITIAL_STATE };
