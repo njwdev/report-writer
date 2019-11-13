@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 // MUI
 import { withStyles } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-
+// Styles
 const styles = theme => ({
   paper: {
     padding: '5px',

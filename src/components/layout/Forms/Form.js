@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// MUI
 import { withStyles } from '@material-ui/core/styles';
-import FormStyles from './styles/FormStyles';
+// Styles
+const styles = theme => ({
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing.unit
+  },
+  submit: { marginTop: theme.spacing.unit * 3 }
+});
 
-const Form = props => {
-  const { classes, children, onSubmit } = props;
-
+const Form = ({ classes, children, onSubmit }) => {
   return (
     <form onSubmit={onSubmit} className={classes.form}>
       {children}
@@ -14,9 +20,8 @@ const Form = props => {
 };
 
 Form.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
   children: PropTypes.node.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
 };
 
-export default withStyles(FormStyles)(Form);
+export default withStyles(styles)(Form);

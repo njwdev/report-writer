@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
+// Internal
 import { withFirebase } from '../../../../firebase';
-import NewCommentForm from './NewCommentForm';
-
+import NewCommentForm from './Form/NewCommentForm';
 import Message from '../../../ui/Message';
+import SuccessMessage from './Form/SuccessMessage';
+import Validation from './Form/Validation';
 
 const INITIAL_STATE = {
   type: '',
@@ -14,7 +15,7 @@ const INITIAL_STATE = {
   term: 'any',
   showTermSelect: false,
   success: false,
-  error: null,
+  error: null
 };
 
 class AddNewComment extends Component {
@@ -27,8 +28,12 @@ class AddNewComment extends Component {
   onSubmit = e => {
     const { type, comment, author, created, term } = this.state;
     const { firebase } = this.props;
+    // Remove any whitespace before / after the comment
     e.preventDefault();
-
+    if (comment !== '') {
+      comment.trim();
+    }
+    // Add the comment to the firebase database
     firebase
       .comments()
       .add({
@@ -36,9 +41,9 @@ class AddNewComment extends Component {
         comment,
         author,
         created,
-        term,
+        term
       })
-
+      // Reset the state and add a success message
       .then(() => this.setState({ ...INITIAL_STATE, success: true }))
       .catch(() => this.setState({ error: true }));
   };
@@ -49,7 +54,7 @@ class AddNewComment extends Component {
     this.setState({
       [e.target.name]: e.target.value,
       author: firebase.userAuth(),
-      created: new Date(),
+      created: new Date()
     });
   };
 
@@ -62,20 +67,19 @@ class AddNewComment extends Component {
 
   render() {
     const { comment, type, error, success, term, showTermSelect } = this.state;
-
-    const isInvalid = comment === '' || type === '';
+    // The comment should end with either a full stop or an exclamation
+    const endingIsValid =
+      comment.charAt(comment.length - 1) === '.' ||
+      comment.charAt(comment.length - 1) === '!';
+    // Check there is something in the comment, and that the type has been assigned, and the ending is ok
+    const isInvalid = type === '' || comment.length < 10 || !endingIsValid;
 
     return (
-      <div>
+      <Fragment>
         {success ? (
-          <div>
-            <Message type="success">Comment added successfully</Message>
-            <Button onClick={this.onReset} variant="contained" color="primary" fullWidth>
-              Add a new comment
-            </Button>
-          </div>
+          <SuccessMessage onReset={this.onReset} />
         ) : (
-          <div>
+          <Fragment>
             <NewCommentForm
               onSubmit={this.onSubmit}
               onChange={this.onChange}
@@ -84,10 +88,15 @@ class AddNewComment extends Component {
               showTermSelect={showTermSelect}
               onCheck={this.onToggleTermSelect}
             />
-            {error ? <Message type="warning">{error}</Message> : null}
-          </div>
+            <Validation
+              endingIsValid={endingIsValid}
+              comment={comment}
+              type={type}
+            />
+            {error ? <Message type='warning'>{error}</Message> : null}
+          </Fragment>
         )}
-      </div>
+      </Fragment>
     );
   }
 }

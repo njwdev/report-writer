@@ -1,14 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// MUI
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-import landingStyles from './styles';
+//Styles
+const styles = theme => ({
+  layout: {
+    width: 'auto',
+    margin: '0 10%'
+  },
+  content: {
+    margin: '0 auto',
+    padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`
+  }
+});
 
-const Landing = props => {
-  const { classes } = props;
-
+const Landing = ({ classes }) => {
   return (
     <main className={classes.layout}>
       <div className={classes.content}>
@@ -40,6 +48,4 @@ const Landing = props => {
   );
 };
 
-Landing.propTypes = { classes: PropTypes.shape({}).isRequired };
-
-export default withStyles(landingStyles)(Landing);
+export default withStyles(styles)(Landing);

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// MUI
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -22,19 +23,24 @@ class ModalContainer extends React.Component {
     return (
       <div style={{ margin: ' 3px' }}>
         <Button
-          variant="contained"
-          color="primary"
+          variant='contained'
+          color='primary'
           fullWidth
           onClick={this.handleClickOpen}
           disabled={disabled}
         >
           {title}
         </Button>
-        <Dialog fullWidth open={open} onClose={this.handleClose} aria-labelledby="comment-title">
-          <DialogTitle id="comment-title">{title}</DialogTitle>
+        <Dialog
+          fullWidth
+          open={open}
+          onClose={this.handleClose}
+          aria-labelledby='comment-title'
+        >
+          <DialogTitle id='comment-title'>{title}</DialogTitle>
           {children}
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} color='primary'>
               Back
             </Button>
           </DialogActions>
@@ -47,7 +53,7 @@ class ModalContainer extends React.Component {
 ModalContainer.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-  disabled: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool.isRequired
 };
 
 export default ModalContainer;

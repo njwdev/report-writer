@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 // MUI
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -7,8 +6,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Hidden from '@material-ui/core/Hidden';
 // Internal
-import NavButtons from './NavButtons';
-import NavDrawer from './NavDrawer';
+import NavButtons from './NavBar/NavButtons';
+import NavDrawer from './NavDrawer/NavDrawer';
 // Styles
 const styles = theme => ({
   appBar: {
@@ -49,7 +48,5 @@ const Navigation = ({ classes }) => {
     </AppBar>
   );
 };
-
-Navigation.propTypes = { classes: PropTypes.shape({}).isRequired };
 
 export default withStyles(styles)(Navigation);

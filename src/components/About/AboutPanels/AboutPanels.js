@@ -46,6 +46,4 @@ const AboutPanels = () => (
   </AuthUserContext.Consumer>
 );
 
-AboutPanels.propTypes = {};
-
 export default withFirebase(AboutPanels);

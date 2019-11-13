@@ -1,9 +1,9 @@
 import React from 'react';
 // MUI
+import { withStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Icon from '@material-ui/core/Icon';
-import { withStyles } from '@material-ui/core';
 // Style
 const styles = theme => ({
   container: {
@@ -26,7 +26,7 @@ const AboutFooter = ({ classes }) => {
         nwjwdev@gmail.com <Icon className={classes.icon}>copyright</Icon>
         2019
       </Typography>
-      <Typography variant='caption'>Version: 1.1.0</Typography>
+      <Typography variant='caption'>Version: 1.2.0</Typography>
     </div>
   );
 };
