@@ -19,14 +19,25 @@ const styles = theme => ({
   }
 });
 
-const Validation = ({ classes, comment, type, endingIsValid }) => {
+const Validation = ({
+  classes,
+  comment,
+  type,
+  endingIsValid,
+  includesCode
+}) => {
   const isValidLength = comment.length > 10;
   const isValidType = type !== '';
 
   const data = [
     { valid: isValidLength, text: 'Minimum 10 characters' },
+    { valid: includesCode, text: 'Includes at least one code' },
     { valid: isValidType, text: 'Select comment type' },
-    { valid: endingIsValid, text: 'End with a full stop, or exclamation' }
+    {
+      valid: endingIsValid,
+      text: 'End with a full stop',
+      secondary: "Exclamation mark is valid if type is 'closing'"
+    }
   ];
 
   return (
@@ -39,6 +50,11 @@ const Validation = ({ classes, comment, type, endingIsValid }) => {
                 className={item.valid ? classes.valid : classes.invalid}
               >
                 {item.text}
+              </Typography>
+            }
+            secondary={
+              <Typography style={{ color: '#bbb' }}>
+                {item.secondary}
               </Typography>
             }
           />
@@ -56,6 +72,7 @@ const Validation = ({ classes, comment, type, endingIsValid }) => {
 Validation.propTypes = {
   comment: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  endingIsValid: PropTypes.bool.isRequired
+  endingIsValid: PropTypes.bool.isRequired,
+  includesCode: PropTypes.bool.isRequired
 };
 export default withStyles(styles)(Validation);

@@ -26,7 +26,7 @@ const AboutFooter = ({ classes }) => {
         nwjwdev@gmail.com <Icon className={classes.icon}>copyright</Icon>
         2019
       </Typography>
-      <Typography variant='caption'>Version: 1.2.0</Typography>
+      <Typography variant='caption'>Version: 1.3.0</Typography>
     </div>
   );
 };

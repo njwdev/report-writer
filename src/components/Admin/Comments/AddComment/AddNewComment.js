@@ -6,6 +6,7 @@ import NewCommentForm from './Form/NewCommentForm';
 import Message from '../../../ui/Message';
 import SuccessMessage from './Form/SuccessMessage';
 import Validation from './Form/Validation';
+import commentCodes from '../../../../constants/commentCodes';
 
 const INITIAL_STATE = {
   type: '',
@@ -67,12 +68,23 @@ class AddNewComment extends Component {
 
   render() {
     const { comment, type, error, success, term, showTermSelect } = this.state;
-    // The comment should end with either a full stop or an exclamation
-    const endingIsValid =
-      comment.charAt(comment.length - 1) === '.' ||
-      comment.charAt(comment.length - 1) === '!';
+    // The comment should end with either a full stop or an exclamation if the comment type is closing
+    let endingIsValid = comment.charAt(comment.length - 1) === '.';
+    if (type === 'closing' && comment.charAt(comment.length - 1) === '!') {
+      endingIsValid = true;
+    }
+
+    const hasCode = () => {
+      const array = Object.values(commentCodes).map(item => {
+        return comment.includes(item) ? true : false;
+      });
+      return array.includes(true);
+    };
+
+    const includesCode = hasCode();
     // Check there is something in the comment, and that the type has been assigned, and the ending is ok
-    const isInvalid = type === '' || comment.length < 10 || !endingIsValid;
+    const isInvalid =
+      type === '' || comment.length < 10 || !endingIsValid || !includesCode;
 
     return (
       <Fragment>
@@ -90,6 +102,7 @@ class AddNewComment extends Component {
             />
             <Validation
               endingIsValid={endingIsValid}
+              includesCode={includesCode}
               comment={comment}
               type={type}
             />
