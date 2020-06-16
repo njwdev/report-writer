@@ -15,29 +15,29 @@ const INITIAL_STATE = {
   studentName: '',
   pronounType: '',
   termType: 'any',
-  isAutoGen: false
+  isAutoGen: false,
 };
 
 class Form extends Component {
   state = { ...INITIAL_STATE };
 
-  onCommentChange = e => {
+  onCommentChange = (e) => {
     this.setState({ commentValue: e.target.value });
   };
 
-  onNameChange = e => {
+  onNameChange = (e) => {
     this.setState({ studentName: e.target.value });
   };
 
-  onPronounSelect = e => {
+  onPronounSelect = (e) => {
     this.setState({ pronounType: e.target.value });
   };
 
-  onTermSelect = e => {
+  onTermSelect = (e) => {
     this.setState({ termType: e.target.value });
   };
 
-  onCommentAdd = comment => {
+  onCommentAdd = (comment) => {
     const { commentValue } = this.state;
     const selectedComment = comment;
     const newComment = commentValue + selectedComment;
@@ -50,6 +50,7 @@ class Form extends Component {
 
   onReset = () => {
     this.props.onShuffle();
+    this.props.resetSearchField();
     this.setState({ ...INITIAL_STATE });
   };
 
@@ -67,7 +68,7 @@ class Form extends Component {
       copied,
       studentName,
       pronounType,
-      termType
+      termType,
     } = this.state;
     const isValid = studentName !== '' && pronounType !== '';
 

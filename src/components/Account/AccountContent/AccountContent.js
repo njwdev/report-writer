@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 // MUI
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 // Internal
 import DeleteAccount from './DeleteAccount';
 import { LinkButton } from '../../ui/Buttons';
@@ -16,9 +15,7 @@ const AccountContent = ({ authUser }) => {
         <LinkButton link='account/changepassword'>Change Password</LinkButton>
       </ListItem>
       <ListItem button>
-        <ListItemText>
-          <DeleteAccount />
-        </ListItemText>
+        <DeleteAccount />
       </ListItem>
     </List>
   );

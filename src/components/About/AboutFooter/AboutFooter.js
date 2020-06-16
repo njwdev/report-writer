@@ -5,16 +5,16 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Icon from '@material-ui/core/Icon';
 // Style
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
-    textAlign: 'center'
+    textAlign: 'center',
   },
   divider: {
-    marginTop: '15px'
+    marginTop: '15px',
   },
   icon: {
-    fontSize: '12px'
-  }
+    fontSize: '12px',
+  },
 });
 
 const AboutFooter = ({ classes }) => {
@@ -24,9 +24,9 @@ const AboutFooter = ({ classes }) => {
       <Typography>Report Writer</Typography>
       <Typography variant='caption'>
         nwjwdev@gmail.com <Icon className={classes.icon}>copyright</Icon>
-        2019
+        {new Date().getFullYear()}
       </Typography>
-      <Typography variant='caption'>Version: 1.3.0</Typography>
+      <Typography variant='caption'>Version: 1.3.1</Typography>
     </div>
   );
 };

@@ -7,12 +7,12 @@ import Form from './Form';
 import Instructions from '../layout/Container/Instructions';
 import { shuffle } from './functions';
 
-const condition = authUser => !!authUser;
+const condition = (authUser) => !!authUser;
 
 const INITIAL_STATE = {
   loading: false,
   comments: [],
-  searchValue: ''
+  searchValue: '',
 };
 
 // Shuffle function - Fisher-Yates shuffle
@@ -43,13 +43,15 @@ class Home extends Component {
     this.commentList = firebase
       .comments()
       .orderBy('created')
-      .onSnapshot(snapshot => {
+      .onSnapshot((snapshot) => {
         const comments = [];
-        snapshot.forEach(doc => comments.push({ ...doc.data(), uid: doc.id }));
+        snapshot.forEach((doc) =>
+          comments.push({ ...doc.data(), uid: doc.id })
+        );
         this.setState({
           // Start with random order of comments
           comments: shuffle(comments),
-          loading: false
+          loading: false,
         });
       });
   }
@@ -59,35 +61,40 @@ class Home extends Component {
     this.setState({ comments: shuffle(comments) });
   };
 
-  onSearchChange = e => {
+  onSearchChange = (e) => {
     e.preventDefault();
     this.setState({ searchValue: e.target.value });
   };
+
+  resetSearchField = () => {
+    this.setState({ searchValue: '' });
+  };
+
   render() {
     const { comments, searchValue } = this.state;
     const { termType } = this.props;
 
     // 1. Make sure that comments with a different term type are filtered out
     const filteredComments = comments.filter(
-      comment =>
+      (comment) =>
         comment.term === termType || comment.term === 'any' || !comment.term
     );
     // 2. Add the function for searching for specific words/characters
-    const commentsToDisplay = filteredComments.filter(c =>
+    const commentsToDisplay = filteredComments.filter((c) =>
       c.comment.includes(searchValue)
     );
     // 3. Filter the comments by type.
     const introComments = commentsToDisplay.filter(
-      comment => comment.type === 'intro'
+      (comment) => comment.type === 'intro'
     );
     const positiveComments = commentsToDisplay.filter(
-      comment => comment.type === 'positive'
+      (comment) => comment.type === 'positive'
     );
     const negativeComments = commentsToDisplay.filter(
-      comment => comment.type === 'negative'
+      (comment) => comment.type === 'negative'
     );
     const closingComments = commentsToDisplay.filter(
-      comment => comment.type === 'closing'
+      (comment) => comment.type === 'closing'
     );
     // 4. A function to make the lists and limit the comments shown to 5
     const data = (title, comms) => ({ title, comms });
@@ -95,7 +102,7 @@ class Home extends Component {
       data('Intros', introComments.slice(0, 5)),
       data('Positives', positiveComments.slice(0, 5)),
       data('Negatives', negativeComments.slice(0, 5)),
-      data('Closings', closingComments.slice(0, 5))
+      data('Closings', closingComments.slice(0, 5)),
     ];
 
     // 5. Generate a random report that contains all four parts
@@ -110,16 +117,16 @@ class Home extends Component {
     const instructionData = [
       {
         icon: 'face',
-        text: "Add student's name & pronoun"
+        text: "Add student's name & pronoun",
       },
       {
         icon: 'chat',
-        text: "Build or 'Auto' generate your report"
+        text: "Build or 'Auto' generate your report",
       },
       {
         icon: 'file_copy',
-        text: 'Hit copy!'
-      }
+        text: 'Hit copy!',
+      },
     ];
 
     return (
@@ -132,6 +139,7 @@ class Home extends Component {
           onShuffle={this.onShuffle}
           onSearchChange={this.onSearchChange}
           searchValue={searchValue}
+          resetSearchField={this.resetSearchField}
         />
       </PageContainer>
     );
